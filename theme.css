@@ -129,6 +129,10 @@ body {
 	--toggle-thumb-radius: 0px;
 	--slider-thumb-radius: 0px;
 
+	--accent-h: 327.13;
+	--accent-s: 100%;
+	--accent-l: 45%;
+
 	--h1-font: "Fira Sans Extra Condensed";
 	--h2-font: "Fira Sans Extra Condensed";
 	--h3-font: "Fira Sans Extra Condensed";
@@ -147,11 +151,13 @@ body {
 
 	--checkbox-color: #e6007e;
 	--checkbox-color-hover: #e9399a;
-	--checkbox-marker-color: #fdf7ee;
+	--checkbox-marker-color: #f2f2f0;
 
 	--tag-color: #e6007e;
 	--tag-background: #e7e7e7;
 	--tag-weight: bold;
+
+	--divider-color-hover: #e6007e;
 }
 
 .theme-dark {
@@ -160,7 +166,9 @@ body {
 }
 
 .theme-light {
-	--background-primary: #fdf7ee;
+	--background-primary: #f2f2f0;
+	--background-secondary: #f2f0eb;
+
 	--list-marker-color: #000;
 	--link-color: #000;
 	--link-color-hover: #e6007e;
@@ -206,6 +214,24 @@ svg * {
 	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
 }
 
+/**----------------------------------
+RIBBON
+----------------------------------**/
+.theme-light {
+	--ribbon-background: #382859;
+}
+.theme-light .workspace-ribbon {
+	color: var(--background-primary);
+}
+
+.theme-light .workspace-ribbon .side-dock-actions .clickable-icon,
+.theme-light .workspace-ribbon .side-dock-settings .clickable-icon {
+	color: var(--background-primary);
+}
+
+/**----------------------------------
+HEADERS
+----------------------------------**/
 .cm-header,
 .inline-title {
 	text-transform: uppercase;
