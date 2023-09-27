@@ -161,8 +161,38 @@ body {
 }
 
 .theme-dark {
-	--background-primary: #18004f;
-	--background-secondary: #220070;
+	--background-primary: #2d2040;
+	--background-secondary: #382859;
+
+	--titlebar-background-focused: hsl(260, 38%, 24%);
+
+	--interactive-normal: rgb(64, 45, 94);
+	--interactive-hover: rgb(60, 43, 88);
+
+	--background-modifier-hover: rgb(60, 43, 88);
+	--background-modifier-border-hover: rgb(60, 43, 88);
+	--background-modifier-form-field: rgb(64, 45, 94);
+
+	--slider-track-background: rgb(68, 51, 95);
+
+	--list-marker-color: #fff;
+	--link-color: #fff;
+	--link-color-hover: #e6007e;
+	--link-decoration: none;
+	--link-decoration-hover: none;
+	--link-unresolved-color: #fff;
+	--link-unresolved-opacity: 0.8;
+	--link-unresolved-filter: none;
+	--link-external-color: #fff;
+	--link-external-color-hover: #e6007e;
+	--link-external-decoration: none;
+
+	--h1-color: #e6007e;
+	--h2-color: #e6007e;
+	--h3-color: #e6007e;
+	--h4-color: #e6007e;
+	--h5-color: #e6007e;
+	--h6-color: #e6007e;
 }
 
 .theme-light {
@@ -180,14 +210,6 @@ body {
 	--link-external-color: #000;
 	--link-external-color-hover: #e6007e;
 	--link-external-decoration: none;
-}
-
-span.cm-hmd-internal-link span.cm-underline {
-	border-bottom: solid rgb(72 67 141) 2px;
-}
-
-span.cm-hmd-internal-link:hover span.cm-underline {
-	border-bottom: solid #e6007e 2px;
 }
 
 .workspace-tab-header.is-active::before,
@@ -215,6 +237,21 @@ svg * {
 }
 
 /**----------------------------------
+LINKS
+----------------------------------**/
+span.cm-hmd-internal-link span.cm-underline {
+	border-bottom: solid rgb(72 67 141) 2px;
+}
+
+.theme-dark span.cm-hmd-internal-link span.cm-underline {
+	border-bottom: solid #5fc6f0 2px;
+}
+
+span.cm-hmd-internal-link:hover span.cm-underline {
+	border-bottom: solid #e6007e 2px;
+}
+
+/**----------------------------------
 RIBBON
 ----------------------------------**/
 .theme-light {
@@ -229,11 +266,24 @@ RIBBON
 	color: var(--background-primary);
 }
 
+.theme-dark {
+	--ribbon-background: rgb(34 22 46);
+}
+
 /**----------------------------------
 HEADERS
 ----------------------------------**/
 .cm-header,
 .inline-title {
+	text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	text-transform: uppercase;
 }
 
@@ -246,9 +296,9 @@ HEADERS
 TAGS, STATUSES, SPECTRUMS
 ----------------------------------**/
 .theme-dark {
-	--tag-highlighter: #fff2ab;
-	--status-highlighter: #e2e9b4;
-	--spectrum-highlighter: #f9d0c4;
+	--tag-highlighter: #7b4a83;
+	--status-highlighter: #6a8661;
+	--spectrum-highlighter: #852d3a;
 }
 
 .theme-light {
@@ -260,16 +310,19 @@ TAGS, STATUSES, SPECTRUMS
 mark.tag {
 	background-color: var(--tag-highlighter) !important;
 	font-style: italic;
+	color: var(--text-normal);
 }
 
 mark.status {
 	background-color: var(--status-highlighter) !important;
 	font-style: italic;
+	color: var(--text-normal);
 }
 
 mark.spectrum {
 	background-color: var(--spectrum-highlighter) !important;
 	font-style: italic;
+	color: var(--text-normal);
 }
 
 /**----------------------------------
@@ -289,6 +342,7 @@ div.description {
 	font-family: Courier, monospace;
 	padding-left: 1em;
 	font-size: 0.9em;
+	color: var(--text-normal);
 }
 
 .callout[data-callout="description"] .callout-icon {
@@ -298,6 +352,7 @@ div.description {
 .callout[data-callout="description"] .callout-title-inner {
 	font-weight: normal;
 	line-height: var(--line-height-normal);
+	color: var(--text-normal);
 }
 
 /**----------------------------------
@@ -318,7 +373,7 @@ div.clue {
 .callout[data-callout="special-clue"] {
 	--callout-color: 0, 0, 0;
 	font-family: "Averia Serif Libre";
-	background-color: #fdf0a8;
+	background-color: hsl(51, 96%, 83%);
 	padding: 0.5em 1em;
 	margin: 0.5em 1em !important;
 	border-radius: 3px;
@@ -326,7 +381,7 @@ div.clue {
 }
 
 .callout[data-callout="special-clue"] {
-	background-color: #e2c5c4;
+	background-color: hsl(2, 34%, 83%);
 }
 
 .callout[data-callout="clue"] .callout-icon,
@@ -343,10 +398,67 @@ div.clue {
 /**----------------------------------
 DANGER
 ----------------------------------**/
+/*.theme-dark div.danger {
+	background-color: rgb(63, 61, 56);
+}*/
+
+div.danger.bg0 {
+	--danger-hue: 0;
+	--danger-saturation: 17%;
+	--danger-lightness: 82%;
+}
+
+div.danger.bg1 {
+	--danger-hue: 42;
+	--danger-saturation: 38%;
+	--danger-lightness: 91%;
+}
+
+div.danger.bg2 {
+	--danger-hue: 42;
+	--danger-saturation: 38%;
+	--danger-lightness: 95%;
+}
+
+div.danger.bg3 {
+	--danger-hue: 43;
+	--danger-saturation: 38%;
+	--danger-lightness: 82%;
+}
+
+div.danger.bg4 {
+	--danger-hue: 31;
+	--danger-saturation: 38%;
+	--danger-lightness: 88%;
+}
+
+div.danger.bg5 {
+	--danger-hue: 57;
+	--danger-saturation: 38%;
+	--danger-lightness: 82%;
+}
+
+div.danger.bg6 {
+	--danger-hue: 78;
+	--danger-saturation: 14%;
+	--danger-lightness: 85%;
+}
+
+div.danger.bg7 {
+	--danger-hue: 26;
+	--danger-saturation: 15%;
+	--danger-lightness: 82%;
+}
+
 div.danger {
-	background-color: #d8c8c8;
+	background-color: hsl(
+		var(--danger-hue),
+		var(--danger-saturation),
+		var(--danger-lightness)
+	);
 	padding: 0.5em 1em;
 	margin: 1em;
+	box-shadow: #00000050 0px 0px 8px 1px;
 }
 
 div.danger p {
@@ -359,8 +471,8 @@ div.danger ul {
 }
 
 div.danger hr {
-	border-color: #000;
-	margin: 1em 0;
+	border-color: var(--text-muted);
+	margin: 0.5em 0 !important;
 }
 
 div.danger > h3 {
@@ -374,4 +486,9 @@ div.danger > h4 {
 	font-family: "Rift";
 	text-transform: uppercase;
 	margin: 0.5em 0;
+}
+
+.theme-dark div.danger {
+	--danger-lightness: 14%;
+	--danger-saturation: 45%;
 }
