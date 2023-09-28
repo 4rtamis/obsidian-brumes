@@ -1,0 +1,13 @@
+.theme-dark {
+	--status-highlighter: #6a8661;
+}
+
+.theme-light {
+	--status-highlighter: #e2e9b4;
+}
+
+mark.status {
+	background-color: var(--status-highlighter) !important;
+	font-style: italic;
+	color: var(--text-normal);
+}

@@ -1,0 +1,39 @@
+.theme-dark {
+	--list-marker-color: #fff;
+	--link-color: #fff;
+	--link-color-hover: #e6007e;
+	--link-decoration: none;
+	--link-decoration-hover: none;
+	--link-unresolved-color: #fff;
+	--link-unresolved-opacity: 0.8;
+	--link-unresolved-filter: none;
+	--link-external-color: #fff;
+	--link-external-color-hover: #e6007e;
+	--link-external-decoration: none;
+}
+
+.theme-light {
+	--list-marker-color: #000;
+	--link-color: #000;
+	--link-color-hover: #e6007e;
+	--link-decoration: none;
+	--link-decoration-hover: none;
+	--link-unresolved-color: #000;
+	--link-unresolved-opacity: 0.8;
+	--link-unresolved-filter: none;
+	--link-external-color: #000;
+	--link-external-color-hover: #e6007e;
+	--link-external-decoration: none;
+}
+
+span.cm-hmd-internal-link span.cm-underline {
+	border-bottom: solid rgb(72, 67, 141) 2px;
+}
+
+.theme-dark span.cm-hmd-internal-link span.cm-underline {
+	border-bottom: solid #5fc6f0 2px;
+}
+
+span.cm-hmd-internal-link:hover span.cm-underline {
+	border-bottom: solid #e6007e 2px;
+}

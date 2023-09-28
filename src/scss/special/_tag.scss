@@ -1,0 +1,13 @@
+.theme-dark {
+	--tag-highlighter: #7b4a83;
+}
+
+.theme-light {
+	--tag-highlighter: #fff2ab;
+}
+
+mark.tag {
+	background-color: var(--tag-highlighter) !important;
+	font-style: italic;
+	color: var(--text-normal);
+}

@@ -1,0 +1,25 @@
+.callout[data-callout="clue"],
+.callout[data-callout="special-clue"] {
+	--callout-color: 0, 0, 0;
+	font-family: "Averia Serif Libre";
+	background-color: hsl(51, 96%, 83%);
+	padding: 0.5em 1em;
+	margin: 0.5em 1em !important;
+	border-radius: 3px;
+	box-shadow: #00000050 0px 0px 8px 1px;
+}
+
+.callout[data-callout="special-clue"] {
+	background-color: hsl(2, 34%, 83%);
+}
+
+.callout[data-callout="clue"] .callout-icon,
+.callout[data-callout="special-clue"] .callout-icon {
+	display: none;
+}
+
+.callout[data-callout="clue"] .callout-title-inner,
+.callout[data-callout="special-clue"] .callout-title-inner {
+	font-weight: normal;
+	line-height: var(--line-height-normal);
+}

@@ -1,0 +1,90 @@
+div.danger.bg0 {
+	--danger-hue: 0;
+	--danger-saturation: 17%;
+	--danger-lightness: 82%;
+}
+
+div.danger.bg1 {
+	--danger-hue: 42;
+	--danger-saturation: 38%;
+	--danger-lightness: 91%;
+}
+
+div.danger.bg2 {
+	--danger-hue: 42;
+	--danger-saturation: 38%;
+	--danger-lightness: 95%;
+}
+
+div.danger.bg3 {
+	--danger-hue: 43;
+	--danger-saturation: 38%;
+	--danger-lightness: 82%;
+}
+
+div.danger.bg4 {
+	--danger-hue: 31;
+	--danger-saturation: 38%;
+	--danger-lightness: 88%;
+}
+
+div.danger.bg5 {
+	--danger-hue: 57;
+	--danger-saturation: 38%;
+	--danger-lightness: 82%;
+}
+
+div.danger.bg6 {
+	--danger-hue: 78;
+	--danger-saturation: 14%;
+	--danger-lightness: 85%;
+}
+
+div.danger.bg7 {
+	--danger-hue: 26;
+	--danger-saturation: 15%;
+	--danger-lightness: 82%;
+}
+
+div.danger {
+	background-color: hsl(
+		var(--danger-hue),
+		var(--danger-saturation),
+		var(--danger-lightness)
+	);
+	padding: 0.5em 1em;
+	margin: 1em;
+	box-shadow: #00000050 0px 0px 8px 1px;
+}
+
+div.danger p {
+	margin: 0;
+}
+
+div.danger ul {
+	margin: 0.2em 0;
+	padding-left: 1em;
+}
+
+div.danger hr {
+	border-color: var(--text-muted);
+	margin: 0.5em 0 !important;
+}
+
+div.danger > h3 {
+	text-decoration: underline;
+	text-decoration-thickness: 3px;
+	text-transform: uppercase;
+	margin: 0 0 0.2em 0;
+}
+
+div.danger > h4 {
+	font-family: "Rift";
+	text-transform: uppercase;
+	margin: 0.5em 0;
+}
+
+.theme-dark div.danger {
+	--danger-lightness: 14%;
+	--danger-saturation: 45%;
+}
