@@ -249,6 +249,111 @@ div.danger > h4 {
   --danger-lightness: 14%;
   --danger-saturation: 45%; }
 
+/* Requires the use of Canvas CSS Class plugin
+https://github.com/Lisandra-dev/obsidian-canvas-css-class
+*/
+.iceberg .canvas-node:has(.iceberg-card) .canvas-node-container {
+  box-shadow: -3px 5px 11px #0000006b; }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot1) {
+    transform: rotate(1deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot2) {
+    transform: rotate(2deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot3) {
+    transform: rotate(3deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot4) {
+    transform: rotate(4deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot5) {
+    transform: rotate(5deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot-1) {
+    transform: rotate(-1deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot-2) {
+    transform: rotate(-2deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot-3) {
+    transform: rotate(-3deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot-4) {
+    transform: rotate(-4deg); }
+  .iceberg .canvas-node:has(.iceberg-card) .canvas-node-container:has(.rot-5) {
+    transform: rotate(-5deg); }
+.iceberg .canvas-node:has(.iceberg-card) p {
+  font-family: Courier, monospace !important;
+  text-align: center;
+  line-height: normal;
+  margin: 0; }
+  .iceberg .canvas-node:has(.iceberg-card) p .media-embed {
+    background-color: #525252;
+    display: block;
+    width: 100%;
+    aspect-ratio: 347/256;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: -0.5em; }
+    .iceberg .canvas-node:has(.iceberg-card) p .media-embed img {
+      width: 80%; }
+.iceberg .canvas-node:has(.iceberg-card) .iceberg-card::-webkit-scrollbar {
+  display: none;
+  overflow: hidden; }
+.iceberg .canvas-node:has(.iceberg-card) .canvas-node-content.markdown-embed
+> .markdown-embed-content
+> .markdown-preview-view {
+  padding: var(--size-4-3);
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column; }
+.iceberg .canvas-node:has(.iceberg-card) .canvas-node-content.markdown-embed
+> .markdown-embed-content
+> .markdown-preview-view::before,
+.iceberg .canvas-node:has(.iceberg-card) .canvas-node-content.markdown-embed
+> .markdown-embed-content
+> .markdown-preview-view::after {
+  display: none; }
+.iceberg .canvas-node:has(.iceberg-card)::-webkit-scrollbar {
+  display: none; }
+.iceberg .canvas-node-container .is-loaded {
+  text-align: left; }
+.iceberg .canvas-node-container {
+  border-width: 0; }
+.iceberg .is-focused.canvas-node .canvas-node-container {
+  border-width: 2px; }
+.iceberg .canvas-wrapper {
+  --shadow-stationary: none; }
+.iceberg .canvas-node-group .canvas-node-content {
+  background-color: transparent; }
+.iceberg .canvas-group-label {
+  display: none; }
+
+.theme-dark .iceberg .canvas-node:has(.iceberg-card) p .media-embed {
+  background-color: var(--background-secondary); }
+
+.iceberg .canvas-node .canvas-node-container {
+  box-shadow: -3px 5px 11px #0000006b; }
+.iceberg .canvas-node h1,
+.iceberg .canvas-node h2,
+.iceberg .canvas-node h3,
+.iceberg .canvas-node h4,
+.iceberg .canvas-node h5,
+.iceberg .canvas-node h6 {
+  text-align: center; }
+.iceberg .canvas-node.canvas-node-group .canvas-node-container {
+  box-shadow: none; }
+.iceberg .canvas-node-content.markdown-embed
+> .markdown-embed-content
+> .markdown-preview-view {
+  padding: 0;
+  overflow-y: unset; }
+.iceberg .canvas-node-container .is-loaded {
+  text-align: left; }
+.iceberg .canvas-node-container {
+  border-width: 0; }
+.iceberg .is-focused.canvas-node .canvas-node-container {
+  border-width: 2px; }
+.iceberg .canvas-wrapper {
+  --shadow-stationary: none; }
+.iceberg .canvas-node-group .canvas-node-content {
+  background-color: transparent; }
+.iceberg .canvas-group-label {
+  display: none; }
+
 .theme-dark {
   --spectrum-highlighter: #852d3a; }
 
@@ -328,9 +433,7 @@ body {
 
 svg * {
   stroke-linecap: square;
-  stroke-linejoin: miter;
-  rx: 0;
-  ry: 0; }
+  stroke-linejoin: miter; }
 
 .menu {
   padding: var(--size-2-1); }

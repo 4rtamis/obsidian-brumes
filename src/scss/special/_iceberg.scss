@@ -1,0 +1,188 @@
+/* Requires the use of Canvas CSS Class plugin
+https://github.com/Lisandra-dev/obsidian-canvas-css-class
+*/
+
+// City of Mist style iceberg
+.iceberg {
+	.canvas-node:has(.iceberg-card) {
+		.canvas-node-container {
+			box-shadow: -3px 5px 11px #0000006b;
+
+			&:has(.rot1) {
+				transform: rotate(1deg);
+			}
+
+			&:has(.rot2) {
+				transform: rotate(2deg);
+			}
+
+			&:has(.rot3) {
+				transform: rotate(3deg);
+			}
+
+			&:has(.rot4) {
+				transform: rotate(4deg);
+			}
+
+			&:has(.rot5) {
+				transform: rotate(5deg);
+			}
+
+			&:has(.rot-1) {
+				transform: rotate(-1deg);
+			}
+
+			&:has(.rot-2) {
+				transform: rotate(-2deg);
+			}
+
+			&:has(.rot-3) {
+				transform: rotate(-3deg);
+			}
+
+			&:has(.rot-4) {
+				transform: rotate(-4deg);
+			}
+
+			&:has(.rot-5) {
+				transform: rotate(-5deg);
+			}
+		}
+
+		p {
+			font-family: Courier, monospace !important;
+			text-align: center;
+			line-height: normal;
+			margin: 0;
+
+			.media-embed {
+				background-color: #525252;
+				display: block;
+				width: 100%;
+				aspect-ratio: 347/256;
+				height: auto;
+				overflow: hidden;
+				text-align: center;
+				margin-bottom: -0.5em;
+
+				img {
+					width: 80%;
+				}
+			}
+		}
+
+		.iceberg-card::-webkit-scrollbar {
+			display: none;
+			overflow: hidden;
+		}
+
+		.canvas-node-content.markdown-embed
+			> .markdown-embed-content
+			> .markdown-preview-view {
+			padding: var(--size-4-3);
+			padding-bottom: 0;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.canvas-node-content.markdown-embed
+			> .markdown-embed-content
+			> .markdown-preview-view::before,
+		.canvas-node-content.markdown-embed
+			> .markdown-embed-content
+			> .markdown-preview-view::after {
+			display: none;
+		}
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.canvas-node-container .is-loaded {
+		text-align: left;
+	}
+
+	.canvas-node-container {
+		border-width: 0;
+	}
+	.is-focused.canvas-node .canvas-node-container {
+		border-width: 2px;
+	}
+	.canvas-wrapper {
+		--shadow-stationary: none;
+	}
+
+	.canvas-node-group .canvas-node-content {
+		background-color: transparent;
+	}
+
+	.canvas-group-label {
+		display: none;
+	}
+}
+
+.theme-dark {
+	.iceberg {
+		.canvas-node:has(.iceberg-card) {
+			p {
+				.media-embed {
+					background-color: var(--background-secondary);
+				}
+			}
+		}
+	}
+}
+
+// Alternate iceberg style
+.iceberg {
+	.canvas-node {
+		.canvas-node-container {
+			box-shadow: -3px 5px 11px #0000006b;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			text-align: center;
+		}
+	}
+
+	.canvas-node.canvas-node-group {
+		.canvas-node-container {
+			box-shadow: none;
+		}
+	}
+
+	.canvas-node-content.markdown-embed
+		> .markdown-embed-content
+		> .markdown-preview-view {
+		padding: 0;
+		overflow-y: unset;
+	}
+
+	.canvas-node-container .is-loaded {
+		text-align: left;
+	}
+
+	.canvas-node-container {
+		border-width: 0;
+	}
+	.is-focused.canvas-node .canvas-node-container {
+		border-width: 2px;
+	}
+	.canvas-wrapper {
+		--shadow-stationary: none;
+	}
+
+	.canvas-node-group .canvas-node-content {
+		background-color: transparent;
+	}
+
+	.canvas-group-label {
+		display: none;
+	}
+}

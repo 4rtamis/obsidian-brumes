@@ -9,6 +9,7 @@
 @import "./callout/description";
 
 @import "./special/danger";
+@import "./special/iceberg";
 @import "./special/spectrum";
 @import "./special/status";
 @import "./special/tag";
@@ -73,8 +74,6 @@ body {
 svg * {
 	stroke-linecap: square;
 	stroke-linejoin: miter;
-	rx: 0;
-	ry: 0;
 }
 
 .menu {

@@ -22,3 +22,6 @@ node_modules
 
 # Exclude doc
 /docs/.obsidian
+
+# Exclude demo
+demo/
