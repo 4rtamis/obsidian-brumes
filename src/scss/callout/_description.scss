@@ -5,14 +5,14 @@
 	padding-left: 1em;
 	font-size: 0.9em;
 	color: var(--text-normal);
-}
 
-.callout[data-callout="description"] .callout-icon {
-	display: none;
-}
+	.callout-icon {
+		display: none;
+	}
 
-.callout[data-callout="description"] .callout-title-inner {
-	font-weight: normal;
-	line-height: var(--line-height-normal);
-	color: var(--text-normal);
+	.callout-title-inner {
+		font-weight: normal;
+		line-height: var(--line-height-normal);
+		color: var(--text-normal);
+	}
 }
