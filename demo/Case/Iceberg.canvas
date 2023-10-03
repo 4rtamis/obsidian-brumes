@@ -1,0 +1,32 @@
+{
+	"nodes":[
+		{"id":"eff8ba11b65ab818","type":"group","x":-1277,"y":-608,"width":1737,"height":1240,"label":"Untitled group","background":"Ressources/Images/Iceberg.png"},
+		{"id":"c993bf7e60264b8d","type":"text","text":"---\ncssclass: iceberg-card rot1\n---\n![[iceberg-location.svg]]\nDepth 3, Location 2","x":-265,"y":130,"width":180,"height":180},
+		{"id":"4844cdf2775af67d","type":"text","text":"---\ncssclass: iceberg-card rot-2\n---\n![[iceberg-location.svg]]\nDepth 2,\nLocation 3","x":-115,"y":-72,"width":180,"height":180},
+		{"id":"ade47b5b4c025635","type":"text","text":"---\ncssclass: iceberg-card rot-5\n---\n![[iceberg-location.svg]]\nDepth 1,\nLocation 4","x":31,"y":-292,"width":180,"height":180},
+		{"id":"24c0a8333371008f","type":"text","text":"---\ncssclass: iceberg-card rot2\n---\n![[iceberg-location.svg]]\nDepth 1,\nLocation 3","x":-316,"y":-273,"width":180,"height":180},
+		{"id":"c7464a5eb21de0b8","type":"text","text":"---\ncssclass: iceberg-card rot5\n---\n![[iceberg-group.svg]]\nDepth 1,\nNPC 2","x":-705,"y":-280,"width":180,"height":180},
+		{"id":"0ea897ecf3205ddd","type":"text","text":"---\ncssclass: iceberg-card rot-1\n---\n![[iceberg-location.svg]]\nDepth 1,\nLocation 1","x":-1015,"y":-278,"width":176,"height":180},
+		{"id":"b235d6bb75158cb1","type":"text","text":"---\ncssclass: iceberg-card rot5\n---\n![[iceberg-group.svg]]\nHook #1","x":-877,"y":-482,"width":180,"height":180},
+		{"id":"b8fd9bc9c514836a","type":"text","text":"---\ncssclass: iceberg-card rot4\n---\n![[iceberg-group.svg]]\nHook #2","x":-531,"y":-491,"width":180,"height":180},
+		{"id":"fc7bb808089f6d09","type":"text","text":"---\ncssclass: iceberg-card rot-4\n---\n![[iceberg-group.svg]]\nHook #3","x":-163,"y":-489,"width":180,"height":180},
+		{"id":"db602ccf42327303","type":"text","text":"---\ncssclass: iceberg-card rot3\n---\n![[iceberg-location.svg]]\nDepth 2,\nLocation 1","x":-869,"y":-72,"width":176,"height":180},
+		{"id":"ded63a5961fda17c","type":"text","text":"---\ncssclass: iceberg-card rot-5\n---\n![[iceberg-group.svg]]\nDepth 3,\nNPC 1","x":-730,"y":128,"width":180,"height":180},
+		{"id":"e5aa7d980dd00568","type":"text","text":"---\ncssclass: iceberg-card rot-2\n---\n![[iceberg-location.svg]]\n[[Depth 4, Location 1]]","x":-537,"y":334,"width":180,"height":180},
+		{"id":"30bd90026b22f682","type":"text","text":"---\ncssclass: iceberg-card rot-5\n---\n![[iceberg-group.svg]]\nDepth 2,\nGroup 2","x":-521,"y":-81,"width":180,"height":180}
+	],
+	"edges":[
+		{"id":"5ed4157b17b57e25","fromNode":"e5aa7d980dd00568","fromSide":"top","toNode":"ded63a5961fda17c","toSide":"bottom","color":"1"},
+		{"id":"4b64ae31e5d2e3aa","fromNode":"e5aa7d980dd00568","fromSide":"top","toNode":"c993bf7e60264b8d","toSide":"bottom","color":"1"},
+		{"id":"b50aa6e03d5a58ad","fromNode":"ded63a5961fda17c","fromSide":"top","toNode":"30bd90026b22f682","toSide":"bottom","color":"1"},
+		{"id":"653a929d263236ec","fromNode":"c993bf7e60264b8d","fromSide":"top","toNode":"4844cdf2775af67d","toSide":"bottom","color":"1"},
+		{"id":"e5010a0f96bcb62d","fromNode":"db602ccf42327303","fromSide":"top","toNode":"0ea897ecf3205ddd","toSide":"bottom","color":"1"},
+		{"id":"1347b7d1c19d2de0","fromNode":"30bd90026b22f682","fromSide":"top","toNode":"c7464a5eb21de0b8","toSide":"bottom","color":"1"},
+		{"id":"c20ba4537345e744","fromNode":"30bd90026b22f682","fromSide":"top","toNode":"24c0a8333371008f","toSide":"bottom","color":"1"},
+		{"id":"97f4a0e7ac4e8f95","fromNode":"4844cdf2775af67d","fromSide":"top","toNode":"ade47b5b4c025635","toSide":"bottom","color":"1"},
+		{"id":"b05e5b63605f3fc4","fromNode":"0ea897ecf3205ddd","fromSide":"top","toNode":"b235d6bb75158cb1","toSide":"bottom","color":"1"},
+		{"id":"75cc5e0c460072d0","fromNode":"0ea897ecf3205ddd","fromSide":"top","toNode":"b8fd9bc9c514836a","toSide":"left","color":"1"},
+		{"id":"931ea33e12f44930","fromNode":"24c0a8333371008f","fromSide":"top","toNode":"fc7bb808089f6d09","toSide":"bottom","color":"1"},
+		{"id":"bb2c68d25abb3620","fromNode":"ade47b5b4c025635","fromSide":"top","toNode":"fc7bb808089f6d09","toSide":"bottom","color":"1"}
+	]
+}

@@ -1,0 +1,20 @@
+{
+  "canvasAdded": [
+    {
+      "canvasPath": "Case/Iceberg.canvas",
+      "canvasClass": [
+        "iceberg"
+      ],
+      "appendMode": "workspace-leaf-content"
+    },
+    {
+      "canvasPath": "Case/Iceberg Alternate.canvas",
+      "canvasClass": [
+        "iceberg"
+      ],
+      "appendMode": "workspace-leaf-content"
+    }
+  ],
+  "logLevel": "none",
+  "defaultAppendMode": "workspace-leaf-content"
+}
