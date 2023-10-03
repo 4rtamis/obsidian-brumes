@@ -37,8 +37,8 @@ The workflow and the Gruntfile used to develop this theme are based on [@kepano]
 
 To install Brumes:
 
-1. Download `theme.css` and move it into the folder `.obsidian/themes/` located in your vault folder.
-2. Rename this CSS file to `Brumes.css`.
+1. Create a new `Brumes` folder inside `/PATH/TO/YOUR/VAULT/.obsidian/themes/`.
+2. Download `theme.css` and `manifest.json` from the [latest release](https://github.com/4rtamis/obsidian-brumes/releases) and place them inside the new `Brumes` folder.
 3. In Obsidian, go to `Settings -> Appearance -> Themes`, and select `Brumes`.
 
 > [!NOTE]

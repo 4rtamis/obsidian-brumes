@@ -1,9 +1,6 @@
 {
-	"name": "obsidian-city-of-mist-theme",
+	"name": "obsidian-brumes",
 	"version": "1.0.0",
-	"scripts": {
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
-	},
 	"devDependencies": {
 		"grunt": "^1.6.1",
 		"grunt-concat-css": "^0.3.2",
