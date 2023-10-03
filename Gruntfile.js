@@ -91,7 +91,7 @@ module.exports = function (grunt) {
 			},
 			unminified: {
 				files: {
-					"Minimal.css": ["src/css/license.css", "src/css/main.css"],
+					"Brumes.css": ["src/css/license.css", "src/css/main.css"],
 				},
 			},
 		},
