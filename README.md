@@ -200,6 +200,23 @@ Brumes uses the custom [callout](https://help.obsidian.md/Editing+and+formatting
 > [!description] Tucked in the basement of a grimey brownstone building overshadowed by Downtown’s great skyscrapers, the Washboard couldn’t be located any lower without dropping into the sewers. Faint cello and piano notes echo in the maze.
 ```
 
+You can use Templater once more to facilitate the creation of new clues, special clues, moves and description. Create a new page in your templates folder and paste the following code:
+
+```js
+<%*
+selection = tp.file.selection();
+const type = await tp.system.suggester(["Clue","Special Clue","Move","Description"], ["clue","special-clue","move","description"]);
+
+if (type === undefined || type === null) {
+	return;
+} else {
+	return ">[!" + type + "] " + selection;
+}
+%>
+```
+
+Now, you can use `Alt+E` to open the template prompt and select the template you want.
+
 ### Icebergs
 
 ![Icebergs](./doc/features/icebergs.png)

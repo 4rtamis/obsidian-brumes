@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "4f8f3abc1b9283e2",
+        "id": "d820c6f4bee47659",
         "type": "tabs",
         "children": [
           {
-            "id": "1678e40f4274ed24",
+            "id": "d8d18dc71e518de4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md",
+                "file": "Ressources/Templates/Clues, Moves & Descriptions.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md",
+                "file": "Ressources/Templates/Clues, Moves & Descriptions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md",
+                "file": "Ressources/Templates/Clues, Moves & Descriptions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md"
+                "file": "Ressources/Templates/Clues, Moves & Descriptions.md"
               }
             }
           }
@@ -148,17 +148,37 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "1678e40f4274ed24",
+  "active": "d8d18dc71e518de4",
   "lastOpenFiles": [
-    "Ressources/Templates/Danger.md",
+    "Ressources/Templates/Tags, Statuses & Spectrums.md",
     "Brumes - City of Mist Obsidian Theme.md",
+    "Ressources/Templates/Clues, Moves & Descriptions.md",
+    "Case/Iceberg.canvas",
+    "Case/Iceberg Alternate.canvas",
+    "Affaire 1 - V comme Viral/Untitled.md",
+    "Affaire 1 - V comme Viral/Niveau 3/La Décharge Abandonnée.md",
+    "Affaire 1 - V comme Viral/Niveau 3/Complexe Déserté d'Helix Labs.md",
+    "Affaire 1 - V comme Viral/Niveau 3",
+    "Affaire 1 - V comme Viral/Niveau 4/La Maison Abandonnée.md",
+    "Affaire 1 - V comme Viral/Niveau 4",
+    "Affaire 1 - V comme Viral/Background.md",
+    "Affaire 1 - V comme Viral/Niveau 1/Le Quai 71.md",
+    "Affaire 1 - V comme Viral/Niveau 1/Collège-Lycée Jean Perrin.md",
+    "Affaire 1 - V comme Viral/Niveau 1/Appartement de Maurice Craig.md",
+    "Affaire 1 - V comme Viral/Niveau 1",
+    "Affaire 1 - V comme Viral/Iceberg de l'affaire.canvas",
+    "Affaire 1 - V comme Viral/Niveau 2/Résidence Chang.md",
+    "Affaire 1 - V comme Viral/Niveau 2/Laboratoire Génomondial.md",
+    "Affaire 1 - V comme Viral/Niveau 2/Café Beans.md",
+    "Affaire 1 - V comme Viral/Niveau 0/Accroches - Affaire 1.md",
+    "Affaire 1 - V comme Viral/Niveau 2",
+    "Affaire 1 - V comme Viral/Niveau 0",
+    "Affaire 1 - V comme Viral",
+    "Ressources/Templates/Danger.md",
     "Case/Depth 4, Location 1.md",
     "README.md",
     "Ressources/Images/Iceberg.png",
-    "Case/Iceberg Alternate.canvas",
     "Untitled.canvas",
-    "Case/Iceberg.canvas",
-    "Ressources/Templates/Tags, Statuses & Spectrums.md",
     "Ressources/Templates/Iceberg Cards.md",
     "Case/Test.md",
     "Eva Lockwood.md",
@@ -171,31 +191,12 @@
     "Personnages/Boris Lenoir.md",
     "Épisodes/Saison 1/Épisode 0 - Pilote.md",
     "Série/Affaire 2 - Les Dents de Miller's Square/Affaire 2.md",
-    "Série/Série.md",
-    "Épisodes/Saison 1/Épisode 2 - Le Jeu du Pendu.md",
     "Épisodes/Annonces/Dernier Épisode/psE4AB.tmp",
-    "Épisode 2 - Le Jeu du Pendu.png.jpg.md",
-    "Épisodes/Saison 1/Épisode 1 - V comme Victor.md",
     "Épisodes/Annonces/Dernier Épisode/Épisode 2 - Le Jeu du Pendu.jpg",
     "Épisodes/Annonces/Dernier Épisode/Épisode 2 - Le Jeu du Pendu.png.jpg",
     "Épisodes/Annonces/Dernier Épisode/ps343B.tmp",
-    "Personnages/René Pellerin.md",
-    "Personnages/Philippe Audinnson.md",
-    "Personnages/John Jovard.md",
-    "Personnages/Joachim Audinsson.md",
-    "Personnages/Hermine Bishop.md",
-    "Personnages/David Navidson.md",
-    "MC/Manoeuvres des joueurs.pdf",
-    "Série/Affaire 2 - Les Dents de Miller's Square",
-    "Série/Affaire 1 - V comme Viral/V is for Going Viral.pdf",
-    "Ressources/Demo",
-    "Ressources/PDFs",
-    "Ressources/Images",
-    "MC/Ressources/Iceberg.md",
-    "2023-09-26.md",
     "Épisodes/Annonces/Dernier Épisode/Épisode 1 - V comme Victor.png",
     "Épisodes/Annonces/Dernier Épisode/Épisode 0 - La Junta.png",
-    "Templates/Description.md",
     "Épisodes/Annonces/Prochain Épisode/Annonce_Épisode_01.png",
     "MC/Manoeuvres de base.jpg",
     "MC/Manoeuvres avancées.jpg"
