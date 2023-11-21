@@ -85,13 +85,18 @@ module.exports = function (grunt) {
 				files: {
 					"theme.css": [
 						"src/css/license.css",
+						"src/css/style-settings.css",
 						"src/css/main.min.css",
 					],
 				},
 			},
 			unminified: {
 				files: {
-					"Brumes.css": ["src/css/license.css", "src/css/main.css"],
+					"Brumes.css": [
+						"src/css/license.css",
+						"src/css/style-settings.css",
+						"src/css/main.css",
+					],
 				},
 			},
 		},

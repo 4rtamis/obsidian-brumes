@@ -1,0 +1,250 @@
+/* @settings
+name: Brumes
+id: brumes-theme-settings
+settings:
+
+# Workspace
+
+  -
+    id: brumes-workspace-header
+    title: Workspace
+    description: Background & Layout options
+    type: heading
+    level: 1
+    collapsed: true
+
+# Workspace :: Custom Background
+
+  -
+    id: brumes-custom-background-header
+    title: Background
+    description: Custom workspace backgrounds
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: brumes-background-image-toggle
+    title: Enable Custom Background (WIP)
+    description: Not compatible with colorful frame
+    type: class-toggle
+
+# Workspace :: Custom Background :: Light Mode
+
+  -
+    id: brumes-custom-background-light-header
+    title: Light Mode
+    description: 
+    type: heading
+    level: 3
+    collapsed: true
+  -
+    id: brumes-background-image-light
+    title: Custom Background Image URL
+    description: 'Formatted as url("https://link-to-image.png")'
+    type: variable-text
+    default: url("https://link-to-image.png")
+  -
+    id: brumes-custom-bg-brightness-light
+    title: Background brightness
+    type: variable-number-slider
+    min: 0
+    max: 2
+    step: 0.05
+    default: 0.7
+  -
+    id: brumes-custom-bg-blur-light
+    title: Background blur
+    type: variable-number-slider
+    min: 0
+    max: 20
+    step: 1
+    default: 5
+    format: px
+  -
+    id: brumes-custom-bg-card-fg-opacity-light
+    title: Container opacity
+    type: variable-number-slider
+    min: 0
+    max: 1
+    step: 0.05
+    default: 0.4
+
+# Workspace :: Custom Background :: Dark Mode
+
+  -
+    id: brumes-custom-background-dark-header
+    title: Dark Mode
+    description: 
+    type: heading
+    level: 3
+    collapsed: true
+  -
+    id: brumes-background-image-dark
+    title: Custom Background Image URL
+    description: 'Formatted as url("https://link-to-image.png")'
+    type: variable-text
+    default: url("https://link-to-image.png")
+  -
+    id: brumes-custom-bg-brightness-dark
+    title: Background brightness
+    type: variable-number-slider
+    min: 0
+    max: 1
+    step: 0.05
+    default: 0.7
+  -
+    id: brumes-custom-bg-blur-dark
+    title: Background blur
+    type: variable-number-slider
+    min: 0
+    max: 20
+    step: 1
+    default: 5
+    format: px
+  -
+    id: brumes-custom-bg-card-fg-opacity-dark
+    title: Container opacity
+    type: variable-number-slider
+    min: 0
+    max: 1
+    step: 0.05
+    default: 0.4
+
+# Workspace :: Translucency
+
+  -
+    id: brumes-translucency-header
+    title: Translucency
+    description: 
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: brumes-translucency-opacity
+    description: Drag to change background opacity
+    title: Window opacity
+    type: variable-number
+    default: 0.15
+
+# Workspace :: Workspace Layout
+
+  -
+    id: brumes-layout-header
+    title: Workspace Layout
+    description: Workspace layout and arrangement
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: brumes-layout-select
+    title: Workspace Layout variant
+    type: class-select
+    allowEmpty: false
+    default: none
+    options:
+      -
+        label: Default
+        value: none
+      -
+        label: Border
+        value: brumes-border-layout
+      -
+        label: Cards
+        value: brumes-card-layout
+  -
+    id: brumes-bg-fix
+    title: Background fix for applying colors
+    type: class-toggle
+  -
+    id: brumes-hide-borders
+    title: Hide borders
+    type: class-toggle
+
+# Workspace :: Workspace Layout :: Card Layout
+
+  -
+    id: brumes-layout-card
+    title: Card Layout Settings
+    description: 
+    type: heading
+    level: 3
+    collapsed: true
+  -
+    id: brumes-card-radius
+    title: Card radius
+    type: variable-number
+    default: 16
+    format: px
+  -
+    id: brumes-card-layout-padding
+    title: Card padding
+    type: variable-number
+    default: 10
+    format: px
+  -
+    id: brumes-card-header-left-padding
+    title: Tab left padding
+    type: variable-number
+    default: 20
+    format: px
+  -
+    id: brumes-card-shadows
+    title: Enable shadows
+    type: class-toggle
+  -
+    id: brumes-card-layout-actions
+    title: Enable card format for actions
+    type: class-toggle
+  -
+    id: brumes-card-layout-filebrowser
+    title: Enable card format for file browser
+    type: class-toggle
+  -
+    id: brumes-layout-border
+    title: Border Layout Settings
+    description: 
+    type: heading
+    level: 3
+    collapsed: true
+  -
+    id: brumes-border-radius
+    title: Border Layout Radius
+    type: variable-number
+    default: 16
+    format: px
+  -
+    id: brumes-border-padding
+    title: Border Layout Padding
+    type: variable-number
+    default: 20
+    format: px
+
+# Credits
+
+  -
+    id: anuppuccin-support
+    title: Support AnuPpuccin
+    description: If you like the theme, here are some ways to support development
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: anuppuccin-url-donate
+    title: Buy Me a Coffee
+    description: "[https://www.buymeacoffee.com/anubisnekhet](https://www.buymeacoffee.com/anubisnekhet)"
+    type: info-text
+    markdown: true
+  -
+    id: anuppuccin-url-star-repo
+    title: Star the Theme on GitHub
+    description: "[https://github.com/anubisnekhet/anuppuccin](https://github.com/anubisnekhet/anuppuccin)"
+    type: info-text
+    markdown: true
+  -
+    id: anuppuccin-url-submit-issue
+    title: Submit an Issue on GitHub
+    description: "[https://github.com/anubisnekhet/anuppuccin/issues](https://github.com/anubisnekhet/anuppuccin/issues)"
+    type: info-text
+    markdown: true
+
+*/
