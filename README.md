@@ -142,16 +142,16 @@ return(`
 	<p>Description of the danger</p>
 	<h4>Spectrum 2 / Spectrum 5</h4>
 	<ul>
-		<li><b>Custom Move</b> : Description of the custom move.</li>
-		<li><b>Custom Move</b> : Description of the custom move.</li>
+		<li><b>Custom Move</b>: Description of the custom move.</li>
+		<li><b>Custom Move</b>: Description of the custom move.</li>
 	</ul>
 	<hr>
 	<ul>
-		<li>Major move description</li>
+		<li>Hard move description</li>
 	</ul>
 	<hr>
 	<ul>
-		<li>Minor move description</li>
+		<li>Soft move description</li>
 	</ul>
 </div>
 `);
@@ -239,7 +239,7 @@ Choose an iceberg background that fits your case / organization (do not worry, y
 
 -   [Flat Case](./doc/iceberg_backgrounds/iceberg_flat_case.png) (2 depths)
 -   [Simple Case](./doc/iceberg_backgrounds/iceberg_simple_case.png) (3 depths)
--   [Average Case](./doc/iceberg_backgrounds/icenerg_average_case.png) (4 depths)
+-   [Average Case](./doc/iceberg_backgrounds/iceberg_average_case.png) (4 depths)
 -   [Involved Case](./doc/iceberg_backgrounds/iceberg_involved_case.png) (5 depths)
 -   [Blank Iceberg](./doc/iceberg_backgrounds/iceberg_blank.png) (no lines)
 

@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "d820c6f4bee47659",
+        "id": "e3eae0bb862e5088",
         "type": "tabs",
         "children": [
           {
-            "id": "d8d18dc71e518de4",
+            "id": "3ab462b50e98e4b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Ressources/Templates/Clues, Moves & Descriptions.md",
+                "file": "Brumes - City of Mist Obsidian Theme.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Ressources/Templates/Clues, Moves & Descriptions.md",
+                "file": "Brumes - City of Mist Obsidian Theme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Ressources/Templates/Clues, Moves & Descriptions.md",
+                "file": "Brumes - City of Mist Obsidian Theme.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Ressources/Templates/Clues, Moves & Descriptions.md"
+                "file": "Brumes - City of Mist Obsidian Theme.md"
               }
             }
           }
@@ -148,11 +148,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "d8d18dc71e518de4",
+  "active": "3ab462b50e98e4b5",
   "lastOpenFiles": [
-    "Ressources/Templates/Tags, Statuses & Spectrums.md",
-    "Brumes - City of Mist Obsidian Theme.md",
     "Ressources/Templates/Clues, Moves & Descriptions.md",
+    "Ressources/Templates/Tags, Statuses & Spectrums.md",
+    "Ressources/Templates/Danger.md",
+    "Brumes - City of Mist Obsidian Theme.md",
     "Case/Iceberg.canvas",
     "Case/Iceberg Alternate.canvas",
     "Affaire 1 - V comme Viral/Untitled.md",
@@ -174,7 +175,6 @@
     "Affaire 1 - V comme Viral/Niveau 2",
     "Affaire 1 - V comme Viral/Niveau 0",
     "Affaire 1 - V comme Viral",
-    "Ressources/Templates/Danger.md",
     "Case/Depth 4, Location 1.md",
     "README.md",
     "Ressources/Images/Iceberg.png",

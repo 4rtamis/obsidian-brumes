@@ -9,16 +9,16 @@ return(`
 	<p>Description of the danger</p>
 	<h4>Spectrum 2 / Spectrum 5</h4>
 	<ul>
-		<li><b>Custom Move</b> : Description of the custom move.</li>
-		<li><b>Custom Move</b> : Description of the custom move.</li>
+		<li><b>Custom Move</b>: Description of the custom move.</li>
+		<li><b>Custom Move</b>: Description of the custom move.</li>
 	</ul>
 	<hr>
 	<ul>
-		<li>Major move description</li>
+		<li>Hard move description</li>
 	</ul>
 	<hr>
 	<ul>
-		<li>Minor move description</li>
+		<li>Soft move description</li>
 	</ul>
 </div>
 `);
