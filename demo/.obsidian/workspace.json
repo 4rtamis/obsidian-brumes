@@ -11,11 +11,14 @@
             "id": "3ab462b50e98e4b5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md",
-                "mode": "source",
-                "source": false
+                "file": "Dashboard.canvas",
+                "viewState": {
+                  "x": -51.60984760530917,
+                  "y": -84.08757776141366,
+                  "zoom": -0.5999999999999999
+                }
               }
             }
           }
@@ -85,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md",
+                "file": "Dashboard.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md",
+                "file": "Dashboard.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Brumes - City of Mist Obsidian Theme.md"
+                "file": "Dashboard.canvas"
               }
             }
           }
@@ -148,12 +151,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "3ab462b50e98e4b5",
+  "active": "15e11b4aac899c21",
   "lastOpenFiles": [
+    "Brumes - City of Mist Obsidian Theme.md",
+    "Dashboard.canvas",
+    "Dashboard.md",
     "Ressources/Templates/Clues, Moves & Descriptions.md",
     "Ressources/Templates/Tags, Statuses & Spectrums.md",
     "Ressources/Templates/Danger.md",
-    "Brumes - City of Mist Obsidian Theme.md",
     "Case/Iceberg.canvas",
     "Case/Iceberg Alternate.canvas",
     "Affaire 1 - V comme Viral/Untitled.md",
@@ -178,7 +183,6 @@
     "Case/Depth 4, Location 1.md",
     "README.md",
     "Ressources/Images/Iceberg.png",
-    "Untitled.canvas",
     "Ressources/Templates/Iceberg Cards.md",
     "Case/Test.md",
     "Eva Lockwood.md",
@@ -188,9 +192,6 @@
     "Série/Eva Lockwood.md",
     "Ressources/PDFs/City of Mist - Fortune Row.pdf",
     "Ressources/Demo/Page de démonstration du thème CSS.md",
-    "Personnages/Boris Lenoir.md",
-    "Épisodes/Saison 1/Épisode 0 - Pilote.md",
-    "Série/Affaire 2 - Les Dents de Miller's Square/Affaire 2.md",
     "Épisodes/Annonces/Dernier Épisode/psE4AB.tmp",
     "Épisodes/Annonces/Dernier Épisode/Épisode 2 - Le Jeu du Pendu.jpg",
     "Épisodes/Annonces/Dernier Épisode/Épisode 2 - Le Jeu du Pendu.png.jpg",

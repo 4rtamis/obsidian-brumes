@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"4766dafecade0776","type":"group","x":-853,"y":-446,"width":1513,"height":677,"label":"La Junta"},
+		{"id":"07d809d61f0a0bef","type":"text","text":"## David NAVIDSON\n**Dedalus** / *Artist* \n\n>[!m] Can my creations feel or think?\n\n>[!m] Are there new dimensions to master?\n\n>[!l] I need to help my son out of this mess.\n\n>[!l] If reality is a prison then my art is the key.\n\n***\n\n\n>[!m] Loose control of the golem\n\n>[!m] Requires an existing structure\n\n>[!l] Money means power\n\n>[!l] Obscession\n","x":-833,"y":-426,"width":474,"height":634},
+		{"id":"797388282023c0fc","type":"text","text":"## John Harder\n**Salamander** / *City Water Worker* \n\n>[!m] How can fire and water be one?\n\n>[!l] I must battle crime in all its forms.\n\n>[!l] I want to help those in need.\n\n>[!l] I need my job to survive.\n\n***\n\n\n>[!m] Weaker in dry conditions\n\n>[!l] Known vigilante\n\n>[!l] Memorable face\n\n>[!l] \"You have no authority here!\"\n","x":-329,"y":-426,"width":474,"height":634},
+		{"id":"cf456cc875e705dd","type":"text","text":"## Leo HIKAO\n**Kitsune** / *High School Student* \n\n>[!m] How can I relieve the suffering of mankind?\n\n>[!m] How can I return to the realm of the Gods?\n\n>[!m] Which is better, reality of fantasy?\n\n>[!l] I love Kaito more than anything else.\n\n***\n\n\n>[!m] Powers do not work on gods or spirits\n\n>[!m] Fragile\n\n>[!m] Elaborate trickery is easier to expose\n\n>[!l] Freezes up when sees Kaito\n","x":166,"y":-423,"width":474,"height":634}
+	],
+	"edges":[]
+}
