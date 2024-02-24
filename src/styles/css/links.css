@@ -1,0 +1,11 @@
+span.cm-hmd-internal-link span.cm-underline {
+  border-bottom: solid rgb(72, 67, 141) 2px;
+}
+
+.theme-dark span.cm-hmd-internal-link span.cm-underline {
+  border-bottom: solid #5fc6f0 2px;
+}
+
+span.cm-hmd-internal-link:hover span.cm-underline {
+  border-bottom: solid #e6007e 2px;
+}

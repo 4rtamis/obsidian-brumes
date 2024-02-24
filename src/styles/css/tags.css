@@ -1,0 +1,41 @@
+.theme-dark {
+  --spectrum-highlighter: #852d3a;
+}
+
+.theme-light {
+  --spectrum-highlighter: #f9d0c4;
+}
+
+mark.spectrum {
+  background-color: var(--spectrum-highlighter) !important;
+  font-style: italic;
+  color: var(--text-normal);
+}
+
+.theme-dark {
+  --status-highlighter: #6a8661;
+}
+
+.theme-light {
+  --status-highlighter: #e2e9b4;
+}
+
+mark.status {
+  background-color: var(--status-highlighter) !important;
+  font-style: italic;
+  color: var(--text-normal);
+}
+
+.theme-dark {
+  --tag-highlighter: #7b4a83;
+}
+
+.theme-light {
+  --tag-highlighter: #fff2ab;
+}
+
+mark.tag {
+  background-color: var(--tag-highlighter) !important;
+  font-style: italic;
+  color: var(--text-normal);
+}

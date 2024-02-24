@@ -1,7 +1,5 @@
 {
   "accentColor": "",
-  "enabledCssSnippets": [],
-  "cssTheme": "Brumes",
   "theme": "moonstone",
-  "baseFontSize": 17
+  "cssTheme": "Border"
 }
