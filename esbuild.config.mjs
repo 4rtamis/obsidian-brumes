@@ -22,7 +22,7 @@ const build = async () => {
 			main: "src/main.ts",
 			styles: "src/styles/styles.scss",
 		},
-		outdir: "demo/.obsidian/plugins/brumes",
+		outdir: ".",
 		bundle: true,
 		external: [
 			"obsidian",
