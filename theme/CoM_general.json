@@ -1,0 +1,24 @@
+{
+	"Editor@@inline-title-font": "Fira Sans Extra Condensed",
+	"Editor@@h1-font": "Fira Sans Extra Condensed",
+	"Editor@@h2-font": "Fira Sans Extra Condensed",
+	"Editor@@h3-font": "Fira Sans Extra Condensed",
+	"Editor@@h4-font": "PT Serif",
+	"Editor@@h5-font": "PT Serif",
+	"Editor@@h6-font": "PT Serif",
+
+	"Editor@@inline-title-size": "2.3em",
+	"Editor@@h1-size": "2.3em",
+	"Editor@@h2-size": "2em",
+	"Editor@@h3-size": "1.824em",
+	"Editor@@h4-size": "1.266em",
+	"Editor@@h5-size": "1.125em",
+	"Editor@@h6-size": "1em",
+
+	"Editor@@link-decoration": "none",
+	"Editor@@link-decoration-hover": "none",
+	"Editor@@link-external-decoration": "underline",
+
+	"Editor@@collapse-icon-restore": false,
+	"Editor@@heading-indicator-off": true
+}

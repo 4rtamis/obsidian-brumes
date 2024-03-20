@@ -1,0 +1,12 @@
+{
+	"Appearance-dark@@accent-dark": "#E6007E",
+	"Appearance-dark@@accent-color-override-dark": true,
+	"Appearance-dark@@background-tertiary@@dark": "#393552",
+	"Appearance-dark@@background-primary@@dark": "#2a273f",
+	"Appearance-dark@@background-secondary@@dark": "#232136",
+	"Appearance-dark@@text-normal@@dark": "#E0DEF4",
+	"Appearance-dark@@text-muted@@dark": "#908caa",
+	"Appearance-dark@@text-faint@@dark": "#6e6a86",
+	"Editor@@bold-color@@dark": "#E0DEF4",
+	"Editor@@italic-color@@dark": "#E0DEF4"
+}
