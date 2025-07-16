@@ -4,12 +4,13 @@
 	"description": "An Obsidian plugin that brings themes and tools based on City of Mist, the award-winning modern fantasy tabletop role-playing game.",
 	"main": "main.js",
 	"scripts": {
-		"dev": "node esbuild.config.mjs",
+		"dev": "node esbuild.config.mjs --watch",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [
 		"city of mist",
+		"legend in the mist",
 		"ttrpg",
 		"roleplaying",
 		"game"
@@ -20,13 +21,12 @@
 		"@types/node": "^16.11.6",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",
-		"autoprefixer": "^10.4.17",
+		"autoprefixer": "^10.4.21",
 		"builtin-modules": "3.3.0",
 		"esbuild": "0.20.1",
 		"esbuild-sass-plugin": "^3.1.0",
 		"obsidian": "latest",
-		"postcss": "^8.4.35",
-		"sass": "^1.71.1",
+		"sass": "^1.89.2",
 		"tslib": "2.4.0",
 		"typescript": "4.7.4"
 	}

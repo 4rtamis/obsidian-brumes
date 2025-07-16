@@ -14,5 +14,9 @@ node_modules
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
 
+# Nix
+.direnv
+
 # obsidian
+demo
 data.json
