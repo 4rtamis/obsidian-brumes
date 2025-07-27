@@ -38,11 +38,19 @@ export default class BrumesPlugin extends Plugin {
 	}
 
 	private classifyTag(content: string): {
-		type: "status" | "limit" | "tag";
+		type: "status" | "limit" | "tag" | "weakness";
 		className: string;
 		name?: string;
 		value?: string;
 	} {
+		if (/^!(.+)$/.test(content)) {
+			const [, name] = content.match(/^!(.+)$/)!;
+			return {
+				type: "weakness",
+				className: "brumes-weakness",
+				name,
+			};
+		}
 		if (/^(.*?)-(\d*)$/.test(content)) {
 			const [, name, value] = content.match(/^(.*?)-(\d*)$/)!;
 			return {
@@ -61,7 +69,7 @@ export default class BrumesPlugin extends Plugin {
 				value,
 			};
 		}
-		return { type: "tag", className: "brumes-tag" };
+		return { type: "tag", className: "brumes-tag", name: content };
 	}
 
 	private brumesEditorExtension(): Extension {
@@ -128,7 +136,6 @@ export default class BrumesPlugin extends Plugin {
 									}),
 								);
 
-								// Handle status
 								if (tagInfo.type === "status") {
 									const endHyphenIndex =
 										content.lastIndexOf("-");
@@ -151,7 +158,6 @@ export default class BrumesPlugin extends Plugin {
 										}),
 									);
 
-									// If no value, hide the trailing `-`
 									if (value === "") {
 										builder.add(
 											nameTo,
@@ -163,10 +169,7 @@ export default class BrumesPlugin extends Plugin {
 											}),
 										);
 									}
-								}
-
-								// Handle limit
-								else if (tagInfo.type === "limit") {
+								} else if (tagInfo.type === "limit") {
 									const colonIndex = content.lastIndexOf(":");
 									const name = tagInfo.name!;
 									const value = tagInfo.value!;
@@ -175,7 +178,6 @@ export default class BrumesPlugin extends Plugin {
 									const valueFrom = nameTo + 1;
 									const valueTo = contentTo;
 
-									// Wrap whole thing in a single span but hide ":" and value
 									builder.add(
 										nameFrom,
 										valueTo,
@@ -188,7 +190,6 @@ export default class BrumesPlugin extends Plugin {
 										}),
 									);
 
-									// Hide colon and value
 									builder.add(
 										nameTo,
 										valueTo,
@@ -198,15 +199,43 @@ export default class BrumesPlugin extends Plugin {
 											),
 										}),
 									);
-								}
+								} else if (tagInfo.type === "weakness") {
+									const name = tagInfo.name!;
+									const bangIndex = content.indexOf("!");
+									const nameStart =
+										contentFrom + bangIndex + 1; // skip "!"
+									const nameEnd = contentTo;
 
-								// Default tag
-								else {
+									// Hide "!" when not selected
+									builder.add(
+										contentFrom + bangIndex,
+										contentFrom + bangIndex + 1,
+										Decoration.replace({
+											widget: new HiddenBracketWidget(
+												"!",
+											),
+										}),
+									);
+
+									builder.add(
+										nameStart,
+										nameEnd,
+										Decoration.mark({
+											attributes: {
+												class: tagInfo.className,
+												"data-name": name,
+											},
+										}),
+									);
+								} else {
 									builder.add(
 										contentFrom,
 										contentTo,
 										Decoration.mark({
-											class: tagInfo.className,
+											attributes: {
+												class: tagInfo.className,
+												"data-name": tagInfo.name!,
+											},
 										}),
 									);
 								}
@@ -294,14 +323,18 @@ export default class BrumesPlugin extends Plugin {
 						span.dataset.statusValue = tagInfo.value!;
 						span.textContent =
 							tagInfo.value === ""
-								? `${tagInfo.name}` // Hide trailing "-"
+								? `${tagInfo.name}`
 								: `${tagInfo.name}-${tagInfo.value}`;
 					} else if (tagInfo.type === "limit") {
 						span.dataset.limitName = tagInfo.name!;
 						span.dataset.limitValue = tagInfo.value!;
-						span.textContent = tagInfo.name!; // Hide trailing ":value"
+						span.textContent = tagInfo.name!;
+					} else if (tagInfo.type === "weakness") {
+						span.dataset.name = tagInfo.name!;
+						span.textContent = tagInfo.name!;
 					} else {
-						span.textContent = content;
+						span.dataset.name = tagInfo.name!;
+						span.textContent = tagInfo.name!;
 					}
 
 					fragment.appendChild(span);
