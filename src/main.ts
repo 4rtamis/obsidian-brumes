@@ -18,7 +18,6 @@ class HiddenBracketWidget extends WidgetType {
 	constructor(private text: string) {
 		super();
 	}
-
 	toDOM(): HTMLElement {
 		const span = document.createElement("span");
 		span.style.display = "none";
@@ -38,7 +37,36 @@ export default class BrumesPlugin extends Plugin {
 		console.log("Brumes plugin unloaded");
 	}
 
+	private classifyTag(content: string): {
+		type: "status" | "limit" | "tag";
+		className: string;
+		name?: string;
+		value?: string;
+	} {
+		if (/^(.*?)-(\d*)$/.test(content)) {
+			const [, name, value] = content.match(/^(.*?)-(\d*)$/)!;
+			return {
+				type: "status",
+				className: "brumes-status",
+				name,
+				value,
+			};
+		}
+		if (/^(.*?):(\d*)$/.test(content)) {
+			const [, name, value] = content.match(/^(.*?):(\d*)$/)!;
+			return {
+				type: "limit",
+				className: "brumes-limit",
+				name,
+				value,
+			};
+		}
+		return { type: "tag", className: "brumes-tag" };
+	}
+
 	private brumesEditorExtension(): Extension {
+		const classifyTag = this.classifyTag.bind(this);
+
 		return ViewPlugin.fromClass(
 			class {
 				decorations: DecorationSet = Decoration.none;
@@ -71,27 +99,27 @@ export default class BrumesPlugin extends Plugin {
 						while ((match = regex.exec(text)) !== null) {
 							const from = line.from + match.index;
 							const to = from + match[0].length;
-							const contentFrom = from + 1; // After opening brace
-							const contentTo = to - 1; // Before closing brace
+							const content = match[1];
+							const contentFrom = from + 1;
+							const contentTo = to - 1;
 
-							// Check if cursor/selection touches this tag
 							const isTouched = this.touchesSelection(
 								selection,
 								from,
 								to,
 							);
 
+							const tagInfo = classifyTag(content);
+
 							if (isTouched) {
-								// Show brackets and style content
 								builder.add(
 									contentFrom,
 									contentTo,
 									Decoration.mark({
-										class: "brumes-tag-content",
+										class: `${tagInfo.className}-content`,
 									}),
 								);
 							} else {
-								// Hide brackets and style content
 								builder.add(
 									from,
 									from + 1,
@@ -99,13 +127,90 @@ export default class BrumesPlugin extends Plugin {
 										widget: new HiddenBracketWidget("{"),
 									}),
 								);
-								builder.add(
-									contentFrom,
-									contentTo,
-									Decoration.mark({
-										class: "brumes-tag",
-									}),
-								);
+
+								// Handle status
+								if (tagInfo.type === "status") {
+									const endHyphenIndex =
+										content.lastIndexOf("-");
+									const name = tagInfo.name!;
+									const value = tagInfo.value!;
+									const nameFrom = contentFrom;
+									const nameTo = contentFrom + endHyphenIndex;
+									const valueFrom = nameTo + 1;
+									const valueTo = contentTo;
+
+									builder.add(
+										nameFrom,
+										valueTo,
+										Decoration.mark({
+											attributes: {
+												class: tagInfo.className,
+												"data-status-name": name,
+												"data-status-value": value,
+											},
+										}),
+									);
+
+									// If no value, hide the trailing `-`
+									if (value === "") {
+										builder.add(
+											nameTo,
+											nameTo + 1,
+											Decoration.replace({
+												widget: new HiddenBracketWidget(
+													"-",
+												),
+											}),
+										);
+									}
+								}
+
+								// Handle limit
+								else if (tagInfo.type === "limit") {
+									const colonIndex = content.lastIndexOf(":");
+									const name = tagInfo.name!;
+									const value = tagInfo.value!;
+									const nameFrom = contentFrom;
+									const nameTo = contentFrom + colonIndex;
+									const valueFrom = nameTo + 1;
+									const valueTo = contentTo;
+
+									// Wrap whole thing in a single span but hide ":" and value
+									builder.add(
+										nameFrom,
+										valueTo,
+										Decoration.mark({
+											attributes: {
+												class: tagInfo.className,
+												"data-limit-name": name,
+												"data-limit-value": value,
+											},
+										}),
+									);
+
+									// Hide colon and value
+									builder.add(
+										nameTo,
+										valueTo,
+										Decoration.replace({
+											widget: new HiddenBracketWidget(
+												content.slice(colonIndex),
+											),
+										}),
+									);
+								}
+
+								// Default tag
+								else {
+									builder.add(
+										contentFrom,
+										contentTo,
+										Decoration.mark({
+											class: tagInfo.className,
+										}),
+									);
+								}
+
 								builder.add(
 									contentTo,
 									to,
@@ -143,6 +248,8 @@ export default class BrumesPlugin extends Plugin {
 		element: HTMLElement,
 		context: MarkdownPostProcessorContext,
 	) => {
+		const classifyTag = this.classifyTag;
+
 		const walker = document.createTreeWalker(
 			element,
 			NodeFilter.SHOW_TEXT,
@@ -177,11 +284,27 @@ export default class BrumesPlugin extends Plugin {
 						);
 					}
 
+					const content = match[1];
+					const tagInfo = classifyTag(content);
 					const span = document.createElement("span");
-					span.className = "brumes-tag";
-					span.textContent = match[1];
-					fragment.appendChild(span);
+					span.className = tagInfo.className;
 
+					if (tagInfo.type === "status") {
+						span.dataset.statusName = tagInfo.name!;
+						span.dataset.statusValue = tagInfo.value!;
+						span.textContent =
+							tagInfo.value === ""
+								? `${tagInfo.name}` // Hide trailing "-"
+								: `${tagInfo.name}-${tagInfo.value}`;
+					} else if (tagInfo.type === "limit") {
+						span.dataset.limitName = tagInfo.name!;
+						span.dataset.limitValue = tagInfo.value!;
+						span.textContent = tagInfo.name!; // Hide trailing ":value"
+					} else {
+						span.textContent = content;
+					}
+
+					fragment.appendChild(span);
 					lastIndex = match.index + match[0].length;
 				}
 

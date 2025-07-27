@@ -6,6 +6,9 @@
 body {
 	--font-text-theme: "Labrada", sans-serif;
 	--font-header-theme: "PragRoman", sans-serif;
+	--brumes-tag-color: #efd693;
+	--brumes-status-color: #bccdb0;
+	--brumes-limit-color: #d9b2aa;
 }
 
 body:not(.is-phone):not(.inline-title-divider-remove)
@@ -58,29 +61,60 @@ body:not(.is-phone):not(.inline-title-divider-remove)
 	text-overflow: clip;
 }
 
-.brumes-tag {
+.brumes-tag,
+.brumes-status,
+.brumes-limit,
+.brumes-tag-content,
+.brumes-status-content,
+.brumes-limit-content {
+	position: relative;
 	font-style: italic;
-	background-color: #efd693;
-	padding: 2px 4px;
-	border-radius: 3px;
-	color: black;
+	text-box: trim-both cap alphabetic;
+	display: inline-block;
+	border-top: 0.2ch solid;
+	border-bottom: 0.4ch solid;
 }
 
+.brumes-tag,
 .brumes-tag-content {
-	font-style: italic;
-	background-color: #efd693;
-	padding: 2px 4px;
-	border-radius: 3px;
-	color: black;
+	background-color: var(--brumes-tag-color);
+	border-color: var(--brumes-tag-color);
 }
 
-/* Ensure consistent styling in both editor and preview modes */
-.cm-editor .brumes-tag,
-.cm-editor .brumes-tag-content,
-.markdown-rendered .brumes-tag {
-	font-style: italic;
-	background-color: #efd693;
-	padding: 2px 4px;
-	border-radius: 3px;
-	color: black;
+.brumes-status,
+.brumes-status-content {
+	background-color: var(--brumes-status-color);
+	border-color: var(--brumes-status-color);
+}
+
+.brumes-limit,
+.brumes-limit-content {
+	background-color: var(--brumes-limit-color);
+	border-color: var(--brumes-limit-color);
+}
+
+.brumes-limit {
+	border-right: 1ch solid var(--brumes-limit-color);
+	margin-right: 1.5ch; /* Adjusted for ::after content */
+}
+
+.brumes-limit::after {
+	content: attr(data-limit-value);
+	color: #e3d2c1;
+	background-image: url('data:image/svg+xml,<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="44 13 221 269" width="221" height="270"><style>.a{fill:%23a03d29}</style><path fill-rule="evenodd" class="a" d="m155 14l30 25 37 18 39 6-2 17-8 15 13 16-9 62-10 28-16 28-18 22-28 18-27 12-35-13-27-23-24-29v-12l-6-6-6-13-9-30 4-36-8-24v-35l32-4 44-21z"/></svg>');
+	width: 2ch;
+	position: absolute;
+	right: -2.3ch;
+	display: inline-block;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	aspect-ratio: 221 / 270;
+	font-weight: bold;
+	padding-bottom: 1px;
+}
+
+.brumes-limit[data-limit-value=""]::after {
+	background-image: url('data:image/svg+xml,<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="44 13 221 269" width="221" height="270"><style>.a{fill:%23a47777}</style><path fill-rule="evenodd" class="a" d="m155 14l30 25 37 18 39 6-2 17-8 15 13 16-9 62-10 28-16 28-18 22-28 18-27 12-35-13-27-23-24-29v-12l-6-6-6-13-9-30 4-36-8-24v-35l32-4 44-21z"/></svg>');
 }
