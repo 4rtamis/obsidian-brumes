@@ -1,5 +1,8 @@
 import { MarkdownPostProcessor, MarkdownPostProcessorContext } from "obsidian";
 import { classifyTag } from "./classifyTag";
+import { logScope } from "../../utils/logger";
+
+const tagLog = logScope("Tags");
 
 /**
  * Replaces tag patterns with spans in rendered markdown view
@@ -8,6 +11,8 @@ export const brumesPostProcessor: MarkdownPostProcessor = (
 	element: HTMLElement,
 	context: MarkdownPostProcessorContext,
 ) => {
+	tagLog.debug("Running markdown post processor", { context });
+
 	const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
 	const textNodes: Text[] = [];
 
@@ -16,13 +21,18 @@ export const brumesPostProcessor: MarkdownPostProcessor = (
 		textNodes.push(node as Text);
 	}
 
+	let processedCount = 0;
+
 	textNodes.forEach((textNode) => {
 		const text = textNode.textContent || "";
 		const regex = /\{([^}]+)\}/g;
 		if (!regex.test(text)) return;
 
 		const parent = textNode.parentNode;
-		if (!parent) return;
+		if (!parent) {
+			tagLog.warn("Skipped text node without parent:", textNode);
+			return;
+		}
 
 		const fragment = document.createDocumentFragment();
 		let lastIndex = 0;
@@ -30,14 +40,24 @@ export const brumesPostProcessor: MarkdownPostProcessor = (
 
 		regex.lastIndex = 0;
 		while ((match = regex.exec(text)) !== null) {
+			const content = match[1];
+			let tagInfo;
+
+			try {
+				tagInfo = classifyTag(content);
+			} catch (err) {
+				tagLog.error("Failed to classify tag:", content, err);
+				continue;
+			}
+
+			tagLog.debug("Tag matched in rendered view", { content, tagInfo });
+
 			if (match.index > lastIndex) {
 				fragment.appendChild(
 					document.createTextNode(text.slice(lastIndex, match.index)),
 				);
 			}
 
-			const content = match[1];
-			const tagInfo = classifyTag(content);
 			const span = document.createElement("span");
 			span.className = tagInfo.className;
 
@@ -58,6 +78,7 @@ export const brumesPostProcessor: MarkdownPostProcessor = (
 
 			fragment.appendChild(span);
 			lastIndex = match.index + match[0].length;
+			processedCount++;
 		}
 
 		if (lastIndex < text.length) {
@@ -68,4 +89,8 @@ export const brumesPostProcessor: MarkdownPostProcessor = (
 
 		parent.replaceChild(fragment, textNode);
 	});
+
+	if (processedCount > 0) {
+		tagLog.info(`Post-processed ${processedCount} tag(s) in markdown view`);
+	}
 };

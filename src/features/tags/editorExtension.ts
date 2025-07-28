@@ -8,6 +8,9 @@ import {
 import { EditorSelection, Extension, RangeSetBuilder } from "@codemirror/state";
 import { HiddenBracketWidget } from "./widgets";
 import { classifyTag } from "./classifyTag";
+import { logScope } from "../../utils/logger";
+
+const tagLog = logScope("Tags");
 
 /**
  * Builds the CodeMirror plugin that decorates tag patterns like {status-3}, {!fear}, etc.
@@ -18,6 +21,7 @@ export function brumesEditorExtension(): Extension {
 			decorations: DecorationSet = Decoration.none;
 
 			constructor(view: EditorView) {
+				tagLog.info("Initialized editor decorations for view");
 				this.decorations = this.buildDecorations(view);
 			}
 
@@ -27,6 +31,7 @@ export function brumesEditorExtension(): Extension {
 					update.viewportChanged ||
 					update.selectionSet
 				) {
+					tagLog.debug("Document, viewport or selection changed");
 					this.decorations = this.buildDecorations(update.view);
 				}
 			}
@@ -53,7 +58,25 @@ export function brumesEditorExtension(): Extension {
 							from,
 							to,
 						);
-						const tagInfo = classifyTag(content);
+
+						let tagInfo;
+						try {
+							tagInfo = classifyTag(content);
+						} catch (err) {
+							tagLog.error(
+								"Failed to classify tag:",
+								content,
+								err,
+							);
+							continue;
+						}
+						tagLog.debug("Tag matched", {
+							content,
+							tagInfo,
+							line: i,
+							from,
+							to,
+						});
 
 						// If user is selecting the tag, show everything including brackets
 						if (isTouched) {

@@ -2,13 +2,16 @@ import { Plugin } from "obsidian";
 import { loadTagFeature } from "./features/tags";
 import { BrumesSettingTab } from "./settings";
 import { BrumesSettings, DEFAULT_SETTINGS } from "./settings/types";
+import { log } from "./utils/logger";
 
 export default class BrumesPlugin extends Plugin {
 	settings: BrumesSettings;
 
 	async onload() {
-		console.log("Loading Brumes Plugin");
 		await this.loadSettings();
+
+		log.setLevel(this.settings.logLevel);
+		log.info("Brumes plugin loaded");
 
 		this.addSettingTab(new BrumesSettingTab(this.app, this));
 
@@ -16,7 +19,7 @@ export default class BrumesPlugin extends Plugin {
 	}
 
 	onunload() {
-		console.log("Unloading Brumes Plugin");
+		log.info("Brumes plugin unloaded");
 	}
 
 	private async loadSettings() {

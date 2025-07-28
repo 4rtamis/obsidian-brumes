@@ -1,6 +1,7 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
 import BrumesPlugin from "../BrumesPlugin";
-import { BrumesMode } from "./types";
+import { BrumesMode, LogLevel } from "./types";
+import { log } from "../utils/logger";
 
 export class BrumesSettingTab extends PluginSettingTab {
 	plugin: BrumesPlugin;
@@ -14,7 +15,6 @@ export class BrumesSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 
 		containerEl.empty();
-		containerEl.createEl("h2", { text: "Brumes Plugin Settings" });
 
 		new Setting(containerEl)
 			.setName("Game Mode")
@@ -27,6 +27,28 @@ export class BrumesSettingTab extends PluginSettingTab {
 					.setValue(this.plugin.settings.mode)
 					.onChange(async (value: BrumesMode) => {
 						this.plugin.settings.mode = value;
+						await this.plugin.saveData(this.plugin.settings);
+					}),
+			);
+
+		new Setting(containerEl)
+			.setName("Log Level")
+			.setDesc(
+				"Control how much information is logged to the developer console.",
+			)
+			.addDropdown((drop) =>
+				drop
+					.addOptions({
+						debug: "Debug (verbose)",
+						info: "Info",
+						warn: "Warnings",
+						error: "Errors only",
+						none: "None (disable logs)",
+					})
+					.setValue(this.plugin.settings.logLevel)
+					.onChange(async (value: LogLevel) => {
+						this.plugin.settings.logLevel = value;
+						log.setLevel(value);
 						await this.plugin.saveData(this.plugin.settings);
 					}),
 			);
