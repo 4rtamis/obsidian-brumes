@@ -1,6 +1,6 @@
 @mixin inline-title-underline {
 	// Adds an underline to the inline title
-	//Example: Legend in the Mist - Vol. II - The Narrator | p.209 "Background"
+	// Example: Legend in the Mist - Vol. II - The Narrator | p.209 "Background"
 	&:not(.is-phone):not(.inline-title-divider-remove)
 		.inline-title:not(.mk-inline-title)::after {
 		margin-top: 2px;

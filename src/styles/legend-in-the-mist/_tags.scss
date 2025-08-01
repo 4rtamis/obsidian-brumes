@@ -1,4 +1,6 @@
 @mixin global {
+	// Highlights and puts in italic tags, statuses and limits
+	// Example: Legend in the Mist - Vol. II - The Narrator | p.87
 	& {
 		--brumes-power-color: #efd693;
 		--brumes-status-color: #bccdb0;
