@@ -1,5 +1,5 @@
 export type TagInfo = {
-	type: "status" | "limit" | "tag" | "weakness";
+	type: "status" | "limit" | "power" | "weakness";
 	className: string;
 	name?: string;
 	value?: string;
@@ -36,8 +36,8 @@ export function classifyTag(content: string): TagInfo {
 		};
 	}
 	return {
-		type: "tag",
-		className: "brumes-tag",
+		type: "power",
+		className: "brumes-power",
 		name: content,
 	};
 }

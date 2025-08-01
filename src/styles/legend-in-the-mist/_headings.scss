@@ -1,0 +1,52 @@
+@mixin inline-title-underline {
+	// Adds an underline to the inline title
+	//Example: Legend in the Mist - Vol. II - The Narrator | p.209 "Background"
+	&:not(.is-phone):not(.inline-title-divider-remove)
+		.inline-title:not(.mk-inline-title)::after {
+		margin-top: 2px;
+		content: "";
+		display: block;
+		height: 5px; /* Match the SVG height */
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.2' viewBox='0 0 1682 23' width='1682' height='23'%3E%3Ctitle%3Eunderline%3C/title%3E%3Cstyle%3E .s0 %7B fill: %23752b2b %7D %3C/style%3E%3Cg id='Layer 1'%3E%3Cpath fill-rule='evenodd' class='s0' d='m7.4 4.1c28.9-1.6 412.1-4.4 442-4.1 12.6 0.1 1047.4 8.5 1226.2 16.6 5.2 0.2 7.6 4.6 5.8 4.1-3.6-1.1-874 1.3-882.4 1.6-5.3 0.2-202.5-7.7-393.9-8.4-194.3-0.7-382.9 5.8-400.1 4.8-8.2-0.5-5.5-14.1 2.4-14.6z'/%3E%3C/g%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: left center;
+		background-size: contain;
+		max-width: 100%;
+		width: 1682px; /* Natural width of the SVG */
+	}
+
+	&:not(.is-phone):not(.inline-title-divider-remove)
+		.inline-title:not(.mk-inline-title) {
+		border-bottom: none !important;
+	}
+
+	.HyperMD-header-2,
+	.inline-title h2,
+	.HyperMD-list-line .cm-header-2 {
+		display: inline-flex; /* allow inline wrapping while letting us position ::after */
+		flex-direction: column;
+		align-items: flex-start;
+		position: relative;
+		max-width: 100%;
+	}
+
+	.HyperMD-header-2::after,
+	.inline-title h2::after,
+	.HyperMD-list-line .cm-header-2::after {
+		content: "";
+		display: inline-block;
+		flex-shrink: 0;
+		width: 130px; /* or whatever length the SVG line needs */
+		height: 1em; /* match height to align with text line height */
+		margin-left: 0.1em; /* space between text and line */
+		vertical-align: bottom;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.2' viewBox='0 0 1455 50' width='1455' height='50'%3E%3Ctitle%3Eimage%3C/title%3E%3Cstyle%3E .s0 %7B fill: %23752b2b %7D %3C/style%3E%3Cg id='Layer 1'%3E%3Cpath id='Forme 1' fill-rule='evenodd' class='s0' d='m0 25.3c-0.1-18.8 39-22.6 47.6-22.3 8.6 0.4 280.2 1.7 308 1.1 27.9-0.7 171.7-4.5 214.8-4.1 43.1 0.4 93.3 2.7 126.6 6.5 34.8 4 62.4-1.8 104.4-0.4 42 1.4 121.1 10.1 155 10.1 34 0 124.1-10.5 174.3-10.1 50.1 0.4 174.7 10.1 233 10.1 58.3 0 63.3 0 77 0 13.7 0 23.8 17.9 0 19.3-23.8 1.4-181.9 4.6-223.9 5-42.1 0.4-168.2-7.4-207.7-8.1-39.5-0.7-140.2 13.1-189.4 13-49.3-0.1-96.5-8.8-141.3-8.2-44.8 0.6-58.1 4.3-99.6 3.3-41.4-1-161.9-9-211.8-8.8-49.9 0.3-244.1 19.2-319.7 16.4-31.5-1.1-47.1 8.6-47.3-22.8z'/%3E%3C/g%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		align-self: flex-end; /* ensure it aligns with the last line */
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: clip;
+	}
+}

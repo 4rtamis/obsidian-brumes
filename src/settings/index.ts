@@ -2,6 +2,7 @@ import { App, PluginSettingTab, Setting } from "obsidian";
 import BrumesPlugin from "../BrumesPlugin";
 import { BrumesMode, LogLevel } from "./types";
 import { log } from "../utils/logger";
+import { setBrumesModeClass } from "../features/modes/domModeClass";
 
 export class BrumesSettingTab extends PluginSettingTab {
 	plugin: BrumesPlugin;
@@ -18,15 +19,18 @@ export class BrumesSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Game Mode")
-			.setDesc("Choose which rule system you're working with.")
+			.setDesc(
+				"Choose which rule system you're working with. This will affect how basic elements are displayed, such as ",
+			)
 			.addDropdown((drop) =>
 				drop
 					.addOption("city-of-mist", "City of Mist")
-					.addOption(":otherscape", ":Otherscape")
+					.addOption("otherscape", ":Otherscape")
 					.addOption("legend-in-the-mist", "Legend in the Mist")
 					.setValue(this.plugin.settings.mode)
 					.onChange(async (value: BrumesMode) => {
 						this.plugin.settings.mode = value;
+						setBrumesModeClass(value);
 						await this.plugin.saveData(this.plugin.settings);
 					}),
 			);

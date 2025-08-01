@@ -1,0 +1,23 @@
+@use "./fonts/labrada.scss";
+@use "./fonts/caveat.scss";
+@use "./fonts/frederick-text.scss";
+@use "./fonts/pragroman.scss";
+
+@use "./headings";
+@use "./tags";
+
+.brumes--legend-in-the-mist {
+	// Text
+	--font-text-theme: "Labrada", sans-serif;
+
+	// Headings
+	--font-header-theme: "PragRoman", sans-serif;
+	@include headings.inline-title-underline;
+
+	// Tags
+	@include tags.global;
+	@include tags.power;
+	@include tags.weakness;
+	@include tags.status;
+	@include tags.limit;
+}

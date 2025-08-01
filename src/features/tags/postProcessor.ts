@@ -59,7 +59,7 @@ export const brumesPostProcessor: MarkdownPostProcessor = (
 			}
 
 			const span = document.createElement("span");
-			span.className = tagInfo.className;
+			span.className = `brumes-tag ${tagInfo.className}`;
 
 			if (tagInfo.type === "status") {
 				span.dataset.statusName = tagInfo.name!;

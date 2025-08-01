@@ -84,7 +84,7 @@ export function brumesEditorExtension(): Extension {
 								contentFrom,
 								contentTo,
 								Decoration.mark({
-									class: `${tagInfo.className}-content`,
+									class: `brumes-tag-content ${tagInfo.className}-content`,
 								}),
 							);
 							continue;
@@ -111,7 +111,7 @@ export function brumesEditorExtension(): Extension {
 								valueTo,
 								Decoration.mark({
 									attributes: {
-										class: tagInfo.className,
+										class: `brumes-tag ${tagInfo.className}`,
 										"data-status-name": tagInfo.name!,
 										"data-status-value": tagInfo.value!,
 									},
@@ -137,7 +137,7 @@ export function brumesEditorExtension(): Extension {
 								valueTo,
 								Decoration.mark({
 									attributes: {
-										class: tagInfo.className,
+										class: `brumes-tag ${tagInfo.className}`,
 										"data-limit-name": tagInfo.name!,
 										"data-limit-value": tagInfo.value!,
 									},
@@ -170,7 +170,7 @@ export function brumesEditorExtension(): Extension {
 								contentTo,
 								Decoration.mark({
 									attributes: {
-										class: tagInfo.className,
+										class: `brumes-tag ${tagInfo.className}`,
 										"data-name": tagInfo.name!,
 									},
 								}),
@@ -181,7 +181,7 @@ export function brumesEditorExtension(): Extension {
 								contentTo,
 								Decoration.mark({
 									attributes: {
-										class: tagInfo.className,
+										class: `brumes-tag ${tagInfo.className}`,
 										"data-name": tagInfo.name!,
 									},
 								}),
