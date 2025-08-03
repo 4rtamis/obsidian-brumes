@@ -1,0 +1,100 @@
+@mixin note {
+	.callout[data-callout="note"] {
+		/* Default styles
+        overflow: hidden;
+		border-style: solid;
+		border-color: rgba(var(--callout-color), var(--callout-border-opacity));
+		border-width: var(--callout-border-width);
+		border-radius: var(--callout-radius);
+		margin: 1em 0;
+		mix-blend-mode: var(--callout-blend-mode);
+		background-color: rgba(var(--callout-color), 0.1);
+		padding: var(--callout-padding);
+
+		--callout-color: var(--callout-default);
+		--callout-icon: lucide-pencil;
+        */
+		position: relative;
+		overflow: hidden;
+		background: none !important;
+		border-left: 2px solid #c5bdae;
+
+		--callout-radius: 0;
+		--note-text-rotation: -1deg;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-color: #ffffff94;
+			mask-image:
+				linear-gradient(to right, black, transparent),
+				linear-gradient(
+					to bottom,
+					transparent,
+					black 20%,
+					black 80%,
+					transparent
+				);
+			mask-composite: intersect;
+			mask-repeat: no-repeat;
+			mask-size: 100% 100%;
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		& > * {
+			position: relative;
+			z-index: 1;
+		}
+
+		.callout-title {
+			/*
+            padding: var(--callout-title-padding);
+			display: flex;
+			gap: var(--size-4-1);
+			font-size: var(--callout-title-size);
+			color: rgb(var(--callout-color));
+			line-height: var(--line-height-tight);
+			align-items: flex-start;
+            */
+			font-family: "Caveat Brush", "Labrada", sans-serif;
+			transform: rotate(var(--note-text-rotation));
+
+			--callout-title-size: 1.5em;
+
+			.callout-icon {
+				/*
+				flex: 0 0 auto;
+				display: flex;
+				align-items: center;
+                */
+				display: none;
+			}
+
+			.callout-title-inner {
+				/*
+				--font-weight: var(--callout-title-weight);
+				font-weight: var(--font-weight);
+				color: var(--callout-title-color);
+                */
+				--callout-title-color: #752b2b;
+				--callout-title-weight: normal;
+			}
+		}
+
+		.callout-content {
+			/*
+			overflow-x: auto;
+			padding: var(--callout-content-padding);
+			background-color: var(--callout-content-background);
+			border-radius: var(--callout-content-radius);
+        	*/
+			font-family: "Caveat", "Labrada", sans-serif;
+			font-size: 1.2em;
+			transform: rotate(var(--note-text-rotation));
+
+			--p-spacing: 0.5rem;
+		}
+	}
+}

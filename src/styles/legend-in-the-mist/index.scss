@@ -1,10 +1,12 @@
 @use "./fonts/labrada.scss";
 @use "./fonts/caveat.scss";
+@use "./fonts/caveat-brush.scss";
 @use "./fonts/frederick-text.scss";
 @use "./fonts/pragroman.scss";
 
 @use "./headings";
 @use "./tags";
+@use "./callouts";
 
 .brumes--legend-in-the-mist {
 	// Text
@@ -20,4 +22,7 @@
 	@include tags.weakness;
 	@include tags.status;
 	@include tags.limit;
+
+	// Callouts
+	@include callouts.note;
 }
