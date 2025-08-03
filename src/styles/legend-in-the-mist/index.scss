@@ -7,6 +7,7 @@
 @use "./headings";
 @use "./tags";
 @use "./callouts";
+@use "./lead-in";
 
 .brumes--legend-in-the-mist {
 	// Text
@@ -25,4 +26,7 @@
 
 	// Callouts
 	@include callouts.note;
+
+	// Lead-in
+	@include lead-in.after-h1;
 }

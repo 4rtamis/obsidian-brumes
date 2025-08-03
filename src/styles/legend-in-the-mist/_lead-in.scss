@@ -1,0 +1,24 @@
+@mixin after-h1 {
+	// Creats a slightly larger paragraph for the first paragraph after an H1 header or inline title
+	// Example: Legend in the Mist - Vol. II - The Narrator | p.62 "Now that you have your Mountain..."
+	.inline-title
+		+ .metadata-container
+		+ .cm-contentContainer
+		.cm-line:first-of-type,
+	.HyperMD-header-1 + .cm-line,
+	.markdown-rendered
+		> .markdown-preview-section
+		> .markdown-preview-pusher
+		+ div:not(.mod-ui)
+		> *:first-child,
+	.markdown-rendered
+		> .markdown-preview-section
+		> .mod-ui
+		+ div:not(.mod-ui)
+		> *:first-child,
+	.el-h1 + .el-p p {
+		font-size: 0.9em;
+		font-family: "PragRoman", "Labrada", sans-serif;
+		line-height: 1.5;
+	}
+}
