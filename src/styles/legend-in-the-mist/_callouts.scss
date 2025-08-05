@@ -1,19 +1,5 @@
 @mixin note {
 	.callout[data-callout="note"] {
-		/* Default styles
-        overflow: hidden;
-		border-style: solid;
-		border-color: rgba(var(--callout-color), var(--callout-border-opacity));
-		border-width: var(--callout-border-width);
-		border-radius: var(--callout-radius);
-		margin: 1em 0;
-		mix-blend-mode: var(--callout-blend-mode);
-		background-color: rgba(var(--callout-color), 0.1);
-		padding: var(--callout-padding);
-
-		--callout-color: var(--callout-default);
-		--callout-icon: lucide-pencil;
-        */
 		position: relative;
 		overflow: hidden;
 		background: none !important;
@@ -49,6 +35,50 @@
 		}
 
 		.callout-title {
+			font-family: "Caveat Brush", "Labrada", sans-serif;
+			transform: rotate(var(--note-text-rotation));
+
+			--callout-title-size: 1.5em;
+
+			.callout-icon {
+				display: none;
+			}
+
+			.callout-title-inner {
+				--callout-title-color: #752b2b;
+				--callout-title-weight: normal;
+			}
+		}
+
+		.callout-content {
+			font-family: "Caveat", "Labrada", sans-serif;
+			font-size: 1.2em;
+			transform: rotate(var(--note-text-rotation));
+
+			--p-spacing: 0.5rem;
+		}
+	}
+}
+
+@mixin read-aloud {
+	.callout[data-callout="read-aloud"] {
+		/* Default styles
+        overflow: hidden;
+		border-style: solid;
+		border-color: rgba(var(--callout-color), var(--callout-border-opacity));
+		border-width: var(--callout-border-width);
+		border-radius: var(--callout-radius);
+		margin: 1em 0;
+		mix-blend-mode: var(--callout-blend-mode);
+		background-color: rgba(var(--callout-color), 0.1);
+		padding: var(--callout-padding);
+
+		--callout-color: var(--callout-default);
+		--callout-icon: lucide-pencil;
+        */
+		background: none !important;
+
+		.callout-title {
 			/*
             padding: var(--callout-title-padding);
 			display: flex;
@@ -58,10 +88,7 @@
 			line-height: var(--line-height-tight);
 			align-items: flex-start;
             */
-			font-family: "Caveat Brush", "Labrada", sans-serif;
-			transform: rotate(var(--note-text-rotation));
-
-			--callout-title-size: 1.5em;
+			display: none;
 
 			.callout-icon {
 				/*
@@ -78,8 +105,7 @@
 				font-weight: var(--font-weight);
 				color: var(--callout-title-color);
                 */
-				--callout-title-color: #752b2b;
-				--callout-title-weight: normal;
+				display: none;
 			}
 		}
 
@@ -90,9 +116,9 @@
 			background-color: var(--callout-content-background);
 			border-radius: var(--callout-content-radius);
         	*/
-			font-family: "Caveat", "Labrada", sans-serif;
-			font-size: 1.2em;
-			transform: rotate(var(--note-text-rotation));
+			font-size: 0.9em;
+			font-family: "PragRoman", "Labrada", sans-serif;
+			line-height: 1.5;
 
 			--p-spacing: 0.5rem;
 		}

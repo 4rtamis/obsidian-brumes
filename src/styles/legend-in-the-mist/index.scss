@@ -8,6 +8,7 @@
 @use "./tags";
 @use "./callouts";
 @use "./lead-in";
+@use "./story-themes";
 
 .brumes--legend-in-the-mist {
 	// Text
@@ -26,7 +27,11 @@
 
 	// Callouts
 	@include callouts.note;
+	@include callouts.read-aloud;
 
 	// Lead-in
 	@include lead-in.after-h1;
+
+	// Story Themes
+	@include story-themes.global;
 }

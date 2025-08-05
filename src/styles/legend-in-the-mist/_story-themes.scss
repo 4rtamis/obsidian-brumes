@@ -1,0 +1,64 @@
+@mixin global {
+	.brumes-story-theme {
+		border: 3px solid #ccc;
+		border-radius: 8px;
+		padding: 1em;
+		margin: 1em 0;
+		background: #fdf8f0;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+		&.level--origin {
+			border-color: #4caf50;
+		} // green
+		&.level--adventure {
+			border-color: #ff9800;
+		} // orange
+		&.level--greatness {
+			border-color: #3f51b5;
+		} // blue
+		&.level--standard {
+			border-color: #795548;
+		} // brown
+
+		.story-theme__category {
+			font-variant: small-caps;
+			color: #666;
+			font-size: 0.85em;
+		}
+
+		.story-theme__title {
+			font-weight: bold;
+			font-size: 1.3em;
+			margin-top: 0.2em;
+			margin-bottom: 0.5em;
+			font-family: var(--brumes-serif);
+		}
+
+		.story-theme__tags {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0.25em;
+
+			.tag {
+				padding: 0.25em 0.5em;
+				border-radius: 4px;
+				font-weight: bold;
+				font-family: var(--brumes-serif);
+
+				&--title {
+					background-color: #ffeb3b;
+				}
+				&--power {
+					background-color: #fff9c4;
+				}
+				&--weakness {
+					background-color: #ffccbc;
+					color: #c62828;
+				}
+			}
+		}
+	}
+}
