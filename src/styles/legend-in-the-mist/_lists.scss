@@ -1,0 +1,21 @@
+@mixin unordered-list {
+	// FIXME: This is a temporary fix to remove the indent since Border's settings seems to be broken.
+	// Remove this when Border's settings are fixed.
+	--list-indent-editing: 0em;
+	.markdown-rendered ul > li {
+		margin-inline-start: 2ch;
+	}
+}
+
+@mixin question-list {
+	// Custom checkbox for tasks with "?" as marker
+	&:not(.disable-alternative-checkboxes) input[data-task="?"]:checked,
+	&:not(.disable-alternative-checkboxes) li[data-task="?"] > input:checked,
+	&:not(.disable-alternative-checkboxes)
+		li[data-task="?"]
+		> p
+		> input:checked {
+		--checkbox-color: #b6ac99;
+		--checkbox-color-hover: #b6ac99;
+	}
+}

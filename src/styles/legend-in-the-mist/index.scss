@@ -7,6 +7,7 @@
 @use "./fonts/pragroman.scss";
 
 @use "./headings";
+@use "./lists";
 @use "./tags";
 @use "./callouts";
 @use "./lead-in";
@@ -21,12 +22,8 @@
 	@include headings.inline-title-underline;
 
 	// Lists
-	// FIXME: This is a temporary fix to remove the indent since Border's settings seems to be broken.
-	// Remove this when Border's settings are fixed.
-	--list-indent-editing: 0em;
-	.markdown-rendered ul > li {
-		margin-inline-start: 2ch;
-	}
+	@include lists.unordered-list;
+	@include lists.question-list;
 
 	// Tags
 	@include tags.global;
