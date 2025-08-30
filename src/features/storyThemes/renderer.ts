@@ -23,6 +23,7 @@ export function renderStoryTheme(data: StoryThemeData): HTMLElement {
 	titleBox.classList.add("brumes-story-theme--title-box");
 	const titleTag = document.createElement("span");
 	titleTag.classList.add("brumes-story-theme--title");
+	titleTag.dataset.name = data.titleTag;
 	titleTag.textContent = data.titleTag;
 	titleBox.appendChild(titleTag);
 	container.appendChild(titleBox);
