@@ -8,6 +8,7 @@
 
 @use "./headings";
 @use "./lists";
+@use "./separators";
 @use "./tags";
 @use "./callouts";
 @use "./lead-in";
@@ -24,6 +25,9 @@
 	// Lists
 	@include lists.unordered-list;
 	@include lists.question-list;
+
+	// Separators
+	@include separators.hand-drawn-line;
 
 	// Tags
 	@include tags.global;
