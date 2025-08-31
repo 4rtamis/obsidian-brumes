@@ -19,7 +19,7 @@ export function loadStoryThemesFeature(plugin: Plugin) {
 				return;
 			}
 
-			log.info("Rendering story theme:", parsed);
+			log.debug("Rendering story theme:", parsed);
 			const rendered = renderStoryTheme(parsed);
 			el.appendChild(rendered);
 		},
