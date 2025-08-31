@@ -4,19 +4,19 @@
 	.inline-title
 		+ .metadata-container
 		+ .cm-contentContainer
-		.cm-line:first-of-type,
-	.HyperMD-header-1 + .cm-line,
+		.cm-line:first-of-type:not(:is(table *)),
+	.HyperMD-header-1 + .cm-line:not(:is(table *)),
 	.markdown-rendered
 		> .markdown-preview-section
 		> .markdown-preview-pusher
 		+ div:not(.mod-ui)
-		> *:first-child,
+		> *:first-child:not(:is(table *)),
 	.markdown-rendered
 		> .markdown-preview-section
 		> .mod-ui
 		+ div:not(.mod-ui)
-		> *:first-child,
-	.el-h1 + .el-p p {
+		> *:first-child:not(:is(table *)),
+	.el-h1 + .el-p p:not(:is(table *)) {
 		font-size: 0.9em;
 		font-family: "PragRoman", "Labrada", sans-serif;
 		line-height: 1.5;

@@ -9,6 +9,7 @@
 @use "./headings";
 @use "./lists";
 @use "./separators";
+@use "./tables";
 @use "./tags";
 @use "./callouts";
 @use "./lead-in";
@@ -28,6 +29,9 @@
 
 	// Separators
 	@include separators.hand-drawn-line;
+
+	// Tables
+	@include tables.oracle-table;
 
 	// Tags
 	@include tags.global;
