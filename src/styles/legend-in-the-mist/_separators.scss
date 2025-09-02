@@ -1,6 +1,6 @@
 @mixin hand-drawn-line {
-	.markdown-rendered hr,
-	hr {
+	.view-content .markdown-rendered hr,
+	.view-content hr {
 		border: none;
 		border-top: none;
 		background-position: center;

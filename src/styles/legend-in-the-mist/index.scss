@@ -10,14 +10,18 @@
 @use "./lists";
 @use "./separators";
 @use "./tables";
+@use "./hashtags";
 @use "./tags";
 @use "./callouts";
-@use "./lead-in";
 @use "./story-themes";
 
 .brumes--legend-in-the-mist {
 	// Text
 	--font-text-theme: "Labrada", sans-serif;
+
+	// Interface
+	// TODO: Change font if relevant
+	//--font-interface-theme: "Labrada", sans-serif;
 
 	// Headings
 	--font-header-theme: "PragRoman", sans-serif;
@@ -33,7 +37,10 @@
 	// Tables
 	@include tables.oracle-table;
 
-	// Tags
+	// Hashtags
+	@include hashtags.global;
+
+	// Brumes Tags
 	@include tags.global;
 	@include tags.power;
 	@include tags.weakness;
@@ -43,9 +50,6 @@
 	// Callouts
 	@include callouts.note;
 	@include callouts.read-aloud;
-
-	// Lead-in
-	@include lead-in.after-h1;
 
 	// Story Themes
 	@include story-themes.global;
