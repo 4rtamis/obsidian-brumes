@@ -5,6 +5,7 @@ import { BrumesSettings, DEFAULT_SETTINGS } from "./settings/types";
 import { log } from "./utils/logger";
 import { setBrumesModeClass } from "./features/modes/domModeClass";
 import { loadStoryThemesFeature } from "./features/storyThemes";
+import { registerBrumesContextMenu } from "./contextMenu";
 
 export default class BrumesPlugin extends Plugin {
 	settings: BrumesSettings;
@@ -20,8 +21,9 @@ export default class BrumesPlugin extends Plugin {
 		this.addSettingTab(new BrumesSettingTab(this.app, this));
 
 		loadTagFeature(this);
-
 		loadStoryThemesFeature(this);
+
+		registerBrumesContextMenu(this.app);
 	}
 
 	onunload() {
