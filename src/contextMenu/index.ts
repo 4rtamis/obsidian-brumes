@@ -1,6 +1,7 @@
 import { App, Menu, Editor, MenuItem, MarkdownView } from "obsidian";
 import { contributeStoryTheme } from "../features/storyThemes/contextMenu";
 import { contributeTagInsertion } from "../features/tags/contextMenu";
+import { contributeCalloutInsertions } from "../features/callouts/contextMenu";
 
 export function registerBrumesContextMenu(app: App) {
 	app.workspace.on(
@@ -15,8 +16,9 @@ export function registerBrumesContextMenu(app: App) {
 				// @ts-ignore - setSubmenu is not typed
 				const submenu = subMenuItem.setSubmenu();
 
-				contributeStoryTheme(submenu, editor);
 				contributeTagInsertion(submenu, editor);
+				contributeCalloutInsertions(submenu, editor);
+				contributeStoryTheme(submenu, editor);
 			});
 		},
 	);
