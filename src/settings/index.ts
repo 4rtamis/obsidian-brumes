@@ -20,7 +20,7 @@ export class BrumesSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName("Game Mode")
 			.setDesc(
-				"Choose which rule system you're working with. This will affect how basic elements are displayed, such as ",
+				"Choose which rule system you're working with. This will affect how basic elements are displayed, such as "
 			)
 			.addDropdown((drop) =>
 				drop
@@ -32,13 +32,13 @@ export class BrumesSettingTab extends PluginSettingTab {
 						this.plugin.settings.mode = value;
 						setBrumesModeClass(value);
 						await this.plugin.saveData(this.plugin.settings);
-					}),
+					})
 			);
 
 		new Setting(containerEl)
 			.setName("Log Level")
 			.setDesc(
-				"Control how much information is logged to the developer console.",
+				"Control how much information is logged to the developer console."
 			)
 			.addDropdown((drop) =>
 				drop
@@ -54,7 +54,7 @@ export class BrumesSettingTab extends PluginSettingTab {
 						this.plugin.settings.logLevel = value;
 						log.setLevel(value);
 						await this.plugin.saveData(this.plugin.settings);
-					}),
+					})
 			);
 	}
 }
