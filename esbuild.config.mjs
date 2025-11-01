@@ -5,31 +5,67 @@ import { sassPlugin } from "esbuild-sass-plugin";
 import fs from "fs";
 import path from "path";
 
-const banner = `/* Brumes, a plugin for City of Mist, Legend in the Mist and Otherscape */`;
-const outdir = "demo/.obsidian/plugins/brumes";
-const prod = process.argv[2] === "production";
+const banner = `/* Brumes, a plugin for City of Mist, Legend in the Mist and :Otherscape */`;
+
+// Support for custom outdir via command line argument
+const getOutdir = () => {
+	// Find the last argument that looks like a path (after -- or as last argument)
+	const args = process.argv.slice(2); // Remove 'node' and script name
+
+	// Look for argument after '-p' separator (npm run build -- -p "path")
+	const dashIndex = args.indexOf("-p");
+	if (dashIndex !== -1 && args[dashIndex + 1]) {
+		let customPath = args[dashIndex + 1];
+
+		// Clean up any escape characters that might be added by PowerShell
+		customPath = customPath.replace(/\^/g, "");
+
+		// Create the full path to the plugin directory
+		const pluginPath = path.resolve(
+			customPath,
+			".obsidian",
+			"plugins",
+			"brumes"
+		);
+		console.log(`🎯 Using custom output directory: ${pluginPath}`);
+
+		// Ensure the directory exists
+		try {
+			fs.mkdirSync(pluginPath, { recursive: true });
+		} catch (error) {
+			console.error(`❌ Failed to create directory: ${error.message}`);
+		}
+
+		return pluginPath;
+	}
+
+	// Fallback to default
+	return "demo/.obsidian/plugins/brumes";
+};
+
+const outDir = getOutdir();
+const prod = process.argv.includes("production");
 
 // Helper to copy manifest.json
 function copyManifest() {
 	const src = path.resolve("manifest.json");
-	const dest = path.resolve(outdir, "manifest.json");
+	const dest = path.resolve(outDir, "manifest.json");
 	fs.copyFileSync(src, dest);
 	console.log("📄 Copied manifest.json");
 }
 
-// Build styles
-const styleBuild = esbuild.context({
+// Build configurations
+const styleConfig = {
 	banner: { js: banner, css: banner },
 	entryPoints: ["src/styles/styles.scss"],
 	bundle: true,
 	loader: { ".scss": "css" },
 	minify: prod,
-	outdir,
+	outdir: outDir,
 	plugins: [sassPlugin({ type: "css" })],
-});
+};
 
-// Build plugin code
-const pluginBuild = esbuild.context({
+const pluginConfig = {
 	banner: { js: banner },
 	entryPoints: ["src/main.ts"],
 	bundle: true,
@@ -56,18 +92,50 @@ const pluginBuild = esbuild.context({
 	minify: prod,
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outdir,
-});
+	outdir: outDir,
+};
 
-// Run both builds
-Promise.all([styleBuild, pluginBuild])
-	.then(async ([styleCtx, pluginCtx]) => {
-		console.log("✨ Both builds succeeded.");
+// Run builds
+async function build() {
+	try {
+		console.log(`📁 Output directory: ${outDir}`);
 
+		// Create contexts
+		const styleCtx = await esbuild.context(styleConfig);
+		const pluginCtx = await esbuild.context(pluginConfig);
+
+		console.log("🔧 Development build starting...");
+
+		// Initial builds
+		await styleCtx.rebuild();
+		await pluginCtx.rebuild();
+
+		console.log("✅ Initial build completed");
 		copyManifest();
 
-		await styleCtx.watch();
-		await pluginCtx.watch();
-		console.log("👀 Watching for changes...");
-	})
-	.catch(() => process.exit(1));
+		// Watch for changes in development mode
+		if (!prod) {
+			await styleCtx.watch();
+			await pluginCtx.watch();
+			console.log("👀 Watching for changes... (Press Ctrl+C to stop)");
+
+			// Keep process alive
+			process.on("SIGINT", async () => {
+				console.log("\n🛑 Stopping watch mode...");
+				await styleCtx.dispose();
+				await pluginCtx.dispose();
+				process.exit(0);
+			});
+		} else {
+			// Dispose contexts in production mode
+			await styleCtx.dispose();
+			await pluginCtx.dispose();
+			console.log("✨ Production build completed.");
+		}
+	} catch (error) {
+		console.error("❌ Build failed:", error);
+		process.exit(1);
+	}
+}
+
+build();
