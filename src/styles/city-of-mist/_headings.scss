@@ -1,0 +1,9 @@
+@mixin inline-title-underline {
+	// Adds an underline to the inline title
+
+	.inline-title {
+		text-decoration: underline;
+		text-decoration-thickness: 5px;
+		text-underline-offset: 0.1em;
+	}
+}
