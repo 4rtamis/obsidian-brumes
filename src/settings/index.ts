@@ -56,5 +56,20 @@ export class BrumesSettingTab extends PluginSettingTab {
 						await this.plugin.saveData(this.plugin.settings);
 					}),
 			);
+
+		new Setting(containerEl)
+			.setName("Lantern URL")
+			.setDesc(
+				"Address used by the Lantern in the Mist ribbon action and embedded tab.",
+			)
+			.addText((text) =>
+				text
+					.setPlaceholder("https://lantern.ravenloft.fr")
+					.setValue(this.plugin.settings.lanternUrl)
+					.onChange(async (value) => {
+						this.plugin.settings.lanternUrl = value.trim();
+						await this.plugin.saveData(this.plugin.settings);
+					}),
+			);
 	}
 }
