@@ -9,6 +9,7 @@
 @use "./links";
 @use "./lists";
 @use "./hashtags";
+@use "./tags";
 
 .brumes--city-of-mist {
 	// Text
@@ -31,20 +32,19 @@
 	@include lists.checkbox;
 
 	/*
-
 	// Tables
 	@include tables.oracle-table;*/
 
 	// Hashtags
 	@include hashtags.global;
-	/*
+
 	// Brumes Tags
 	@include tags.global;
 	@include tags.power;
 	@include tags.weakness;
 	@include tags.status;
 	@include tags.limit;
-
+	/*
 	// Callouts
 	@include callouts.note;
 	@include callouts.read-aloud;

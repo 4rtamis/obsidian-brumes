@@ -1,0 +1,59 @@
+@mixin global {
+	// Highlights and puts in italic tags, statuses and limits
+	& {
+		--brumes-power-color: #fff2ab;
+		--brumes-status-color: #e2e9b4;
+		--brumes-limit-color: #f9d0c4;
+		--brumes-weakness-color: #edbb89;
+	}
+
+	.brumes-tag,
+	.brumes-tag-content {
+		position: relative;
+		font-style: italic;
+		text-box: trim-both cap alphabetic;
+		display: inline-block;
+		border-top: 0.2ch solid;
+		border-bottom: 0.4ch solid;
+	}
+}
+
+@mixin power {
+	.brumes-power,
+	.brumes-power-content {
+		background-color: var(--brumes-power-color);
+		border-color: var(--brumes-power-color);
+	}
+}
+
+@mixin weakness {
+	.brumes-weakness,
+	.brumes-weakness-content {
+		background-color: var(--brumes-weakness-color);
+		border-color: var(--brumes-weakness-color);
+	}
+}
+
+@mixin status {
+	.brumes-status,
+	.brumes-status-content {
+		background-color: var(--brumes-status-color);
+		border-color: var(--brumes-status-color);
+	}
+}
+
+@mixin limit {
+	.brumes-limit,
+	.brumes-limit-content {
+		background-color: var(--brumes-limit-color);
+		border-color: var(--brumes-limit-color);
+	}
+
+	.brumes-limit::after {
+		content: ":" attr(data-limit-value);
+	}
+
+	.brumes-limit[data-limit-value=""]::after {
+		content: "";
+	}
+}
