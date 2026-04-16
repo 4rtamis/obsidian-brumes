@@ -47,9 +47,10 @@
 	@include tags.limit;
 
 	// Callouts
-	@include callouts.note;
-	@include callouts.read-aloud;
+	@include callouts.move;
+	@include callouts.description;
 	@include callouts.clue;
+	@include callouts.aside;
 
 	/*
 	// Background
