@@ -10,6 +10,7 @@
 @use "./lists";
 @use "./hashtags";
 @use "./tags";
+@use "./callouts";
 
 .brumes--city-of-mist {
 	// Text
@@ -44,11 +45,13 @@
 	@include tags.weakness;
 	@include tags.status;
 	@include tags.limit;
-	/*
+
 	// Callouts
 	@include callouts.note;
 	@include callouts.read-aloud;
+	@include callouts.clue;
 
+	/*
 	// Background
 	// TODO: Change selector to fit every case
 	.workspace-tab-container {
