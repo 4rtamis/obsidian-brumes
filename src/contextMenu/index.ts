@@ -1,12 +1,31 @@
-import { App, Menu, Editor, MenuItem, MarkdownView } from "obsidian";
-import { contributeStoryTheme } from "../features/storyThemes/contextMenu";
-import { contributeTagInsertion } from "../features/tags/contextMenu";
-import { contributeCalloutInsertions } from "../features/callouts/contextMenu";
+import { Editor, EventRef, Menu, MenuItem } from "obsidian";
+import type BrumesPlugin from "../BrumesPlugin";
+import {
+	contributeStoryTheme,
+	hasStoryThemeInsertion,
+} from "../features/storyThemes/contextMenu";
+import {
+	contributeTagInsertion,
+	hasTagInsertion,
+} from "../features/tags/contextMenu";
+import {
+	contributeCalloutInsertions,
+	getAvailableCalloutInsertions,
+} from "../features/callouts/contextMenu";
 
-export function registerBrumesContextMenu(app: App) {
-	app.workspace.on(
+export function registerBrumesContextMenu(plugin: BrumesPlugin): EventRef {
+	return plugin.app.workspace.on(
 		"editor-menu",
-		(menu: Menu, editor: Editor, view: MarkdownView) => {
+		(menu: Menu, editor: Editor) => {
+			const hasAnyItems =
+				hasTagInsertion(plugin.settings) ||
+				getAvailableCalloutInsertions(plugin.settings).length > 0 ||
+				hasStoryThemeInsertion(plugin.settings);
+
+			if (!hasAnyItems) {
+				return;
+			}
+
 			menu.addItem((subMenuItem: MenuItem) => {
 				subMenuItem
 					.setTitle("Brumes")
@@ -15,10 +34,34 @@ export function registerBrumesContextMenu(app: App) {
 
 				// @ts-ignore - setSubmenu is not typed
 				const submenu = subMenuItem.setSubmenu();
+				let hasItems = false;
 
-				contributeTagInsertion(submenu, editor);
-				contributeCalloutInsertions(submenu, editor);
-				contributeStoryTheme(submenu, editor);
+				const tagItems = contributeTagInsertion(
+					submenu,
+					editor,
+					plugin.settings,
+				);
+				hasItems = tagItems > 0;
+
+				if (getAvailableCalloutInsertions(plugin.settings).length > 0 && hasItems) {
+					submenu.addSeparator();
+				}
+				const calloutItems = contributeCalloutInsertions(
+					submenu,
+					editor,
+					plugin.settings,
+				);
+				hasItems = hasItems || calloutItems > 0;
+
+				if (hasStoryThemeInsertion(plugin.settings) && hasItems) {
+					submenu.addSeparator();
+				}
+				const storyThemeItems = contributeStoryTheme(
+					submenu,
+					editor,
+					plugin.settings,
+				);
+				void storyThemeItems;
 			});
 		},
 	);

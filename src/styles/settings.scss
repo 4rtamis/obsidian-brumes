@@ -1,0 +1,11 @@
+.brumes-settings-section {
+	&.is-inactive {
+		opacity: 0.58;
+	}
+
+	&.is-inactive .setting-item-heading,
+	&.is-inactive .setting-item-description,
+	&.is-inactive p {
+		color: var(--text-muted);
+	}
+}

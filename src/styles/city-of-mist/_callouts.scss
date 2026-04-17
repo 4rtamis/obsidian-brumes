@@ -73,8 +73,8 @@
 }
 
 @mixin clue {
-	.callout[data-callout="clue"],
-	.callout[data-callout="red-clue"] {
+	.callout[data-brumes-callout-style="clue"],
+	.callout[data-brumes-callout-style="red-clue"] {
 		--callout-color: 0, 0, 0;
 		--p-spacing: 0.1rem;
 		color: #000;
@@ -99,14 +99,13 @@
 		}
 	}
 
-	.callout[data-callout="red-clue"] {
+	.callout[data-brumes-callout-style="red-clue"] {
 		background-color: #e2c6c5;
 	}
 }
 
 @mixin description {
-	.callout[data-callout="description"],
-	.callout[data-callout="read-aloud"] {
+	.callout[data-brumes-callout-style="description"] {
 		--callout-color: 0, 0, 0;
 		--callout-padding: 1em;
 		background-color: unset;
@@ -131,7 +130,7 @@
 }
 
 @mixin move {
-	.callout[data-callout="move"] {
+	.callout[data-brumes-callout-style="move"] {
 		--callout-color: 0, 0, 0;
 		font-family: "Averia Serif Libre";
 		background-color: #f2e7ae;
@@ -185,8 +184,7 @@
 }
 
 @mixin aside {
-	.callout[data-callout="aside"],
-	.callout[data-callout="note"] {
+	.callout[data-brumes-callout-style="note"] {
 		/* Default styles
         overflow: hidden;
 		border-style: solid;

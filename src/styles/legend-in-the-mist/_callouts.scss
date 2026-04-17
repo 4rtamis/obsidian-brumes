@@ -1,5 +1,5 @@
 @mixin note {
-	.callout[data-callout="note"] {
+	.callout[data-brumes-callout-style="note"] {
 		position: relative;
 		overflow: hidden;
 		background: none !important;
@@ -61,7 +61,7 @@
 }
 
 @mixin read-aloud {
-	.callout[data-callout="read-aloud"] {
+	.callout[data-brumes-callout-style="read-aloud"] {
 		/* Default styles
         overflow: hidden;
 		border-style: solid;

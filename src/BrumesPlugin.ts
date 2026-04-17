@@ -1,7 +1,10 @@
-import { addIcon, Plugin } from "obsidian";
+import { addIcon, EventRef, MarkdownView, Notice, Plugin } from "obsidian";
 import { loadTagFeature } from "./features/tags";
 import { BrumesSettingTab } from "./settings";
-import { BrumesSettings, DEFAULT_SETTINGS } from "./settings/types";
+import {
+	BrumesSettings,
+	normalizeSettings,
+} from "./settings/types";
 import { log } from "./utils/logger";
 import { setBrumesModeClass } from "./features/modes/domModeClass";
 import { loadStoryThemesFeature } from "./features/storyThemes";
@@ -12,17 +15,24 @@ import {
 	LanternView,
 } from "./views/LanternView";
 import { LANTERN_LOGO_SVG } from "./views/lanternLogo";
+import { loadCalloutAliasFeature } from "./features/callouts/aliasSupport";
+
+interface ApplySettingsOptions {
+	refreshEditor?: boolean;
+	refreshMarkdown?: boolean;
+}
 
 export default class BrumesPlugin extends Plugin {
-	settings: BrumesSettings;
+	settings!: BrumesSettings;
+	private contextMenuEventRef: EventRef | null = null;
+	private lanternRibbonEl: HTMLElement | null = null;
+	private syncCalloutAliases: (() => void) | null = null;
 
 	async onload() {
 		await this.loadSettings();
 
 		log.setLevel(this.settings.logLevel);
-		setBrumesModeClass(this.settings.mode);
 		addIcon(LANTERN_ICON, LANTERN_LOGO_SVG);
-
 		log.info("Brumes plugin loaded");
 
 		this.registerView(
@@ -31,23 +41,33 @@ export default class BrumesPlugin extends Plugin {
 		);
 
 		this.addSettingTab(new BrumesSettingTab(this.app, this));
-		this.addRibbonIcon(
-			LANTERN_ICON,
-			"Lantern in the Mist",
-			async () => await this.activateLanternView(),
-		);
 
 		loadTagFeature(this);
 		loadStoryThemesFeature(this);
+		this.syncCalloutAliases = loadCalloutAliasFeature(this);
 
-		registerBrumesContextMenu(this.app);
+		this.applySettings();
 	}
 
 	onunload() {
+		if (this.contextMenuEventRef) {
+			this.app.workspace.offref(this.contextMenuEventRef);
+			this.contextMenuEventRef = null;
+		}
+
+		this.lanternRibbonEl?.remove();
+		this.lanternRibbonEl = null;
 		log.info("Brumes plugin unloaded");
 	}
 
 	async activateLanternView() {
+		if (!this.settings.features.lanternIntegration) {
+			new Notice(
+				"Enable Lantern in the Mist integration in Brumes settings first.",
+			);
+			return;
+		}
+
 		const leaf = this.app.workspace.getLeaf(true);
 
 		await leaf.setViewState({
@@ -57,11 +77,62 @@ export default class BrumesPlugin extends Plugin {
 		this.app.workspace.revealLeaf(leaf);
 	}
 
+	async saveSettings(options: ApplySettingsOptions = {}) {
+		await this.saveData(this.settings);
+		this.applySettings(options);
+	}
+
+	private applySettings(options: ApplySettingsOptions = {}) {
+		log.setLevel(this.settings.logLevel);
+		setBrumesModeClass(this.settings.mode);
+		this.refreshLanternIntegration();
+		this.refreshContextMenu();
+		this.syncCalloutAliases?.();
+
+		if (options.refreshEditor) {
+			this.app.workspace.updateOptions();
+		}
+
+		if (options.refreshMarkdown) {
+			this.refreshMarkdownViews();
+		}
+	}
+
+	private refreshContextMenu() {
+		if (this.contextMenuEventRef) {
+			this.app.workspace.offref(this.contextMenuEventRef);
+		}
+
+		this.contextMenuEventRef = registerBrumesContextMenu(this);
+	}
+
+	private refreshLanternIntegration() {
+		if (this.settings.features.lanternIntegration) {
+			if (!this.lanternRibbonEl) {
+				this.lanternRibbonEl = this.addRibbonIcon(
+					LANTERN_ICON,
+					"Lantern in the Mist",
+					async () => await this.activateLanternView(),
+				);
+			}
+			return;
+		}
+
+		this.lanternRibbonEl?.remove();
+		this.lanternRibbonEl = null;
+		this.app.workspace.detachLeavesOfType(LANTERN_VIEW_TYPE);
+	}
+
+	private refreshMarkdownViews() {
+		for (const leaf of this.app.workspace.getLeavesOfType("markdown")) {
+			const view = leaf.view;
+			if (view instanceof MarkdownView) {
+				view.previewMode.rerender(true);
+			}
+		}
+	}
+
 	private async loadSettings() {
-		this.settings = Object.assign(
-			{},
-			DEFAULT_SETTINGS,
-			await this.loadData(),
-		);
+		this.settings = normalizeSettings(await this.loadData());
 	}
 }

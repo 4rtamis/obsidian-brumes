@@ -1,11 +1,15 @@
-import { Plugin } from "obsidian";
+import type BrumesPlugin from "../../BrumesPlugin";
 import { brumesPostProcessor } from "./postProcessor";
 import { brumesEditorExtension } from "./editorExtension";
 
 /**
  * Registers tag highlighting and decoration features.
  */
-export function loadTagFeature(plugin: Plugin) {
-	plugin.registerEditorExtension(brumesEditorExtension());
-	plugin.registerMarkdownPostProcessor(brumesPostProcessor);
+export function loadTagFeature(plugin: BrumesPlugin) {
+	plugin.registerEditorExtension(
+		brumesEditorExtension(() => plugin.settings.features.tagsSyntax),
+	);
+	plugin.registerMarkdownPostProcessor(
+		brumesPostProcessor(() => plugin.settings.features.tagsSyntax),
+	);
 }

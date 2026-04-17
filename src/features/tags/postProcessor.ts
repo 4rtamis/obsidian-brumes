@@ -5,92 +5,100 @@ import { logScope } from "../../utils/logger";
 const tagLog = logScope("Tags");
 
 /**
- * Replaces tag patterns with spans in rendered markdown view
+ * Replaces tag patterns with spans in rendered markdown view.
  */
-export const brumesPostProcessor: MarkdownPostProcessor = (
-	element: HTMLElement,
-	context: MarkdownPostProcessorContext,
-) => {
-	tagLog.debug("Running markdown post processor", { context });
-
-	const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-	const textNodes: Text[] = [];
-
-	let node;
-	while ((node = walker.nextNode())) {
-		textNodes.push(node as Text);
-	}
-
-	let processedCount = 0;
-
-	textNodes.forEach((textNode) => {
-		const text = textNode.textContent || "";
-		const regex = /\{([^}]+)\}/g;
-		if (!regex.test(text)) return;
-
-		const parent = textNode.parentNode;
-		if (!parent) {
-			tagLog.warn("Skipped text node without parent:", textNode);
+export function brumesPostProcessor(
+	isEnabled: () => boolean,
+): MarkdownPostProcessor {
+	return (
+		element: HTMLElement,
+		context: MarkdownPostProcessorContext,
+	) => {
+		if (!isEnabled()) {
 			return;
 		}
 
-		const fragment = document.createDocumentFragment();
-		let lastIndex = 0;
-		let match;
+		tagLog.debug("Running markdown post processor", { context });
 
-		regex.lastIndex = 0;
-		while ((match = regex.exec(text)) !== null) {
-			const content = match[1];
-			let tagInfo;
+		const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+		const textNodes: Text[] = [];
 
-			try {
-				tagInfo = classifyTag(content);
-			} catch (err) {
-				tagLog.error("Failed to classify tag:", content, err);
-				continue;
+		let node;
+		while ((node = walker.nextNode())) {
+			textNodes.push(node as Text);
+		}
+
+		let processedCount = 0;
+
+		textNodes.forEach((textNode) => {
+			const text = textNode.textContent || "";
+			const regex = /\{([^}]+)\}/g;
+			if (!regex.test(text)) return;
+
+			const parent = textNode.parentNode;
+			if (!parent) {
+				tagLog.warn("Skipped text node without parent:", textNode);
+				return;
 			}
 
-			tagLog.debug("Tag matched in rendered view", { content, tagInfo });
+			const fragment = document.createDocumentFragment();
+			let lastIndex = 0;
+			let match;
 
-			if (match.index > lastIndex) {
+			regex.lastIndex = 0;
+			while ((match = regex.exec(text)) !== null) {
+				const content = match[1];
+				let tagInfo;
+
+				try {
+					tagInfo = classifyTag(content);
+				} catch (err) {
+					tagLog.error("Failed to classify tag:", content, err);
+					continue;
+				}
+
+				tagLog.debug("Tag matched in rendered view", { content, tagInfo });
+
+				if (match.index > lastIndex) {
+					fragment.appendChild(
+						document.createTextNode(text.slice(lastIndex, match.index)),
+					);
+				}
+
+				const span = document.createElement("span");
+				span.className = `brumes-tag ${tagInfo.className}`;
+
+				if (tagInfo.type === "status") {
+					span.dataset.statusName = tagInfo.name!;
+					span.dataset.statusValue = tagInfo.value!;
+					span.textContent = tagInfo.value
+						? `${tagInfo.name}-${tagInfo.value}`
+						: tagInfo.name!;
+				} else if (tagInfo.type === "limit") {
+					span.dataset.limitName = tagInfo.name!;
+					span.dataset.limitValue = tagInfo.value!;
+					span.textContent = tagInfo.name!;
+				} else {
+					span.dataset.name = tagInfo.name!;
+					span.textContent = tagInfo.name!;
+				}
+
+				fragment.appendChild(span);
+				lastIndex = match.index + match[0].length;
+				processedCount++;
+			}
+
+			if (lastIndex < text.length) {
 				fragment.appendChild(
-					document.createTextNode(text.slice(lastIndex, match.index)),
+					document.createTextNode(text.slice(lastIndex)),
 				);
 			}
 
-			const span = document.createElement("span");
-			span.className = `brumes-tag ${tagInfo.className}`;
+			parent.replaceChild(fragment, textNode);
+		});
 
-			if (tagInfo.type === "status") {
-				span.dataset.statusName = tagInfo.name!;
-				span.dataset.statusValue = tagInfo.value!;
-				span.textContent = tagInfo.value
-					? `${tagInfo.name}-${tagInfo.value}`
-					: tagInfo.name!;
-			} else if (tagInfo.type === "limit") {
-				span.dataset.limitName = tagInfo.name!;
-				span.dataset.limitValue = tagInfo.value!;
-				span.textContent = tagInfo.name!;
-			} else {
-				span.dataset.name = tagInfo.name!;
-				span.textContent = tagInfo.name!;
-			}
-
-			fragment.appendChild(span);
-			lastIndex = match.index + match[0].length;
-			processedCount++;
+		if (processedCount > 0) {
+			tagLog.info(`Post-processed ${processedCount} tag(s) in markdown view`);
 		}
-
-		if (lastIndex < text.length) {
-			fragment.appendChild(
-				document.createTextNode(text.slice(lastIndex)),
-			);
-		}
-
-		parent.replaceChild(fragment, textNode);
-	});
-
-	if (processedCount > 0) {
-		tagLog.info(`Post-processed ${processedCount} tag(s) in markdown view`);
-	}
-};
+	};
+}

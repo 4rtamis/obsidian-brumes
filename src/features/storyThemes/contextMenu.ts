@@ -1,15 +1,32 @@
 import { Menu, Editor, MenuItem } from "obsidian";
+import { BrumesSettings } from "../../settings/types";
 
-export function contributeStoryTheme(menu: Menu, editor: Editor) {
+export function hasStoryThemeInsertion(settings: BrumesSettings): boolean {
+	return (
+		settings.mode === "legend-in-the-mist" &&
+		settings.features.storyThemeParser
+	);
+}
+
+export function contributeStoryTheme(
+	menu: Menu,
+	editor: Editor,
+	settings: BrumesSettings,
+): number {
+	if (!hasStoryThemeInsertion(settings)) {
+		return 0;
+	}
+
 	menu.addItem((item: MenuItem) =>
 		item
 			.setTitle("Story theme")
 			.setIcon("file-plus")
 			.onClick(() => insertStoryThemeTemplate(editor)),
 	);
+
+	return 1;
 }
 
-// Full themebook list by Might
 const THEMEBOOKS: Record<string, string[]> = {
 	origin: [
 		"Circumstance",

@@ -15,7 +15,7 @@ const tagLog = logScope("Tags");
 /**
  * Builds the CodeMirror plugin that decorates tag patterns like {status-3}, {!fear}, etc.
  */
-export function brumesEditorExtension(): Extension {
+export function brumesEditorExtension(isEnabled: () => boolean): Extension {
 	return ViewPlugin.fromClass(
 		class {
 			decorations: DecorationSet = Decoration.none;
@@ -37,6 +37,10 @@ export function brumesEditorExtension(): Extension {
 			}
 
 			private buildDecorations(view: EditorView): DecorationSet {
+				if (!isEnabled()) {
+					return Decoration.none;
+				}
+
 				const builder = new RangeSetBuilder<Decoration>();
 				const doc = view.state.doc;
 				const selection = view.state.selection;
@@ -78,7 +82,7 @@ export function brumesEditorExtension(): Extension {
 							to,
 						});
 
-						// If user is selecting the tag, show everything including brackets
+						// If user is selecting the tag, show everything including brackets.
 						if (isTouched) {
 							builder.add(
 								contentFrom,
@@ -90,7 +94,7 @@ export function brumesEditorExtension(): Extension {
 							continue;
 						}
 
-						// Hide opening bracket
+						// Hide opening bracket.
 						builder.add(
 							from,
 							from + 1,
@@ -99,7 +103,7 @@ export function brumesEditorExtension(): Extension {
 							}),
 						);
 
-						// Type-specific rendering logic
+						// Type-specific rendering logic.
 						if (tagInfo.type === "status") {
 							const endHyphenIndex = content.lastIndexOf("-");
 							const nameFrom = contentFrom;
@@ -188,7 +192,7 @@ export function brumesEditorExtension(): Extension {
 							);
 						}
 
-						// Hide closing bracket
+						// Hide closing bracket.
 						builder.add(
 							contentTo,
 							to,
