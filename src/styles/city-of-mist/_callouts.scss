@@ -1,3 +1,77 @@
+@mixin global {
+	.callout {
+		background-color: #e0d0d0;
+
+		.callout-title {
+			font-family: "Fira Sans Extra Condensed", sans-serif;
+			text-transform: uppercase;
+			--callout-title-size: 1.5em;
+			--callout-title-color: black;
+			color: black;
+		}
+
+		.callout-icon .svg-icon {
+			color: black;
+		}
+	}
+
+	.callout[data-callout="bug"] {
+		background-color: #ece1d4;
+	}
+
+	.callout[data-callout="danger"] {
+		background-color: #edc0bb;
+	}
+
+	.callout[data-callout="error"] {
+		background-color: #decece;
+	}
+
+	.callout[data-callout="example"] {
+		background-color: #e3e1c0;
+	}
+
+	.callout[data-callout="failure"] {
+		background-color: #edc0bb;
+	}
+
+	.callout[data-callout="important"] {
+		background-color: #dee4d9;
+	}
+
+	.callout[data-callout="info"] {
+		background-color: #e4ddc3;
+	}
+
+	.callout[data-callout="question"] {
+		background-color: #f0ede0;
+	}
+
+	.callout[data-callout="success"] {
+		background-color: #e3e1c0;
+	}
+
+	.callout[data-callout="summary"] {
+		background-color: #d8cfca;
+	}
+
+	.callout[data-callout="tip"] {
+		background-color: #e4ddc3;
+	}
+
+	.callout[data-callout="todo"] {
+		background-color: #e4ddc3;
+	}
+
+	.callout[data-callout="warning"] {
+		background-color: #eaddcd;
+	}
+
+	.callout[data-callout="quote"] {
+		background-color: #e4ddc3;
+	}
+}
+
 @mixin clue {
 	.callout[data-callout="clue"],
 	.callout[data-callout="red-clue"] {
@@ -65,6 +139,14 @@
 		border-radius: 0 0 3px 3px;
 		position: relative;
 		overflow: visible;
+
+		.callout-title {
+			align-items: center;
+		}
+
+		.callout-fold {
+			color: #852d3a;
+		}
 
 		.callout-title-inner {
 			font-family: "Fira Sans Extra Condensed";
@@ -150,6 +232,10 @@
 				align-items: center;
                 */
 				display: none;
+			}
+
+			.callout-fold {
+				color: #e0d9c1;
 			}
 
 			.callout-title-inner {

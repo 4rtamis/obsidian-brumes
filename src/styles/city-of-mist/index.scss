@@ -48,6 +48,7 @@
 	@include tags.limit;
 
 	// Callouts
+	@include callouts.global;
 	@include callouts.move;
 	@include callouts.description;
 	@include callouts.clue;

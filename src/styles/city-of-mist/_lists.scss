@@ -13,7 +13,7 @@
 		> p
 		> input:checked:after {
 		content: "#{$letter}";
-		--checkbox-color: var(--color-red);
+		--checkbox-color: #842837;
 		-webkit-mask-image: none;
 		mask-image: none;
 		background-color: var(--checkbox-color);
