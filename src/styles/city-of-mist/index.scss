@@ -12,6 +12,7 @@
 @use "./tags";
 @use "./callouts";
 @use "./tables";
+@use "./iceberg";
 
 .brumes--city-of-mist {
 	// Text
@@ -52,3 +53,7 @@
 	@include callouts.clue;
 	@include callouts.aside;
 }
+
+// Iceberg Cards
+// Needs to be outside of the .brumes--city-of-mist class to work properly in the canvas
+@include iceberg.cards;
