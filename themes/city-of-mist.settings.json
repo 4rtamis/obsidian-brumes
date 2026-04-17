@@ -44,7 +44,7 @@
 	"Editor@@link-unresolved-color@@light": "#000000",
 	"Editor@@list-indent": "0em",
 	"Editor@@list-marker-color@@light": "#000000",
-	"Appearance-light@@color-red-rgb@@light": "#842837",
+	"Appearance-light@@color-red-rgb@@light": "#ED1B33",
 	"Plugin@@colorful-checkbox": false,
 	"Editor@@checkbox-radius": "0px",
 	"Appearance-light@@color-orange-rgb@@light": "#9D594E",
@@ -58,5 +58,13 @@
 	"Editor@@h6-size": "1.1em",
 	"Editor@@tag-color@@light": "#000000",
 	"Editor@@tag-background-hover@@light": "#00000000",
-	"Editor@@tag-background@@light": "#FFF1A200"
+	"Editor@@tag-background@@light": "#FFF1A200",
+	"Components@@outline-enhanced": false,
+	"Components@@new-tab-image-select": "new-tab-image-default",
+	"Components@@immersive-canvas": false,
+	"Components@@media-embed-card-border-off": false,
+	"Appearance-light@@mod-left-split-background-select-light": "mod-left-split-background-primary-light",
+	"Appearance-light@@mod-right-split-background-select-light": "mod-right-split-background-primary-light",
+	"Appearance-light@@background-underlying-select-light": "background-underlying-default-light",
+	"Editor@@callout-style-select": "callout-style-customize"
 }

@@ -105,7 +105,8 @@
 }
 
 @mixin description {
-	.callout[data-callout="description"] {
+	.callout[data-callout="description"],
+	.callout[data-callout="read-aloud"] {
 		--callout-color: 0, 0, 0;
 		--callout-padding: 1em;
 		background-color: unset;
@@ -184,7 +185,8 @@
 }
 
 @mixin aside {
-	.callout[data-callout="aside"] {
+	.callout[data-callout="aside"],
+	.callout[data-callout="note"] {
 		/* Default styles
         overflow: hidden;
 		border-style: solid;
