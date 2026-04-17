@@ -53,6 +53,10 @@
 		content: ":" attr(data-limit-value);
 	}
 
+	.brumes-limit[data-limit-value="~"]::after {
+		content: ":-";
+	}
+
 	.brumes-limit[data-limit-value=""]::after {
 		content: "";
 	}

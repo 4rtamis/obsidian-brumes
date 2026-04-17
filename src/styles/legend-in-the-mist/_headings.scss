@@ -7,7 +7,7 @@
 		:is(
 			.markdown-preview-sizer > div > h1,
 			.markdown-rendered > h1,
-			.HyperMD-header-1
+			.HyperMD-header-1 > .cm-header-1
 		)::after {
 		margin-top: 2px;
 		content: "";
@@ -47,7 +47,7 @@
 	}
 
 	.HyperMD-header-2::after,
-	.inline-title h2::after,
+	h2::after,
 	.HyperMD-list-line .cm-header-2::after {
 		content: "";
 		display: inline-block;

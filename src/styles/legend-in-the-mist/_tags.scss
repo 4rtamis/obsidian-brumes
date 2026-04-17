@@ -92,6 +92,8 @@
 	}
 
 	.brumes-limit[data-limit-value=""]::after {
+		content: "0";
+		color: #a47777;
 		background-image: url('data:image/svg+xml,<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="44 13 221 269" width="221" height="270"><style>.a{fill:%23a47777}</style><path fill-rule="evenodd" class="a" d="m155 14l30 25 37 18 39 6-2 17-8 15 13 16-9 62-10 28-16 28-18 22-28 18-27 12-35-13-27-23-24-29v-12l-6-6-6-13-9-30 4-36-8-24v-35l32-4 44-21z"/></svg>');
 	}
 }
