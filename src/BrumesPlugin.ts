@@ -1,10 +1,7 @@
 import { addIcon, EventRef, MarkdownView, Notice, Plugin } from "obsidian";
 import { loadTagFeature } from "./features/tags";
 import { BrumesSettingTab } from "./settings";
-import {
-	BrumesSettings,
-	normalizeSettings,
-} from "./settings/types";
+import { BrumesSettings, normalizeSettings } from "./settings/types";
 import { log } from "./utils/logger";
 import { setBrumesModeClass } from "./features/modes/domModeClass";
 import { loadStoryThemesFeature } from "./features/storyThemes";
@@ -63,6 +60,7 @@ export default class BrumesPlugin extends Plugin {
 	async activateLanternView() {
 		if (!this.settings.features.lanternIntegration) {
 			new Notice(
+				// eslint-disable-next-line obsidianmd/ui/sentence-case
 				"Enable Lantern in the Mist integration in Brumes settings first.",
 			);
 			return;
@@ -74,7 +72,7 @@ export default class BrumesPlugin extends Plugin {
 			type: LANTERN_VIEW_TYPE,
 			active: true,
 		});
-		this.app.workspace.revealLeaf(leaf);
+		void this.app.workspace.revealLeaf(leaf);
 	}
 
 	async saveSettings(options: ApplySettingsOptions = {}) {
@@ -111,8 +109,11 @@ export default class BrumesPlugin extends Plugin {
 			if (!this.lanternRibbonEl) {
 				this.lanternRibbonEl = this.addRibbonIcon(
 					LANTERN_ICON,
+					// eslint-disable-next-line obsidianmd/ui/sentence-case
 					"Lantern in the Mist",
-					async () => await this.activateLanternView(),
+					() => {
+						void this.activateLanternView();
+					},
 				);
 			}
 			return;
@@ -133,6 +134,15 @@ export default class BrumesPlugin extends Plugin {
 	}
 
 	private async loadSettings() {
-		this.settings = normalizeSettings(await this.loadData());
+		const data: unknown = await this.loadData();
+		this.settings = normalizeSettings(
+			isSettingsData(data) ? data : undefined,
+		);
 	}
+}
+
+function isSettingsData(
+	value: unknown,
+): value is Partial<BrumesSettings> | null {
+	return value === null || typeof value === "object";
 }

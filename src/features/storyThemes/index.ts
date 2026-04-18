@@ -9,12 +9,14 @@ export function loadStoryThemesFeature(plugin: BrumesPlugin) {
 	plugin.registerMarkdownCodeBlockProcessor(
 		"story-theme",
 		async (source, el, ctx) => {
+			const doc = el.doc;
+
 			if (
 				plugin.settings.mode !== "legend-in-the-mist" ||
 				!plugin.settings.features.storyThemeParser
 			) {
-				const pre = document.createElement("pre");
-				const code = document.createElement("code");
+				const pre = doc.createElement("pre");
+				const code = doc.createElement("code");
 				code.className = "language-story-theme";
 				code.textContent = source;
 				pre.appendChild(code);
@@ -26,14 +28,14 @@ export function loadStoryThemesFeature(plugin: BrumesPlugin) {
 
 			if (!parsed) {
 				log.warn("Invalid story theme block in file", ctx.sourcePath);
-				const error = document.createElement("pre");
+				const error = doc.createElement("pre");
 				error.textContent = "Invalid story-theme block.";
 				el.appendChild(error);
 				return;
 			}
 
 			log.debug("Rendering story theme:", parsed);
-			const rendered = renderStoryTheme(parsed);
+			const rendered = renderStoryTheme(parsed, doc);
 			el.appendChild(rendered);
 		},
 	);

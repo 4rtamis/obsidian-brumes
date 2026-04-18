@@ -1,4 +1,4 @@
-import { Editor, EventRef, Menu, MenuItem } from "obsidian";
+import { Editor, EventRef, Menu } from "obsidian";
 import type BrumesPlugin from "../BrumesPlugin";
 import {
 	contributeStoryTheme,
@@ -12,6 +12,7 @@ import {
 	contributeCalloutInsertions,
 	getAvailableCalloutInsertions,
 } from "../features/callouts/contextMenu";
+import { getOrCreateBrumesSubmenu } from "../utils/contextSubMenu";
 
 export function registerBrumesContextMenu(plugin: BrumesPlugin): EventRef {
 	return plugin.app.workspace.on(
@@ -26,43 +27,32 @@ export function registerBrumesContextMenu(plugin: BrumesPlugin): EventRef {
 				return;
 			}
 
-			menu.addItem((subMenuItem: MenuItem) => {
-				subMenuItem
-					.setTitle("Brumes")
-					.setIcon("dices")
-					.setSection("selection");
+			const submenu = getOrCreateBrumesSubmenu(menu);
+			let hasItems = false;
 
-				// @ts-ignore - setSubmenu is not typed
-				const submenu = subMenuItem.setSubmenu();
-				let hasItems = false;
+			const tagItems = contributeTagInsertion(
+				submenu,
+				editor,
+				plugin.settings,
+			);
+			hasItems = tagItems > 0;
 
-				const tagItems = contributeTagInsertion(
-					submenu,
-					editor,
-					plugin.settings,
-				);
-				hasItems = tagItems > 0;
+			if (getAvailableCalloutInsertions(plugin.settings).length > 0 && hasItems) {
+				submenu.addSeparator();
+			}
+			const calloutItems = contributeCalloutInsertions(
+				submenu,
+				editor,
+				plugin.settings,
+			);
+			hasItems = hasItems || calloutItems > 0;
 
-				if (getAvailableCalloutInsertions(plugin.settings).length > 0 && hasItems) {
-					submenu.addSeparator();
-				}
-				const calloutItems = contributeCalloutInsertions(
-					submenu,
-					editor,
-					plugin.settings,
-				);
-				hasItems = hasItems || calloutItems > 0;
-
-				if (hasStoryThemeInsertion(plugin.settings) && hasItems) {
-					submenu.addSeparator();
-				}
-				const storyThemeItems = contributeStoryTheme(
-					submenu,
-					editor,
-					plugin.settings,
-				);
-				void storyThemeItems;
-			});
+			if (hasStoryThemeInsertion(plugin.settings) && hasItems) {
+				submenu.addSeparator();
+			}
+			hasItems =
+				contributeStoryTheme(submenu, editor, plugin.settings) > 0 ||
+				hasItems;
 		},
 	);
 }

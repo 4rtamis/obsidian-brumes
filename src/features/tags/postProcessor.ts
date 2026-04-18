@@ -20,12 +20,15 @@ export function brumesPostProcessor(
 
 		tagLog.debug("Running markdown post processor", { context });
 
-		const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+		const doc = element.doc;
+		const walker = doc.createTreeWalker(element, NodeFilter.SHOW_TEXT);
 		const textNodes: Text[] = [];
 
-		let node;
-		while ((node = walker.nextNode())) {
-			textNodes.push(node as Text);
+		let node: Node | null = null;
+		while ((node = walker.nextNode()) !== null) {
+			if (isTextNode(node)) {
+				textNodes.push(node);
+			}
 		}
 
 		let processedCount = 0;
@@ -41,7 +44,7 @@ export function brumesPostProcessor(
 				return;
 			}
 
-			const fragment = document.createDocumentFragment();
+			const fragment = doc.createDocumentFragment();
 			let lastIndex = 0;
 			let match;
 
@@ -61,11 +64,11 @@ export function brumesPostProcessor(
 
 				if (match.index > lastIndex) {
 					fragment.appendChild(
-						document.createTextNode(text.slice(lastIndex, match.index)),
+						doc.createTextNode(text.slice(lastIndex, match.index)),
 					);
 				}
 
-				const span = document.createElement("span");
+				const span = doc.createElement("span");
 				span.className = `brumes-tag ${tagInfo.className}`;
 
 				if (tagInfo.type === "status") {
@@ -90,7 +93,7 @@ export function brumesPostProcessor(
 
 			if (lastIndex < text.length) {
 				fragment.appendChild(
-					document.createTextNode(text.slice(lastIndex)),
+					doc.createTextNode(text.slice(lastIndex)),
 				);
 			}
 
@@ -101,4 +104,8 @@ export function brumesPostProcessor(
 			tagLog.info(`Post-processed ${processedCount} tag(s) in markdown view`);
 		}
 	};
+}
+
+function isTextNode(node: Node): node is Text {
+	return node.nodeType === Node.TEXT_NODE;
 }

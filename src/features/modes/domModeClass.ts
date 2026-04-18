@@ -7,7 +7,7 @@ const MODE_CLASSES = [
 ];
 
 export function setBrumesModeClass(mode: BrumesMode) {
-	const body = document.body;
+	const body = activeDocument.body;
 
 	// Remove existing mode classes
 	for (const cls of MODE_CLASSES) {

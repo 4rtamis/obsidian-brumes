@@ -4,26 +4,27 @@ import { BrumesSettings } from "../../settings/types";
 const BRUMES_CALLOUT_STYLE_ATTR = "data-brumes-callout-style";
 
 export function loadCalloutAliasFeature(plugin: BrumesPlugin): () => void {
-	const syncAliases = () => syncCalloutAliases(document.body, plugin.settings);
+	const workspaceBody = plugin.app.workspace.containerEl.doc.body;
+	const syncAliases = () => syncCalloutAliases(workspaceBody, plugin.settings);
 	const observer = new MutationObserver((mutations) => {
 		for (const mutation of mutations) {
 			if (
 				mutation.type === "attributes" &&
-				mutation.target instanceof HTMLElement
+				mutation.target.instanceOf(HTMLElement)
 			) {
 				syncCalloutAliases(mutation.target, plugin.settings);
 				continue;
 			}
 
 			for (const node of Array.from(mutation.addedNodes)) {
-				if (node instanceof HTMLElement) {
+				if (node.instanceOf(HTMLElement)) {
 					syncCalloutAliases(node, plugin.settings);
 				}
 			}
 		}
 	});
 
-	observer.observe(document.body, {
+	observer.observe(workspaceBody, {
 		subtree: true,
 		childList: true,
 		attributes: true,
@@ -36,7 +37,7 @@ export function loadCalloutAliasFeature(plugin: BrumesPlugin): () => void {
 	return syncAliases;
 }
 
-function syncCalloutAliases(root: ParentNode, settings: BrumesSettings) {
+function syncCalloutAliases(root: ParentNode & Node, settings: BrumesSettings) {
 	const aliasMap = buildAliasMap(settings);
 
 	for (const calloutEl of getCalloutElements(root)) {
@@ -56,8 +57,8 @@ function syncCalloutAliases(root: ParentNode, settings: BrumesSettings) {
 	}
 }
 
-function getCalloutElements(root: ParentNode): HTMLElement[] {
-	if (!(root instanceof HTMLElement)) {
+function getCalloutElements(root: ParentNode & Node): HTMLElement[] {
+	if (!root.instanceOf(HTMLElement)) {
 		return [];
 	}
 

@@ -9,6 +9,9 @@ export default defineConfig([
 	{
 		files: ["**/*.ts"],
 		extends: [...obsidianmd.configs.recommended],
+		rules: {
+			"obsidianmd/ui/sentence-case": "error",
+		},
 		languageOptions: {
 			parser: tsparser,
 			parserOptions: {

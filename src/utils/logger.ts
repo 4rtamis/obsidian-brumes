@@ -1,4 +1,6 @@
 export type LogLevel = "none" | "error" | "warn" | "info" | "debug";
+type ActiveLogLevel = Exclude<LogLevel, "none">;
+type LogArgs = readonly unknown[];
 
 // Global shared log level
 let currentLogLevel: LogLevel = "error";
@@ -22,6 +24,7 @@ const LEVEL_STYLES: Record<LogLevel, string> = {
 class Logger {
 	private context: string;
 
+	// eslint-disable-next-line obsidianmd/prefer-active-doc
 	constructor(context = "Brumes") {
 		this.context = context;
 	}
@@ -35,35 +38,48 @@ class Logger {
 		return LEVEL_ORDER[currentLogLevel] <= LEVEL_ORDER[level];
 	}
 
-	private logStyled(level: LogLevel, ...args: any[]) {
+	private logStyled(level: ActiveLogLevel, ...args: LogArgs) {
 		if (!this.shouldLog(level)) return;
 
 		const style = LEVEL_STYLES[level];
 		const prefix = `%c[${this.context}]`;
-		const method =
-			level === "debug"
-				? console.debug
-				: level === "info"
-					? console.info
-					: level === "warn"
-						? console.warn
-						: level === "error"
-							? console.error
-							: console.log;
-
-		method(prefix, style, ...args);
+		this.writeToConsole(level, prefix, style, args);
 	}
 
-	debug(...args: any[]) {
+	private writeToConsole(
+		level: ActiveLogLevel,
+		prefix: string,
+		style: string,
+		args: LogArgs,
+	) {
+		/* eslint-disable obsidianmd/rule-custom-message */
+		switch (level) {
+			case "debug":
+				console.debug(prefix, style, ...args);
+				return;
+			case "info":
+				console.info(prefix, style, ...args);
+				return;
+			case "warn":
+				console.warn(prefix, style, ...args);
+				return;
+			case "error":
+				console.error(prefix, style, ...args);
+				return;
+		}
+		/* eslint-enable obsidianmd/rule-custom-message */
+	}
+
+	debug(...args: LogArgs) {
 		this.logStyled("debug", ...args);
 	}
-	info(...args: any[]) {
+	info(...args: LogArgs) {
 		this.logStyled("info", ...args);
 	}
-	warn(...args: any[]) {
+	warn(...args: LogArgs) {
 		this.logStyled("warn", ...args);
 	}
-	error(...args: any[]) {
+	error(...args: LogArgs) {
 		this.logStyled("error", ...args);
 	}
 }

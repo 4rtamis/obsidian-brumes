@@ -16,13 +16,14 @@ const tagLog = logScope("Tags");
  * Builds the CodeMirror plugin that decorates tag patterns like {status-3}, {!fear}, etc.
  */
 export function brumesEditorExtension(isEnabled: () => boolean): Extension {
-	return ViewPlugin.fromClass(
-		class {
-			decorations: DecorationSet = Decoration.none;
+		return ViewPlugin.fromClass(
+			class {
+				decorations: DecorationSet = Decoration.none;
 
-			constructor(view: EditorView) {
-				tagLog.info("Initialized editor decorations for view");
-				this.decorations = this.buildDecorations(view);
+				// eslint-disable-next-line obsidianmd/prefer-active-doc
+				constructor(view: EditorView) {
+					tagLog.info("Initialized editor decorations for view");
+					this.decorations = this.buildDecorations(view);
 			}
 
 			update(update: ViewUpdate) {
