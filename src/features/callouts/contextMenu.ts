@@ -68,7 +68,7 @@ export function getAvailableCalloutInsertions(
 				settings.calloutAliases.cityOfMist.redClue[0],
 				{
 					type: "body-only",
-					body: "Red herring clue",
+					body: "A very mysterious clue",
 				},
 			),
 		].filter((item): item is CalloutInsertion => item !== null);
