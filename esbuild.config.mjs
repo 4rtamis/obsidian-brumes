@@ -6,8 +6,15 @@ import fs from "fs";
 import path from "path";
 
 const banner = `/* Brumes, a plugin to bring theme and tools for Son of Oak's TTRPGs: City of Mist, Legend in the Mist and :Otherscape. */`;
-const outdir = "demo/.obsidian/plugins/brumes";
-const prod = process.argv[2] === "production";
+const outdir = "dist";
+const prod =
+	process.argv.includes("production") ||
+	process.argv.includes("--production");
+const watch = process.argv.includes("--watch");
+
+function ensureOutdir() {
+	fs.mkdirSync(path.resolve(outdir), { recursive: true });
+}
 
 // Helper to copy manifest.json
 function copyManifest() {
@@ -17,8 +24,7 @@ function copyManifest() {
 	console.log("📄 Copied manifest.json");
 }
 
-// Build styles
-const styleBuild = esbuild.context({
+const styleBuildOptions = {
 	banner: { js: banner, css: banner },
 	entryPoints: ["src/styles/styles.scss"],
 	bundle: true,
@@ -26,10 +32,9 @@ const styleBuild = esbuild.context({
 	minify: prod,
 	outdir,
 	plugins: [sassPlugin({ type: "css" })],
-});
+};
 
-// Build plugin code
-const pluginBuild = esbuild.context({
+const pluginBuildOptions = {
 	banner: { js: banner },
 	entryPoints: ["src/main.ts"],
 	bundle: true,
@@ -51,23 +56,37 @@ const pluginBuild = esbuild.context({
 	],
 	format: "cjs",
 	loader: { ".svg": "text" },
-	target: "es2016",
+	target: "es2018",
 	logLevel: "info",
 	minify: prod,
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
 	outdir,
-});
+};
 
-// Run both builds
-Promise.all([styleBuild, pluginBuild])
-	.then(async ([styleCtx, pluginCtx]) => {
-		console.log("✨ Both builds succeeded.");
+async function run() {
+	ensureOutdir();
+
+	if (watch) {
+		const [styleCtx, pluginCtx] = await Promise.all([
+			esbuild.context(styleBuildOptions),
+			esbuild.context(pluginBuildOptions),
+		]);
 
 		copyManifest();
 
-		await styleCtx.watch();
-		await pluginCtx.watch();
+		await Promise.all([styleCtx.watch(), pluginCtx.watch()]);
 		console.log("👀 Watching for changes...");
-	})
-	.catch(() => process.exit(1));
+		return;
+	}
+
+	await Promise.all([
+		esbuild.build(styleBuildOptions),
+		esbuild.build(pluginBuildOptions),
+	]);
+
+	copyManifest();
+	console.log("✨ Build completed.");
+}
+
+run().catch(() => process.exit(1));

@@ -19,6 +19,7 @@ node_modules
 
 # obsidian
 demo
+dist
 data.json
 
 #llms
