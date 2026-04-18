@@ -2,8 +2,8 @@
 	"id": "brumes",
 	"name": "Brumes",
 	"version": "2.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "An Obsidian plugin that brings themes and tools based on City of Mist and Legend in the Mist, two tabletop roleplaying games by Son of Oak.",
+	"minAppVersion": "1.12.7",
+	"description": "Theme and tools for Son of Oak's TTRPGs: City of Mist, Legend in the Mist and :Otherscape.",
 	"author": "4rtamis",
 	"authorUrl": "https://github.com/4rtamis",
 	"isDesktopOnly": false
