@@ -30,7 +30,7 @@
 	"Editor@@link-external-color-hover@@light": "#5E5EB0",
 	"Editor@@img-center-align": true,
 	"Editor@@callout-style-select": "callout-style-customize",
-	"Editor@@h1-divider-on": true,
+	"Editor@@h1-divider-on": false,
 	"Appearance-light@@theme-light-style-select": "theme-light-background-default",
 	"Appearance-light@@background-primary@@light": "#EFEAE6",
 	"Appearance-light@@mod-left-split-background-select-light": "mod-left-split-background-primary-light",
