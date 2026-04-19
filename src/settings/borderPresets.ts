@@ -42,6 +42,36 @@ options:
     icon: eye-off
 */`;
 
+export const ADVANCED_CANVAS_MOUNTAIN_SNIPPET = `/* @advanced-canvas-node-style
+key: mountain-card
+label: Mountain Card
+options:
+  -
+    label: Greatness
+    value: greatness
+    icon: crown
+
+  -
+    label: Adventure
+    value: adventure
+    icon: swords
+
+  -
+    label: Origin
+    value: origin
+    icon: leaf
+
+  -
+    label: Standard
+    value: standard
+    icon: scroll
+
+  -
+    label: Unset
+    value: null
+    icon: eye-off
+*/`;
+
 export function getBorderPresetForMode(mode: BrumesMode): {
 	label: string;
 	content: string;

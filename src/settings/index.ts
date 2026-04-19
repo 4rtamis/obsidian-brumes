@@ -4,6 +4,7 @@ import { BrumesMode, LogLevel, sanitizeAliases } from "./types";
 import { log } from "../utils/logger";
 import {
 	ADVANCED_CANVAS_ICEBERG_SNIPPET,
+	ADVANCED_CANVAS_MOUNTAIN_SNIPPET,
 	getBorderPresetForMode,
 } from "./borderPresets";
 
@@ -349,6 +350,32 @@ export class BrumesSettingTab extends PluginSettingTab {
 						}),
 				);
 		});
+
+		section.addSetting((setting) => {
+			setting
+				.setName("Mountain canvas snippet")
+				.setDesc(this.createMountainDescription())
+				.setDisabled(!isActive)
+				.addButton((button) =>
+					button
+						.setButtonText("Copy snippet")
+						.setDisabled(!isActive)
+						.onClick(() => {
+							this.runTask(
+								async () => {
+									await navigator.clipboard.writeText(
+										ADVANCED_CANVAS_MOUNTAIN_SNIPPET,
+									);
+									new Notice(
+										"Mountain canvas snippet copied to clipboard.",
+									);
+								},
+								"Failed to copy mountain snippet",
+								"Failed to copy the mountain snippet.",
+							);
+						}),
+				);
+		});
 	}
 
 	private renderOtherscapeSettings(section: SettingGroup) {
@@ -453,6 +480,20 @@ export class BrumesSettingTab extends PluginSettingTab {
 		);
 		fragment.append(
 			" by Developer-Mike, then go to Settings > Appearance > CSS snippets, create a snippet named iceberg.css, paste the copied content into that file, and enable the snippet.",
+		);
+		return fragment;
+	}
+
+	private createMountainDescription(): DocumentFragment {
+		const fragment = this.containerEl.doc.createDocumentFragment();
+		fragment.append("Install ");
+		this.appendLink(
+			fragment,
+			"Advanced Canvas",
+			"https://github.com/Developer-Mike/obsidian-advanced-canvas",
+		);
+		fragment.append(
+			" by Developer-Mike, then go to Settings > Appearance > CSS snippets, create a snippet named mountain.css, paste the copied content into that file, and enable the snippet.",
 		);
 		return fragment;
 	}
