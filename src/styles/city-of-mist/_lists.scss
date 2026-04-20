@@ -1,0 +1,56 @@
+@mixin unordered-list {
+	--list-indent-editing: 0em;
+}
+
+@mixin reset-checkbox {
+	-webkit-mask-image: unset;
+	background-color: unset;
+	mask: unset;
+	mask-image: unset;
+	mask-size: unset;
+	mask-repeat: unset;
+	-webkit-mask-position-x: unset;
+	-webkit-mask-position-y: unset;
+}
+
+@mixin letter-checkbox($letter) {
+	input[data-task="#{$letter}"]:checked:after,
+	li[data-task="#{$letter}"] > input:checked:after,
+	li[data-task="#{$letter}"] > p > input:checked:after {
+		@include reset-checkbox;
+
+		content: "#{$letter}";
+		color: var(--checkbox-marker-color);
+		font-family: "PT Serif", serif;
+		text-transform: uppercase;
+		text-align: center;
+		font-weight: 800;
+		font-size: var(--font-text-size);
+		width: var(--checkbox-size);
+		height: var(--checkbox-size);
+		vertical-align: middle;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transform: translateY(-1px);
+	}
+
+	div[data-task="#{$letter}"] > span,
+	li[data-task="#{$letter}"] {
+		letter-spacing: var(--h6-letter-spacing);
+		line-height: var(--h6-line-height);
+		font-style: var(--h6-style);
+		font-family: var(--h6-font);
+		text-transform: var(--h6-text-transform);
+	}
+}
+
+@mixin checkbox {
+	--checkbox-margin-inline-start: 0px;
+	--checkbox-size: 18px;
+
+	$letters: "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "?";
+	@each $letter in $letters {
+		@include letter-checkbox($letter);
+	}
+}

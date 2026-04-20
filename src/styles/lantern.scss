@@ -1,0 +1,79 @@
+.brumes-lantern-view {
+	height: 100%;
+}
+
+.brumes-lantern-view__wrapper {
+	position: relative;
+	height: 100%;
+}
+
+.brumes-lantern-view__iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	background: var(--background-primary);
+}
+
+.brumes-lantern-view__loading {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 2rem;
+	background: color-mix(in srgb, var(--background-primary) 92%, transparent);
+	transition:
+		opacity 180ms ease,
+		visibility 180ms ease;
+}
+
+.brumes-lantern-view__loading.is-hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.brumes-lantern-view__loading-logo {
+	width: clamp(72px, 16vw, 120px);
+	opacity: 0.22;
+	color: var(--text-normal);
+}
+
+.brumes-lantern-view__loading-logo svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	fill: currentColor;
+}
+
+.brumes-lantern-view__loading-bar {
+	position: relative;
+	overflow: hidden;
+	width: min(220px, 60vw);
+	height: 6px;
+	border-radius: 999px;
+	background: var(--background-modifier-border);
+}
+
+.brumes-lantern-view__loading-bar-value {
+	position: absolute;
+	inset: 0;
+	width: 35%;
+	border-radius: inherit;
+	background: var(--interactive-accent);
+	animation: brumes-lantern-loading 1.2s ease-in-out infinite;
+}
+
+@keyframes brumes-lantern-loading {
+	0% {
+		transform: translateX(-120%);
+	}
+
+	100% {
+		transform: translateX(320%);
+	}
+}

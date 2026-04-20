@@ -1,0 +1,60 @@
+@use "./fonts/averia-serif-libre.scss";
+@use "./fonts/bebas-neue.scss";
+@use "./fonts/courier-prime.scss";
+@use "./fonts/fira-sans-extra-condensed.scss";
+@use "./fonts/pt-serif.scss";
+@use "./fonts/roboto.scss";
+
+@use "./headings";
+@use "./links";
+@use "./lists";
+@use "./hashtags";
+@use "./tags";
+@use "./callouts";
+@use "./tables";
+@use "./iceberg";
+
+.brumes--city-of-mist {
+	// Text
+	--font-text-theme: "PT Serif", serif;
+
+	// Interface
+	// TODO: Change font if relevant
+	//--font-interface-theme: "Roboto", sans-serif;
+
+	// Headings
+	--font-header-theme: "Fira Sans Extra Condensed", sans-serif;
+	@include headings.inline-title-underline;
+
+	// Links
+	@include links.internal-links;
+	@include links.external-links;
+
+	// Lists
+	@include lists.unordered-list;
+	@include lists.checkbox;
+
+	// Tables
+	@include tables.global;
+
+	// Hashtags
+	@include hashtags.global;
+
+	// Brumes Tags
+	@include tags.global;
+	@include tags.power;
+	@include tags.weakness;
+	@include tags.status;
+	@include tags.limit;
+
+	// Callouts
+	@include callouts.global;
+	@include callouts.move;
+	@include callouts.description;
+	@include callouts.clue;
+	@include callouts.aside;
+}
+
+// Iceberg Cards
+// Needs to be outside of the .brumes--city-of-mist class to work properly in the canvas
+@include iceberg.cards;

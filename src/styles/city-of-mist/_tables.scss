@@ -1,0 +1,52 @@
+@mixin global {
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-family: "PT Serif", serif;
+		font-size: 0.95rem;
+		background: transparent;
+		color: #000000;
+
+		thead {
+			background: #d4ccadaa;
+			border: none;
+			box-shadow: none;
+
+			--table-header-border-width: 0px;
+			--table-column-first-border-width: 0px;
+			--table-header-border-width: 0px;
+
+			tr {
+				background: none !important;
+			}
+
+			th,
+			th .cm-line {
+				padding: var(--size-4-2) var(--size-4-2);
+				font-family: "PT Serif", serif;
+				text-align: left;
+				font-weight: bold;
+				color: black;
+				border: 0;
+
+				.table-cell-wrapper {
+					padding: var(--size-4-2) var(--size-4-2) !important;
+				}
+			}
+		}
+
+		tbody {
+			--table-column-first-border-width: 0px;
+			--table-border-width: 0px;
+			--table-column-last-border-width: 0px;
+			--table-row-last-border-width: 0px;
+
+			tr {
+				--table-row-alt-background-hover: transparent;
+				--table-row-alt-background: transparent;
+				--table-row-background-hover: #e5dccbaa;
+				--table-background: #e5dccbaa;
+			}
+		}
+	}
+}

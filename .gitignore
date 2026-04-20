@@ -14,11 +14,13 @@ node_modules
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
 
-# Exclude sass cache
-.sass-cache/*
+# Nix
+.direnv
 
-# Exclude .env
-.env
+# obsidian
+demo
+dist
+data.json
 
-# Exclude doc
-/docs/.obsidian
+#llms
+.codex

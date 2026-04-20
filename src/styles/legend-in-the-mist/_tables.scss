@@ -1,0 +1,54 @@
+@mixin oracle-table {
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-family: "Labrada", serif;
+		font-size: 0.95rem;
+		background: transparent;
+		color: #000000;
+
+		thead {
+			background: #dac5b2;
+			border: 2px solid #b09a85;
+			box-shadow: inset 0 0 10px #c3a897;
+
+			--table-header-border-width: 0px;
+			--table-column-first-border-width: 0px;
+			--table-header-border-width: 0px;
+
+			tr {
+				background: none !important;
+			}
+
+			th,
+			th .cm-line {
+				padding: var(--size-4-2) var(--size-4-2);
+				font-family: "PragRoman", serif;
+				text-align: left;
+				font-weight: bold;
+				text-transform: uppercase;
+				font-size: 0.7rem;
+				color: #402312;
+				border: 0;
+
+				.table-cell-wrapper {
+					padding: var(--size-4-2) var(--size-4-2) !important;
+				}
+			}
+		}
+
+		tbody {
+			--table-column-first-border-width: 0px;
+			--table-border-width: 0px;
+			--table-column-last-border-width: 0px;
+			--table-row-last-border-width: 0px;
+
+			tr {
+				--table-row-alt-background-hover: #e5dccb;
+				--table-row-alt-background: #e5dccb;
+				--table-row-background-hover: transparent;
+				--table-row-background: transparent;
+			}
+		}
+	}
+}

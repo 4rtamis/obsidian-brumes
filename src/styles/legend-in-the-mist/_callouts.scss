@@ -1,0 +1,171 @@
+@mixin global {
+	.callout {
+		position: relative;
+		overflow: hidden;
+		background: none !important;
+		border: 0;
+		border-left: 2px solid #c5bdae;
+
+		--brumes-callout-background: #ffffff94;
+		--callout-radius: 0;
+		--note-text-rotation: -1deg;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-color: var(--brumes-callout-background);
+			mask-image:
+				linear-gradient(to right, black, transparent),
+				linear-gradient(
+					to bottom,
+					transparent,
+					black 20%,
+					black 80%,
+					transparent
+				);
+			mask-composite: intersect;
+			mask-repeat: no-repeat;
+			mask-size: 100% 100%;
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		& > * {
+			position: relative;
+			z-index: 1;
+		}
+
+		.callout-title {
+			font-family: "Caveat Brush", "Labrada", sans-serif;
+			transform: rotate(var(--note-text-rotation));
+
+			--callout-title-size: 1.5em;
+
+			.callout-icon {
+				display: none;
+			}
+
+			.callout-title-inner {
+				--callout-title-color: #752b2b;
+				--callout-title-weight: normal;
+			}
+		}
+
+		.callout-fold {
+			color: #752b2b;
+		}
+
+		.callout-content {
+			font-family: "Caveat", "Labrada", sans-serif;
+			font-size: 1.2em;
+			transform: rotate(var(--note-text-rotation));
+
+			--p-spacing: 0.5rem;
+		}
+	}
+
+	// Blue
+
+	.callout[data-callout="summary"],
+	.callout[data-callout="abstract"],
+	.callout[data-callout="tldr"] {
+		--brumes-callout-background: #bccdb035;
+	}
+
+	.callout[data-callout="info"] {
+		--brumes-callout-background: #bccdb035;
+	}
+
+	.callout[data-callout="todo"] {
+		--brumes-callout-background: #bccdb035;
+	}
+
+	.callout[data-callout="tip"],
+	.callout[data-callout="hint"],
+	.callout[data-callout="important"] {
+		--brumes-callout-background: #bccdb035;
+	}
+
+	// Green
+
+	.callout[data-callout="success"],
+	.callout[data-callout="check"],
+	.callout[data-callout="done"] {
+		--brumes-callout-background: #bccdb056;
+	}
+
+	// Yellow
+
+	.callout[data-callout="question"],
+	.callout[data-callout="help"],
+	.callout[data-callout="faq"] {
+		--brumes-callout-background: #efd69333;
+	}
+
+	// Orange
+
+	.callout[data-callout="warning"],
+	.callout[data-callout="caution"],
+	.callout[data-callout="attention"] {
+		--brumes-callout-background: #dd932835;
+	}
+
+	// Red
+
+	.callout[data-callout="failure"] {
+		--brumes-callout-background: #d1a28e44;
+	}
+
+	.callout[data-callout="danger"],
+	.callout[data-callout="error"] {
+		--brumes-callout-background: #d1a28e44;
+	}
+
+	.callout[data-callout="bug"] {
+		--brumes-callout-background: #d1a28e44;
+	}
+
+	// Purple
+
+	.callout[data-callout="example"] {
+		--brumes-callout-background: #7772a115;
+	}
+
+	.callout[data-callout="quote"] {
+		--brumes-callout-background: #e4ddc3;
+	}
+
+	// Note
+	.callout[data-callout="note"],
+	.callout[data-brumes-callout-style="note"] {
+		--brumes-callout-background: #ffffff94;
+	}
+}
+
+@mixin read-aloud {
+	.callout[data-brumes-callout-style="read-aloud"] {
+		background: none !important;
+		border: none;
+
+		.callout-title {
+			display: none;
+
+			.callout-icon {
+				display: none;
+			}
+
+			.callout-title-inner {
+				display: none;
+			}
+		}
+
+		.callout-content {
+			font-size: 0.9em;
+			font-family: "PragRoman", "Labrada", sans-serif;
+			line-height: 1.5;
+			--p-spacing: 0.5rem;
+			transform: none;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+@mixin global {
+	.cm-hashtag,
+	a.tag {
+		font-family: "Bebas Neue", sans-serif;
+		--tag-size: 1.15em;
+
+		--tag-radius: 0px;
+		--tag-border-color: transparent;
+		--tag-border-color-hover: transparent;
+		--tag-padding-x: 0em;
+	}
+
+	.cm-hashtag-end:after,
+	a.tag:after {
+		content: "\00a0\00a0·";
+		color: var(--tag-color);
+	}
+
+	.cm-hashtag-end:last-child:after,
+	a.tag:last-child:after {
+		content: "";
+	}
+
+	.metadata-properties-title {
+		font-family: "PT Serif", serif;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+}

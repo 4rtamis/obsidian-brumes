@@ -1,0 +1,11 @@
+@mixin global {
+	.cm-hashtag,
+	a.tag {
+		font-family: "PragRoman", sans-serif;
+		--tag-size: 0.75em;
+	}
+
+	.metadata-properties-title {
+		font-family: "PragRoman", sans-serif;
+	}
+}

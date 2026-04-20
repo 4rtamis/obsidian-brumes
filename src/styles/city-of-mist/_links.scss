@@ -1,0 +1,35 @@
+@mixin internal-links {
+	.cm-hmd-internal-link,
+	.cm-hmd-internal-link .cm-underline,
+	a.internal-link {
+		text-decoration: underline;
+		text-decoration-color: var(--color-blue);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.3em;
+	}
+
+	.cm-hmd-internal-link:hover {
+		border-radius: var(--radius-s);
+		background-color: var(--background-modifier-hover);
+		transition: background-color var(--anim-duration-fast)
+			var(--anim-motion-smooth);
+	}
+}
+
+@mixin external-links {
+	.cm-link,
+	.cm-link .cm-underline,
+	a.external-link {
+		text-decoration: underline;
+		text-decoration-color: var(--color-accent-1);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.3em;
+	}
+
+	.cm-link:hover {
+		border-radius: var(--radius-s);
+		background-color: var(--background-modifier-hover);
+		transition: background-color var(--anim-duration-fast)
+			var(--anim-motion-smooth);
+	}
+}

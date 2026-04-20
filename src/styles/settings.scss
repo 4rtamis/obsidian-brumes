@@ -1,0 +1,11 @@
+.setting-group {
+	&.is-inactive {
+		opacity: 0.4;
+	}
+
+	&.is-inactive .setting-item-heading,
+	&.is-inactive .setting-item-description,
+	&.is-inactive p {
+		color: var(--text-muted);
+	}
+}

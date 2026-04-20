@@ -1,0 +1,60 @@
+@use "./fonts/caveat.scss";
+@use "./fonts/caveat-brush.scss";
+@use "./fonts/frederick-text.scss";
+@use "./fonts/im-fell-english.scss";
+@use "./fonts/im-fell-great-primer.scss";
+@use "./fonts/labrada.scss";
+@use "./fonts/pragroman.scss";
+
+@use "./headings";
+@use "./lists";
+@use "./separators";
+@use "./tables";
+@use "./hashtags";
+@use "./tags";
+@use "./callouts";
+@use "./story-themes";
+@use "./mountain";
+
+.brumes--legend-in-the-mist {
+	// Text
+	--font-text-theme: "Labrada", sans-serif;
+
+	// Interface
+	// TODO: Change font if relevant
+	//--font-interface-theme: "Labrada", sans-serif;
+
+	// Headings
+	--font-header-theme: "PragRoman", sans-serif;
+	@include headings.inline-title-underline;
+
+	// Lists
+	@include lists.unordered-list;
+	@include lists.checkbox;
+
+	// Separators
+	@include separators.hand-drawn-line;
+
+	// Tables
+	@include tables.oracle-table;
+
+	// Hashtags
+	@include hashtags.global;
+
+	// Brumes Tags
+	@include tags.global;
+	@include tags.power;
+	@include tags.weakness;
+	@include tags.status;
+	@include tags.limit;
+
+	// Callouts
+	@include callouts.global;
+	@include callouts.read-aloud;
+
+	// Story Themes
+	@include story-themes.global;
+}
+
+// Mountain Series
+@include mountain.cards;
