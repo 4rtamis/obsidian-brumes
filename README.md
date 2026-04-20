@@ -1,35 +1,199 @@
-> [!IMPORTANT]
-> Brumes is being fully refactored. This branch will be merged with `master` once everything is ready for v2.0.0.
+<p align="center">
+  <img src="doc/brumes.webp" alt="Brumes banner" width="960">
+</p>
 
-# Brumes - City of Mist Obsidian Theme
+# Brumes
 
-Brumes is an [Obsidian](https://obsidian.md) theme based on the award-winning tabletop role-playing game [City of Mist](https://cityofmist.co/). It aims to imitate the overall style of the City of Mist rulebooks and to provide easy-to-use features for the MC to easily prepare her cases.
+Brumes is an Obsidian plugin for running **City of Mist** and **Legend in the Mist** vaults with game-specific styling, custom inline syntax, themed callouts, Story Theme cards, and optional canvas helpers.
 
-## Roadmap
+Note: **:Otherscape** suuport is planned, but not implemented yet.
 
--   [x] Refactoring the overall code structure from theme to plugin
--   [ ] Adding a _City of Mist_ light theme preset
--   [ ] Adding a _City of Mist_ dark theme preset
--   [ ] Adding a _Legend in the Mist_ light theme preset
--   [ ] Refactoring callouts to make them more interactive (clues, description, moves)
--   [ ] Refactoring dangers to make them fully interactive (no more HTML)
--   [ ] Refactoring tags, statuses and spectrums to make them fully interactive (no more HTML)
--   [ ] Creating a whole new Iceberg view (no more canvas hack)
--   [ ] Releasing a comprehensive documentation
--   [ ] Releasing an installation video tutorial
+## Installation
 
-## Credits
+### 1. Prepare a vault
 
-This theme is developed by [**@4rtamis**](https://github.com/4rtamis).
+Brumes is easiest to test in a dedicated vault.
 
-City of Mist is a game created by **Amít Moshe**. This theme is heavily based on the [City of Mist - Style Guide](https://preview.drivethrurpg.com/en/product/363318/city-of-mist-garage-style-guide) published by Son of Oak Game Studio.
+| Install                                                                       | Why                                                          |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [BRAT](https://github.com/TfTHacker/obsidian42-brat)                          | Required to install Brumes from GitHub                       |
+| [Border theme](https://github.com/Akifyss/obsidian-border)                    | The visual base Brumes is designed around                    |
+| [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)         | Needed to import the Border preset Brumes provides           |
+| [Advanced Canvas](https://github.com/Developer-Mike/obsidian-advanced-canvas) | Optional, only needed for Iceberg and Mountain card snippets |
+
+Suggested vault setup:
+
+1. Create a fresh Obsidian vault for testing or play.
+2. Enable Community plugins.
+3. Install `BRAT`, `Style Settings`, and optionally `Advanced Canvas`.
+4. Switch your theme to `Border`.
+
+### 2. Install Brumes with BRAT
+
+1. Open `Settings -> BRAT`.
+2. Choose `Add Beta plugin`.
+3. Enter `4rtamis/obsidian-brumes`.
+4. Install the plugin, then enable `Brumes`.
+
+### 3. Configure Brumes
+
+1. Open `Settings -> Brumes`.
+2. Pick your `Game mode`.
+3. Click `Copy preset` for the active mode.
+4. Import that preset through `Style Settings` if you are using `Border`.
+
+### 4. Optional canvas setup
+
+If you use `Advanced Canvas`, Brumes can generate mode-specific node-style snippets:
+
+- `City of Mist` mode: copy the `Iceberg canvas snippet`
+- `Legend in the Mist` mode: copy the `Mountain canvas snippet`
+
+Then:
+
+1. Go to `Settings -> Appearance -> CSS snippets`.
+2. Create `iceberg.css` or `mountain.css` inside `.obsidian/snippets/`.
+3. Paste the copied snippet content into the matching file.
+4. Enable the snippet in Obsidian.
+
+## Core Concepts
+
+### 1. Custom inline syntax
+
+Brumes parses brace-based syntax in the editor and in reading view:
+
+```md
+{power-tag}
+{!weakness-tag}
+{status-3}
+{attention:5}
+{countdown:~}
+```
+
+- `{power-tag}` creates a normal tag
+- `{!weakness-tag}` creates a weakness tag
+- `{status-3}` creates a status with a rating
+- `{limit:5}` creates a limit
+
+The plugin also adds a Brumes editor context-menu entry so you can insert starter tags, callouts, and Story Theme templates without memorizing the syntax.
+
+### 2. Callouts
+
+Brumes builds on standard Obsidian callouts, but gives them mode-specific styling and aliases.
+
+City of Mist examples:
+
+```md
+> [!MOVE] Hit the Streets
+> Describe the move here.
+
+> [!DESCRIPTION]
+> Text to read aloud.
+
+> [!CLUE]
+> The matchbook is still warm.
+```
+
+Default City of Mist aliases include:
+
+- `note`, `aside`
+- `move`
+- `description`, `read-aloud`
+- `clue`
+- `red-clue`
+
+Legend in the Mist examples:
+
+```md
+> [!NOTE] Village Rumor
+> The ferryman never crosses after dusk.
+
+> [!READ-ALOUD]
+> The mist swallows the road behind you.
+```
+
+Default Legend in the Mist aliases include:
+
+- `note`
+- `read-aloud`
+
+Aliases are editable in Brumes settings, and the first alias in each list is what the context menu inserts.
+
+### 3. Story Themes for Legend in the Mist
+
+In `Legend in the Mist` mode, Brumes can render a `story-theme` code block into a styled card:
+
+````md
+```story-theme
+origin
+circumstance
+{Born in the marsh}
+{Track by moonlight}
+{Know every hidden trail}
+{!Trust strangers too easily}
+```
+````
+
+How it works:
+
+- First line can be `origin`, `adventure`, or `greatness`
+- Second line can be a category or themebook label
+- First normal tag becomes the title tag
+- Later normal tags become power tags
+- `{!weakness}` lines become weakness tags
+
+If you omit the level, Brumes falls back to a standard card style.
+
+### 4. Iceberg and Mountain card snippets
+
+Brumes includes copyable snippet templates for `Advanced Canvas`.
+
+- `Iceberg Card` is the City of Mist helper
+- `Mountain Card` is the Legend in the Mist helper
+
+Available Iceberg variants:
+
+- `location`
+- `character`
+- `group`
+- `sticky-note`
+
+Available Mountain variants:
+
+- `origin`
+- `adventure`
+- `greatness`
+- `standard`
+
+### 5. Mode switching
+
+The selected game mode changes more than colors. It also switches which callouts, presets, context-menu actions, and special renderers are active in the vault.
+
+### 6. Lantern in the Mist integration
+
+Brumes can add a ribbon button that opens an embedded `Lantern in the Mist` view inside Obsidian. The target URL is configurable from plugin settings.
 
 ## License
 
-Brumes is licensed under the [MIT License](./LICENSE) which allows you to modify and redistribute the code. However, you must keep the license notice included in this repository in your CSS file, even if you only extract some parts of the code as standalone snippets. Be careful to include the licenses of the fonts if you embed them in your project as well.
+- Plugin code: [MIT](LICENSE)
+- Font files: each bundled font keeps its own upstream license
+- Assets: status is still under discussion with Son of Oak
 
-If you distribute a fork of Brumes or any part of the code of this repository, please keep my pseudo and link my GitHub profile page in your Readme.
+### Font License Files
 
-## Disclaimer
+- [Averia](licenses/fonts/Averia.LICENSE.txt)
+- [Bebas Neue](licenses/fonts/BebasNeue.LICENSE.txt)
+- [Caveat](licenses/fonts/Caveat.LICENSE.txt)
+- [Courier Prime](licenses/fonts/CourierPrime.LICENSE.txt)
+- [Fira Sans Extra Condensed](licenses/fonts/Fira.LICENSE.txt)
+- [Frederick Text](licenses/fonts/FrederickText.LICENSE.txt)
+- [IM Fell English](licenses/fonts/IMFellEnglish.LICENSE.txt)
+- [IM Fell Great Primer](licenses/fonts/IMFellGreatPrimer.LICENSE.txt)
+- [Labrada](licenses/fonts/Labrada.LICENSE.txt)
+- [PT Serif / ParaType](licenses/fonts/ParaType.LICENSE.txt)
+- [PragRoman](licenses/fonts/PragRoman.LICENSE.txt)
+- [Roboto](licenses/fonts/Roboto.LICENSE.txt)
 
-Brumes is provided as is and is designed for my personal use of Obsidian. It modifies parts of the software interface and may interfere with some features. There is no guarantee that Brumes will work alongside plugins and CSS snippets other than the ones presented in this document. Furthermore, future updates of Obsidian may break this theme.
+### Asset Status
+
+Use of bundled Son of Oak-derived assets under discussion.
