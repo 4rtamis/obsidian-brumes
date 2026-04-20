@@ -1,0 +1,16 @@
+FIXME: Discussions are ongoing with Son of Oak considering the use of copyrighted assets outside of the Cauldron of Mist general guidelines.
+
+List of assets belonging to Son of Oak used in this project:
+
+City of Mist
+- Iceberg Background (distributed in the repository only)
+
+Legend in the Mist
+- Mountain and Crossroad Backgrounds (distributed in the repository only)
+- Limits' "red shield" icon
+- Weakness Tags's "double down arrows" icon
+- Origin, Adventure and Greatness icons
+- Consequence "skull", Success "star" and Mixes Success "half-skull half-star" icons
+- Story Themes parchment background
+- Main heading underline decoration "red line"
+- Secondary heading decoration "small line"
