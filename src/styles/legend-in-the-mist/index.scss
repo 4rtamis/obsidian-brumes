@@ -49,7 +49,7 @@
 	@include tags.limit;
 
 	// Callouts
-	@include callouts.note;
+	@include callouts.global;
 	@include callouts.read-aloud;
 
 	// Story Themes
