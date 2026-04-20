@@ -15,8 +15,56 @@
 		}
 	}
 
-	.callout[data-callout="bug"] {
-		background-color: #ece1d4;
+	// Blue
+
+	.callout[data-callout="summary"],
+	.callout[data-callout="abstract"],
+	.callout[data-callout="tldr"] {
+		background-color: #d8cfca;
+	}
+
+	.callout[data-callout="info"] {
+		background-color: #e4ddc3;
+	}
+
+	.callout[data-callout="todo"] {
+		background-color: #e4ddc3;
+	}
+
+	.callout[data-callout="tip"],
+	.callout[data-callout="hint"],
+	.callout[data-callout="important"] {
+		background-color: #dee4d9;
+	}
+
+	// Green
+
+	.callout[data-callout="success"],
+	.callout[data-callout="check"],
+	.callout[data-callout="done"] {
+		background-color: #e3e1c0;
+	}
+
+	// Yellow
+
+	.callout[data-callout="question"],
+	.callout[data-callout="help"],
+	.callout[data-callout="faq"] {
+		background-color: #f0ede0;
+	}
+
+	// Orange
+
+	.callout[data-callout="warning"],
+	.callout[data-callout="caution"],
+	.callout[data-callout="attention"] {
+		background-color: #eaddcd;
+	}
+
+	// Red
+
+	.callout[data-callout="failure"] {
+		background-color: #edc0bb;
 	}
 
 	.callout[data-callout="danger"] {
@@ -27,44 +75,14 @@
 		background-color: #decece;
 	}
 
+	.callout[data-callout="bug"] {
+		background-color: #ece1d4;
+	}
+
+	// Purple
+
 	.callout[data-callout="example"] {
 		background-color: #e3e1c0;
-	}
-
-	.callout[data-callout="failure"] {
-		background-color: #edc0bb;
-	}
-
-	.callout[data-callout="important"] {
-		background-color: #dee4d9;
-	}
-
-	.callout[data-callout="info"] {
-		background-color: #e4ddc3;
-	}
-
-	.callout[data-callout="question"] {
-		background-color: #f0ede0;
-	}
-
-	.callout[data-callout="success"] {
-		background-color: #e3e1c0;
-	}
-
-	.callout[data-callout="summary"] {
-		background-color: #d8cfca;
-	}
-
-	.callout[data-callout="tip"] {
-		background-color: #e4ddc3;
-	}
-
-	.callout[data-callout="todo"] {
-		background-color: #e4ddc3;
-	}
-
-	.callout[data-callout="warning"] {
-		background-color: #eaddcd;
 	}
 
 	.callout[data-callout="quote"] {
