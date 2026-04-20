@@ -66,5 +66,6 @@
 	"Appearance-light@@mod-left-split-background-select-light": "mod-left-split-background-primary-light",
 	"Appearance-light@@mod-right-split-background-select-light": "mod-right-split-background-primary-light",
 	"Appearance-light@@background-underlying-select-light": "background-underlying-default-light",
-	"Editor@@callout-style-select": "callout-style-customize"
+	"Editor@@callout-style-select": "callout-style-customize",
+	"Editor@@disable-alternative-checkboxes": true
 }
