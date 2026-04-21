@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-brumes",
-	"version": "2.0.0",
+	"version": "2.0.0-beta",
 	"description": "Theme and tools for Son of Oak's TTRPGs: City of Mist, Legend in the Mist and :Otherscape.",
 	"main": "dist/main.js",
 	"scripts": {

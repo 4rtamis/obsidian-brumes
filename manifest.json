@@ -1,7 +1,7 @@
 {
 	"id": "brumes",
 	"name": "Brumes",
-	"version": "2.0.0",
+	"version": "2.0.0-beta",
 	"minAppVersion": "1.12.7",
 	"description": "Theme and tools for Son of Oak's TTRPGs: City of Mist, Legend in the Mist and :Otherscape.",
 	"author": "4rtamis",
