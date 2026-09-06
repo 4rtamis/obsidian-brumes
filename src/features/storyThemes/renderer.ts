@@ -1,3 +1,4 @@
+import { renderTagSpan } from "../blocks/tagSpan";
 import { StoryThemeData } from "./parser";
 
 export function renderStoryTheme(
@@ -32,21 +33,13 @@ export function renderStoryTheme(
 
 	for (const tag of data.powerTags) {
 		const li = doc.createElement("li");
-		const span = doc.createElement("span");
-		span.classList.add("brumes-tag", "brumes-power");
-		span.dataset.name = tag;
-		span.textContent = tag;
-		li.appendChild(span);
+		li.appendChild(renderTagSpan(tag, doc, { force: "power" }));
 		tagList.appendChild(li);
 	}
 
 	for (const tag of data.weaknessTags) {
 		const li = doc.createElement("li");
-		const span = doc.createElement("span");
-		span.classList.add("brumes-tag", "brumes-weakness");
-		span.dataset.name = tag;
-		span.textContent = tag;
-		li.appendChild(span);
+		li.appendChild(renderTagSpan(tag, doc, { force: "weakness" }));
 		tagList.appendChild(li);
 	}
 

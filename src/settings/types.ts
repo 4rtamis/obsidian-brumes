@@ -127,6 +127,27 @@ function normalizeAliasList(
 	return sanitizeAliases(value.map(String));
 }
 
+/**
+ * Keep every declared feature flag, defaulting the ones the saved data misses.
+ * Adding a flag to `BrumesFeatureSettings` and `DEFAULT_SETTINGS` is enough.
+ */
+function normalizeFeatures(
+	features: Partial<BrumesFeatureSettings>,
+): BrumesFeatureSettings {
+	const normalized = { ...DEFAULT_SETTINGS.features };
+	const keys = Object.keys(normalized) as (keyof BrumesFeatureSettings)[];
+
+	for (const key of keys) {
+		const value = features[key];
+
+		if (typeof value === "boolean") {
+			normalized[key] = value;
+		}
+	}
+
+	return normalized;
+}
+
 export function normalizeSettings(
 	data: Partial<BrumesSettings> | null | undefined,
 ): BrumesSettings {
@@ -146,20 +167,7 @@ export function normalizeSettings(
 			typeof source.lanternUrl === "string"
 				? source.lanternUrl.trim() || DEFAULT_SETTINGS.lanternUrl
 				: DEFAULT_SETTINGS.lanternUrl,
-		features: {
-			tagsSyntax:
-				typeof features.tagsSyntax === "boolean"
-					? features.tagsSyntax
-					: DEFAULT_SETTINGS.features.tagsSyntax,
-			lanternIntegration:
-				typeof features.lanternIntegration === "boolean"
-					? features.lanternIntegration
-					: DEFAULT_SETTINGS.features.lanternIntegration,
-			storyThemeParser:
-				typeof features.storyThemeParser === "boolean"
-					? features.storyThemeParser
-					: DEFAULT_SETTINGS.features.storyThemeParser,
-		},
+		features: normalizeFeatures(features),
 		calloutAliases: {
 			cityOfMist: {
 				note: normalizeAliasList(

@@ -1,9 +1,9 @@
 import { Editor, EventRef, Menu } from "obsidian";
 import type BrumesPlugin from "../BrumesPlugin";
 import {
-	contributeStoryTheme,
-	hasStoryThemeInsertion,
-} from "../features/storyThemes/contextMenu";
+	contributeBlockInsertions,
+	hasBlockInsertions,
+} from "../features/blocks/registry";
 import {
 	contributeTagInsertion,
 	hasTagInsertion,
@@ -21,7 +21,7 @@ export function registerBrumesContextMenu(plugin: BrumesPlugin): EventRef {
 			const hasAnyItems =
 				hasTagInsertion(plugin.settings) ||
 				getAvailableCalloutInsertions(plugin.settings).length > 0 ||
-				hasStoryThemeInsertion(plugin.settings);
+				hasBlockInsertions(plugin.settings);
 
 			if (!hasAnyItems) {
 				return;
@@ -47,11 +47,11 @@ export function registerBrumesContextMenu(plugin: BrumesPlugin): EventRef {
 			);
 			hasItems = hasItems || calloutItems > 0;
 
-			if (hasStoryThemeInsertion(plugin.settings) && hasItems) {
+			if (hasBlockInsertions(plugin.settings) && hasItems) {
 				submenu.addSeparator();
 			}
 			hasItems =
-				contributeStoryTheme(submenu, editor, plugin.settings) > 0 ||
+				contributeBlockInsertions(submenu, editor, plugin.settings) > 0 ||
 				hasItems;
 		},
 	);

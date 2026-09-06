@@ -4,7 +4,7 @@ import { BrumesSettingTab } from "./settings";
 import { BrumesSettings, normalizeSettings } from "./settings/types";
 import { log } from "./utils/logger";
 import { setBrumesModeClass } from "./features/modes/domModeClass";
-import { loadStoryThemesFeature } from "./features/storyThemes";
+import { loadBrumesBlocks } from "./features/blocks/registry";
 import { registerBrumesContextMenu } from "./contextMenu";
 import {
 	LANTERN_ICON,
@@ -40,7 +40,7 @@ export default class BrumesPlugin extends Plugin {
 		this.addSettingTab(new BrumesSettingTab(this.app, this));
 
 		loadTagFeature(this);
-		loadStoryThemesFeature(this);
+		loadBrumesBlocks(this);
 		this.syncCalloutAliases = loadCalloutAliasFeature(this);
 
 		this.applySettings();
