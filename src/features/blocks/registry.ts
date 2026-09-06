@@ -4,12 +4,16 @@ import { BrumesSettings } from "../../settings/types";
 import { logScope } from "../../utils/logger";
 import { renderRawBlock } from "./fallback";
 import { BrumesBlock, blockIds, isBlockEnabled } from "./types";
+import { challengeBlock } from "../challenges/block";
 import { storyThemeBlock } from "../storyThemes/block";
 
 const log = logScope("Blocks");
 
 /** Every fenced block Brumes knows. Adding a format means adding a line here. */
-export const BRUMES_BLOCKS: BrumesBlock<unknown>[] = [storyThemeBlock];
+export const BRUMES_BLOCKS: BrumesBlock<unknown>[] = [
+	storyThemeBlock,
+	challengeBlock,
+];
 
 /** Deprecated ids already reported, so an alias warns once per session. */
 const warnedAliases = new Set<string>();

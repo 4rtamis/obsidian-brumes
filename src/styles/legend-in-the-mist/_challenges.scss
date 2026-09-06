@@ -1,0 +1,112 @@
+@mixin global {
+	.brumes-challenge {
+		display: grid;
+		// Two columns when the note is wide enough, one when it is not.
+		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+		gap: 0.6em 1.2em;
+		padding: 1.1em 1.3em;
+		border: 1px solid var(--background-modifier-border);
+		border-radius: 4px;
+		background-color: var(--background-primary-alt);
+
+		&--header,
+		&--description,
+		&--secrets {
+			grid-column: 1 / -1;
+		}
+
+		&--header {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 0.4em;
+			border-bottom: 1px solid var(--background-modifier-border);
+			padding-bottom: 0.4em;
+		}
+
+		&--name {
+			font-family: var(--font-header-theme);
+			font-size: 1.35em;
+			line-height: 1.1;
+			text-transform: uppercase;
+		}
+
+		&--roles {
+			color: var(--text-muted);
+			font-style: italic;
+		}
+
+		&--description p {
+			margin: 0 0 0.4em;
+		}
+
+		&--section-title {
+			margin: 0 0 0.3em;
+			font-family: var(--font-header-theme);
+			font-size: 0.9em;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--text-muted);
+		}
+
+		// Every section list drops the default markers and indent.
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		&--tag-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.3em;
+		}
+
+		&--limit,
+		&--feature,
+		&--threat,
+		&--secret {
+			margin-bottom: 0.4em;
+		}
+
+		&--limit-consequence,
+		&--threat-trigger {
+			color: var(--text-muted);
+			font-style: italic;
+			padding-left: 0.8em;
+		}
+
+		&--might-vulnerability {
+			color: var(--text-muted);
+
+			&::before {
+				content: " (";
+			}
+
+			&::after {
+				content: ")";
+			}
+		}
+
+		&--feature-name,
+		&--secret-label {
+			font-family: var(--font-header-theme);
+			text-transform: uppercase;
+
+			&::after {
+				content: " · ";
+				font-family: var(--font-text-theme);
+			}
+		}
+
+		&--consequence-list {
+			padding-left: 0.8em;
+		}
+
+		&--consequence::before {
+			content: "› ";
+			color: var(--text-muted);
+		}
+	}
+}

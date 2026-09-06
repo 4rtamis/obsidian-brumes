@@ -144,7 +144,47 @@ How it works:
 
 If you omit the level, Brumes falls back to a standard card style.
 
-### 4. Iceberg and Mountain card snippets
+### 4. Challenges for Legend in the Mist
+
+In `Legend in the Mist` mode, Brumes can render a `litm-challenge` code block into a challenge profile card:
+
+````md
+```litm-challenge
+Crafty Rumormonger
+roles: Watcher, Sapper, Countdown
+: A gossip who turns whispers into weapons.
+LIMITS
+Convince 2
+Scare 2
+Undermine Community 4 > Everyone in the community becomes distrustful-2 of one another.
+MIGHT
+Numbers (caught in a lie)
+TAGS
+{latest juiciest scandal} chatty confident-2
+FEATURES
+Petty Grudge > When slighted, the rumormonger gains vengeful-2.
+THREATS
+Listen : They lean in a little too close.
+> Your words spread further than intended (Exposure)
+Whisper : A name of yours is passed along in the dark.
+> A friend starts avoiding you (shunned-2)
+Twist : The story comes back wearing a new shape.
+> What you said becomes what you meant (Blocked)
+SECRETS
+Origin: A curse cast by a Thaumaturge.
+```
+````
+
+How it works:
+
+- First line is the challenge name, and an optional `roles:` line lists its roles
+- Lines starting with `:` are the description
+- `LIMITS`, `MIGHT`, `TAGS`, `FEATURES`, `THREATS` and `SECRETS` open a section, and every one but `LIMITS` is optional
+- A limit is a name followed by its rating; a progress limit adds its consequence after ` > `
+- A threat names its trigger after ` : `, then owns every `>` line below it
+- Tags are written `{multi word tag}` or as single words, and statuses keep their tier
+
+### 5. Iceberg and Mountain card snippets
 
 Brumes includes copyable snippet templates for `Advanced Canvas`.
 
@@ -165,11 +205,11 @@ Available Mountain variants:
 - `greatness`
 - `standard`
 
-### 5. Mode switching
+### 6. Mode switching
 
 The selected game mode changes more than colors. It also switches which callouts, presets, context-menu actions, and special renderers are active in the vault.
 
-### 6. Lantern in the Mist integration
+### 7. Lantern in the Mist integration
 
 Brumes can add a ribbon button that opens an embedded `Lantern in the Mist` view inside Obsidian. The target URL is configurable from plugin settings.
 
