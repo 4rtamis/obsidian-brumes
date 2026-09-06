@@ -2,7 +2,9 @@
 // so including this mixin never duplicates the inlined image.
 @mixin frame {
 	border: none;
-	margin: 0;
+	// The card is narrower than the note, so it centres instead of hugging
+	// the left margin.
+	margin: 0 auto;
 	padding: 1.3em 1.2em;
 	width: 100%;
 	max-width: 16rem;
@@ -132,7 +134,9 @@
 
 			& > li {
 				margin-inline-start: 0 !important;
-				line-height: 0;
+				// A tag span trims its own box, so the line still needs a
+				// height of its own or two tags overlap.
+				line-height: 1.35;
 				padding: 0;
 			}
 		}

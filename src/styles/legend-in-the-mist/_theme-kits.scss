@@ -5,6 +5,10 @@
 		// Same geometry as the theme card, without its inlined card art.
 		@include theme-cards.frame;
 
+		// The frame width comes from the theme card art. A kit draws no card,
+		// so it takes the room its quest and improvement lines need.
+		max-width: 28rem;
+
 		background-color: var(--background-primary-alt);
 		border-radius: 6px;
 		gap: 0.35em;
@@ -38,7 +42,9 @@
 
 			& > li {
 				margin-inline-start: 0 !important;
-				line-height: 0;
+				// A tag span trims its own box, so the line still needs a
+				// height of its own or two tags overlap.
+				line-height: 1.35;
 				padding: 0;
 			}
 		}

@@ -97,3 +97,25 @@
 		background-image: url('data:image/svg+xml,<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="44 13 221 269" width="221" height="270"><style>.a{fill:%23a47777}</style><path fill-rule="evenodd" class="a" d="m155 14l30 25 37 18 39 6-2 17-8 15 13 16-9 62-10 28-16 28-18 22-28 18-27 12-35-13-27-23-24-29v-12l-6-6-6-13-9-30 4-36-8-24v-35l32-4 44-21z"/></svg>');
 	}
 }
+
+@mixin cards {
+	// Inline, a tag highlights a word inside a sentence and must not push its
+	// neighbours around. Inside a card it stands alone, so it gets the
+	// breathing room a chip needs.
+	.brumes-story-theme,
+	.brumes-theme-kit,
+	.brumes-challenge,
+	.brumes-journey {
+		.brumes-tag {
+			padding-inline: 0.5ch;
+		}
+
+		.brumes-weakness {
+			padding-inline-start: 2.1ch;
+		}
+
+		.brumes-limit {
+			padding-inline-end: 0.2ch;
+		}
+	}
+}
