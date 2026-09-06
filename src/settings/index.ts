@@ -380,6 +380,33 @@ export class BrumesSettingTab extends PluginSettingTab {
 
 		section.addSetting((setting) => {
 			setting
+				.setName("Journey parser")
+				.setDesc(
+					"Enable the litm-journey code block parser and context menu action.",
+				)
+				.setDisabled(!isActive)
+				.addToggle((toggle) =>
+					toggle
+						.setValue(this.plugin.settings.features.journeyParser)
+						.setDisabled(!isActive)
+						.onChange((value) => {
+							this.runTask(
+								async () => {
+									this.plugin.settings.features.journeyParser =
+										value;
+									await this.plugin.saveSettings({
+										refreshMarkdown: true,
+									});
+								},
+								SETTINGS_SAVE_LOG_MESSAGE,
+								SETTINGS_SAVE_NOTICE,
+							);
+						}),
+				);
+		});
+
+		section.addSetting((setting) => {
+			setting
 				.setName("Mountain canvas snippet")
 				.setDesc(this.createMountainDescription())
 				.setDisabled(!isActive)

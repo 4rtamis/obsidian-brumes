@@ -15,6 +15,7 @@
 @use "./callouts";
 @use "./story-themes";
 @use "./challenges";
+@use "./journeys";
 @use "./mountain";
 
 .brumes--legend-in-the-mist {
@@ -58,6 +59,9 @@
 
 	// Challenges
 	@include challenges.global;
+
+	// Journeys
+	@include journeys.global;
 }
 
 // Mountain Series

@@ -1,0 +1,110 @@
+@mixin global {
+	.brumes-journey {
+		--brumes-journey-accent: var(--text-accent);
+
+		display: flex;
+		flex-direction: column;
+		gap: 0.8em;
+		padding: 1.1em 1.3em;
+		border: 1px solid var(--background-modifier-border);
+		border-left: 3px solid var(--brumes-journey-accent);
+		border-radius: 4px;
+		background-color: var(--background-primary-alt);
+
+		// One accent per journey kind, the rest of the sheet stays shared.
+		&--landscape {
+			--brumes-journey-accent: var(--color-green);
+		}
+
+		&--occasion {
+			--brumes-journey-accent: var(--color-orange);
+		}
+
+		&--undertaking {
+			--brumes-journey-accent: var(--color-blue);
+		}
+
+		&--header {
+			border-bottom: 1px solid var(--background-modifier-border);
+			padding-bottom: 0.4em;
+		}
+
+		&--type {
+			color: var(--brumes-journey-accent);
+			font-size: 0.8em;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+
+		&--name {
+			font-family: var(--font-header-theme);
+			font-size: 1.35em;
+			line-height: 1.1;
+			text-transform: uppercase;
+		}
+
+		&--description p {
+			margin: 0 0 0.4em;
+		}
+
+		&--section-title {
+			margin: 0 0 0.3em;
+			font-family: var(--font-header-theme);
+			font-size: 0.9em;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--text-muted);
+		}
+
+		// Every section list drops the default markers and indent.
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		&--tag-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.3em;
+		}
+
+		&--benefits-text {
+			font-style: italic;
+		}
+
+		// The vignettes tile as wide as the note allows, one column when narrow.
+		&--vignette-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+			gap: 0.8em;
+		}
+
+		&--vignette {
+			min-width: 0;
+			padding: 0.5em 0.7em;
+			border-radius: 4px;
+			background-color: var(--background-secondary);
+		}
+
+		&--vignette-name {
+			font-family: var(--font-header-theme);
+			text-transform: uppercase;
+		}
+
+		&--vignette-trigger {
+			color: var(--text-muted);
+			font-style: italic;
+			margin-bottom: 0.3em;
+		}
+
+		&--consequence-list {
+			padding-left: 0.8em;
+		}
+
+		&--consequence::before {
+			content: "› ";
+			color: var(--text-muted);
+		}
+	}
+}
