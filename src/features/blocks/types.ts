@@ -9,7 +9,7 @@ import type {
  * active, how it is parsed, how it is rendered, and how it is inserted.
  */
 export interface BrumesBlock<T> {
-	/** The code block language, e.g. `story-theme`. */
+	/** The code block language, e.g. `theme-card`. */
 	id: string;
 	/** Older ids kept working after a rename. */
 	aliases?: string[];

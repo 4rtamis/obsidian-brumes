@@ -1,7 +1,7 @@
-export type StoryThemeLevel = "origin" | "adventure" | "greatness" | "standard";
+export type ThemeCardLevel = "origin" | "adventure" | "greatness" | "standard";
 
-export interface StoryThemeData {
-	level: StoryThemeLevel;
+export interface ThemeCardData {
+	level: ThemeCardLevel;
 	category?: string;
 	titleTag: string;
 	powerTags: string[];
@@ -12,9 +12,9 @@ export interface StoryThemeData {
 const VALID_LEVELS = ["origin", "adventure", "greatness"];
 
 /**
- * Parse the content of a ```story-theme code block
+ * Parse the content of a ```theme-card code block
  */
-export function parseStoryTheme(source: string): StoryThemeData | null {
+export function parseThemeCard(source: string): ThemeCardData | null {
 	const lines = source
 		.split("\n")
 		.map((line) => line.trim())
@@ -22,13 +22,13 @@ export function parseStoryTheme(source: string): StoryThemeData | null {
 
 	if (lines.length === 0) return null;
 
-	let level: StoryThemeLevel = "standard";
+	let level: ThemeCardLevel = "standard";
 	let category: string | undefined;
 	let tagStartIndex = 0;
 
 	// Detect level
 	if (VALID_LEVELS.includes(lines[0].toLowerCase())) {
-		level = lines[0].toLowerCase() as StoryThemeLevel;
+		level = lines[0].toLowerCase() as ThemeCardLevel;
 		tagStartIndex = 1;
 	}
 

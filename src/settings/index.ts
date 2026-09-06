@@ -324,9 +324,9 @@ export class BrumesSettingTab extends PluginSettingTab {
 
 		section.addSetting((setting) => {
 			setting
-				.setName("Story theme parser")
+				.setName("Theme card parser")
 				.setDesc(
-					"Enable the story-theme code block parser and context menu action.",
+					"Enable the theme-card code block parser and context menu action. The older story-theme ID keeps working.",
 				)
 				.setDisabled(!isActive)
 				.addToggle((toggle) =>

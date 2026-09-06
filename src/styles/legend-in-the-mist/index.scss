@@ -13,7 +13,7 @@
 @use "./hashtags";
 @use "./tags";
 @use "./callouts";
-@use "./story-themes";
+@use "./theme-cards";
 @use "./theme-kits";
 @use "./challenges";
 @use "./journeys";
@@ -55,8 +55,8 @@
 	@include callouts.global;
 	@include callouts.read-aloud;
 
-	// Story Themes
-	@include story-themes.global;
+	// Theme Cards
+	@include theme-cards.global;
 
 	// Theme Kits
 	@include theme-kits.global;

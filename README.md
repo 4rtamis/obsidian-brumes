@@ -119,18 +119,29 @@ Default Legend in the Mist aliases include:
 
 Aliases are editable in Brumes settings, and the first alias in each list is what the context menu inserts.
 
-### 3. Story Themes for Legend in the Mist
+### 3. Theme cards for Legend in the Mist
 
-In `Legend in the Mist` mode, Brumes can render a `story-theme` code block into a styled card:
+In `Legend in the Mist` mode, Brumes renders a `theme-card` code block into a styled card. A hero theme names its might level and its themebook:
 
 ````md
-```story-theme
+```theme-card
 origin
 circumstance
 {Born in the marsh}
 {Track by moonlight}
 {Know every hidden trail}
 {!Trust strangers too easily}
+```
+````
+
+A story theme has neither, so it drops the level badge and the themebook line and keeps the plain frame:
+
+````md
+```theme-card
+{Magic Lantern}
+{Reveals the dead}
+{Dispel illusion}
+{!Difficult to light}
 ```
 ````
 
@@ -142,7 +153,9 @@ How it works:
 - Later normal tags become power tags
 - `{!weakness}` lines become weakness tags
 
-If you omit the level, Brumes falls back to a standard card style.
+If you omit the level, Brumes falls back to a standard card style, without a level badge and without a category line.
+
+The former `story-theme` id still renders the same card, so older notes keep working, but it is deprecated: prefer `theme-card` in new notes.
 
 ### 4. Challenges for Legend in the Mist
 

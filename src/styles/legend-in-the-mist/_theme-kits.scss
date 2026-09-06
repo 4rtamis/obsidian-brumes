@@ -1,9 +1,9 @@
-@use "./story-themes";
+@use "./theme-cards";
 
 @mixin global {
 	.brumes-theme-kit {
 		// Same geometry as the theme card, without its inlined card art.
-		@include story-themes.frame;
+		@include theme-cards.frame;
 
 		background-color: var(--background-primary-alt);
 		border-radius: 6px;

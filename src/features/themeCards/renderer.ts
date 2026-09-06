@@ -1,8 +1,8 @@
 import { renderTagSpan } from "../blocks/tagSpan";
-import { StoryThemeData } from "./parser";
+import { ThemeCardData } from "./parser";
 
-export function renderStoryTheme(
-	data: StoryThemeData,
+export function renderThemeCard(
+	data: ThemeCardData,
 	doc: Document,
 ): HTMLElement {
 	const container = doc.createElement("div");

@@ -6,14 +6,14 @@ import { renderRawBlock } from "./fallback";
 import { BrumesBlock, blockIds, isBlockEnabled } from "./types";
 import { challengeBlock } from "../challenges/block";
 import { journeyBlock } from "../journeys/block";
-import { storyThemeBlock } from "../storyThemes/block";
+import { themeCardBlock } from "../themeCards/block";
 import { themeKitBlock } from "../themeKits/block";
 
 const log = logScope("Blocks");
 
 /** Every fenced block Brumes knows. Adding a format means adding a line here. */
 export const BRUMES_BLOCKS: BrumesBlock<unknown>[] = [
-	storyThemeBlock,
+	themeCardBlock,
 	challengeBlock,
 	journeyBlock,
 	themeKitBlock,

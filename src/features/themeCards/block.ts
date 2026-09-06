@@ -1,13 +1,13 @@
 import { BrumesBlock } from "../blocks/types";
 import { pickRandomThemebook } from "../blocks/themebooks";
-import { StoryThemeData, parseStoryTheme } from "./parser";
-import { renderStoryTheme } from "./renderer";
+import { ThemeCardData, parseThemeCard } from "./parser";
+import { renderThemeCard } from "./renderer";
 
-function storyThemeTemplate(): string {
+function themeCardTemplate(): string {
 	const { might, themebook } = pickRandomThemebook();
 
 	return [
-		"```story-theme",
+		"```theme-card",
 		might,
 		themebook.toLowerCase(),
 		"{Title Tag}",
@@ -19,13 +19,14 @@ function storyThemeTemplate(): string {
 	].join("\n");
 }
 
-export const storyThemeBlock: BrumesBlock<StoryThemeData> = {
-	id: "story-theme",
+export const themeCardBlock: BrumesBlock<ThemeCardData> = {
+	id: "theme-card",
+	aliases: ["story-theme"],
 	mode: "legend-in-the-mist",
 	flag: "storyThemeParser",
-	label: "Story theme",
+	label: "Theme card",
 	icon: "file-plus",
-	parse: parseStoryTheme,
-	render: renderStoryTheme,
-	template: storyThemeTemplate,
+	parse: parseThemeCard,
+	render: renderThemeCard,
+	template: themeCardTemplate,
 };
