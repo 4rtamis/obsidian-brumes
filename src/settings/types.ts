@@ -11,6 +11,7 @@ export interface BrumesFeatureSettings {
 	storyThemeParser: boolean;
 	challengeParser: boolean;
 	journeyParser: boolean;
+	themeKitParser: boolean;
 }
 
 export interface CityOfMistCalloutAliases {
@@ -63,6 +64,7 @@ export const DEFAULT_SETTINGS: BrumesSettings = {
 		storyThemeParser: true,
 		challengeParser: true,
 		journeyParser: true,
+		themeKitParser: true,
 	},
 	calloutAliases: {
 		cityOfMist: DEFAULT_CITY_OF_MIST_CALLOUT_ALIASES,

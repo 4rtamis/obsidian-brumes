@@ -236,7 +236,32 @@ How it works:
 - `CONSEQUENCES` opens the shared consequence list, where every `>` line before the first vignette lands
 - `VIGNETTE ` starts a vignette, its trigger following ` : `, and it owns every `>` line below it
 
-### 6. Iceberg and Mountain card snippets
+### 6. Theme kits for Legend in the Mist
+
+In `Legend in the Mist` mode, Brumes can render a `litm-theme-kit` code block into a ready-made theme card:
+
+````md
+```litm-theme-kit
+Devotion
+Trial of the Vulture
+{scavenging} {desperation motivates me} {vulture skull necklace}
+{find a safe spot} {fleeing danger} {hardy}
+{side with the winner} {make do with scraps} {mask my scent}
+{!unsympathetic} {!always in survival mode}
+{!disheveled appearance} {!barren landscapes}
+quest: Prove that there is a vulture inside of me.
+improvement: Vulture's Endurance > Once per scene, when you roll to resist hunger or the elements, you first gain desperate-2, which helps the roll.
+```
+````
+
+How it works:
+
+- First line is the themebook the kit belongs to, matched against the Legend in the Mist themebooks, and it can be left out
+- The first plain line after it is the kit name
+- `{tag}` entries are power tags and `{!tag}` entries are weakness tags, several per line
+- `quest:` holds the kit quest, and `improvement:` names a special improvement, its effect following ` > `
+
+### 7. Iceberg and Mountain card snippets
 
 Brumes includes copyable snippet templates for `Advanced Canvas`.
 
@@ -257,11 +282,11 @@ Available Mountain variants:
 - `greatness`
 - `standard`
 
-### 7. Mode switching
+### 8. Mode switching
 
 The selected game mode changes more than colors. It also switches which callouts, presets, context-menu actions, and special renderers are active in the vault.
 
-### 8. Lantern in the Mist integration
+### 9. Lantern in the Mist integration
 
 Brumes can add a ribbon button that opens an embedded `Lantern in the Mist` view inside Obsidian. The target URL is configurable from plugin settings.
 

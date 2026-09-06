@@ -7,6 +7,7 @@ import { BrumesBlock, blockIds, isBlockEnabled } from "./types";
 import { challengeBlock } from "../challenges/block";
 import { journeyBlock } from "../journeys/block";
 import { storyThemeBlock } from "../storyThemes/block";
+import { themeKitBlock } from "../themeKits/block";
 
 const log = logScope("Blocks");
 
@@ -15,6 +16,7 @@ export const BRUMES_BLOCKS: BrumesBlock<unknown>[] = [
 	storyThemeBlock,
 	challengeBlock,
 	journeyBlock,
+	themeKitBlock,
 ];
 
 /** Deprecated ids already reported, so an alias warns once per session. */

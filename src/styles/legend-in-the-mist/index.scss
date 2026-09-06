@@ -14,6 +14,7 @@
 @use "./tags";
 @use "./callouts";
 @use "./story-themes";
+@use "./theme-kits";
 @use "./challenges";
 @use "./journeys";
 @use "./mountain";
@@ -56,6 +57,9 @@
 
 	// Story Themes
 	@include story-themes.global;
+
+	// Theme Kits
+	@include theme-kits.global;
 
 	// Challenges
 	@include challenges.global;

@@ -1,19 +1,25 @@
+// The card geometry, shared with the theme kit card. The card art stays out,
+// so including this mixin never duplicates the inlined image.
+@mixin frame {
+	border: none;
+	margin: 0;
+	padding: 1.3em 1.2em;
+	width: 100%;
+	max-width: 16rem;
+	height: auto;
+	background-color: transparent;
+	background-position: center;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
 @mixin global {
 	.brumes-story-theme {
-		border: none;
-		margin: 0;
-		padding: 1.3em 1.2em;
-		width: 100%;
-		max-width: 16rem;
-		height: auto;
-		background-color: transparent;
-		background-position: center;
-		background-size: 100% 100%;
-		background-repeat: no-repeat;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		position: relative;
+		@include frame;
 
 		&::after {
 			content: "";

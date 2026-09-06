@@ -1,0 +1,74 @@
+@use "./story-themes";
+
+@mixin global {
+	.brumes-theme-kit {
+		// Same geometry as the theme card, without its inlined card art.
+		@include story-themes.frame;
+
+		background-color: var(--background-primary-alt);
+		border-radius: 6px;
+		gap: 0.35em;
+
+		&--category {
+			font-family: "IM Fell Great Primer", serif;
+			font-variant: small-caps;
+			font-weight: bold;
+			font-size: 0.75em;
+			text-align: center;
+		}
+
+		&--name {
+			font-family: "IM Fell English", serif;
+			font-style: italic;
+			font-size: 1.6em;
+			line-height: 1.1;
+			text-align: center;
+			margin-bottom: 0.2em;
+		}
+
+		&--tags {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.25em;
+			text-align: center;
+
+			& > li {
+				margin-inline-start: 0 !important;
+				line-height: 0;
+				padding: 0;
+			}
+		}
+
+		&--weakness-tags {
+			margin-top: 0.35em;
+		}
+
+		&--quest {
+			margin-top: 0.5em;
+			padding-top: 0.4em;
+			border-top: 1px solid var(--background-modifier-border);
+			font-style: italic;
+			text-align: center;
+		}
+
+		&--improvement {
+			margin-top: 0.4em;
+			text-align: center;
+		}
+
+		&--improvement-name {
+			font-family: "IM Fell Great Primer", serif;
+			font-variant: small-caps;
+			font-weight: bold;
+
+			&::after {
+				content: " · ";
+				font-variant: normal;
+			}
+		}
+	}
+}
